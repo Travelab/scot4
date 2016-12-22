@@ -1,14 +1,15 @@
 {
   "name": "scot4",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Development environment of packages",
   "scripts": {
     "start": "babel-node src/cli/index.js",
-	 "clean": "rimraf lib/*",
-	 "precompile": "npm run clean",
+    "clean": "rimraf lib/*",
+    "precompile": "npm run clean",
     "compile": "babel src --out-dir lib --source-maps inline --copy-files",
-	 "postcompile": "cp src/storybook/.babelrc lib/storybook/",
-    "prepublish": "npm run compile"
+    "postcompile": "cp src/storybook/.babelrc lib/storybook/",
+    "prepublish": "npm run compile",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "main": "lib/scot4.js",
   "bin": {
@@ -16,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Travelab/scot4.git"
+    "url": "https://github.com/Travelab/scot4.git"
   },
   "author": "Dmitry Bukov <sukazavr@gmail.com> (sukazavr.ru)",
   "license": "MIT",
@@ -51,7 +52,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "semantic-release": "^6.3.2"
   },
   "scot4": {
     "components": [
