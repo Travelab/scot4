@@ -1,7 +1,7 @@
 {
   "name": "scot4",
   "version": "0.0.0",
-  "description": "Development environment of components",
+  "description": "Development environment of packages",
   "scripts": {
     "start": "babel-node src/cli/index.js",
 	 "clean": "rimraf lib/*",
