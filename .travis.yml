@@ -1,15 +1,17 @@
 language: node_js
 cache:
   directories:
-    - node_modules
+  - node_modules
 notifications:
   email: false
+  slack:
+    secure: gdyE/uR/9imKqVqIooiGtscszThJGnvy9pPYtsxMBzh+dC9YFiL7qeZBZkEFXciXwIH+dRG2DKCjX7V97CEoD0+A2QGHQ4EtvmRatS8/lko93cbkGAvt2YG9iuN8YwW4SfKgG4ezWtIVD0Wj0oAMUSw+7TLIx3gOSsw8FsXt7vMBAGrMiTcDnVxaBO8p/6XPl1E+ki63cJ2qbLsJS+27N3NMZLaQyjO6OIVQVljR1l5rEm/xfqCAX9umtX85GtPuoeGfwYwKjgA+9nPLCc/WG2Qr57vDAk9SY/jMTf8Ju+R5/yzoQE/G6foMsIndNIrHOz2Q6rqO7RU6x50DAAGO2QWlLcppakCw9Y9NhZSMRY+yqzN0eIkTxcQWVMwLtLyMMwLLCu1Ka3qq1fnztImrxefnXBCt90LlIh3X6TBj2TqdFHXs2cisfSZtdhTq320rwLb38Czzh8lzBZ7200DGTNpAQ9q2v+K+V76lO56MleCJSg9kwdBZCKf2p8/aCDwTub97itE+mRoPc7Oqmze1pQZvlpMrCK3Tecn/PZS5nAolfTiYixURCiUwA8hdwNMB89X65ikmHoxTEC5LVXJIGTVSNsKlbPNexhpZfBjyZCMUDG+lTtEHZybn4L7ahfSiXBdO1yIP1BSybqC7+1JKJOttZkbx4IER3Qf/M4N+1Vo=
 node_js:
-  - '7'
+- '7'
 before_script:
-  - npm prune
+- npm prune
 after_success:
-  - npm run semantic-release
+- npm run semantic-release
 branches:
   except:
-    - /^v\d+\.\d+\.\d+$/
+  - /^v\d+\.\d+\.\d+$/
