@@ -1,0 +1,61 @@
+{
+  "name": "scot4",
+  "version": "0.0.0",
+  "description": "Development environment of components",
+  "scripts": {
+    "start": "babel-node src/cli/index.js",
+	 "clean": "rimraf lib/*",
+	 "precompile": "npm run clean",
+    "compile": "babel src --out-dir lib --source-maps inline --copy-files",
+	 "postcompile": "cp src/storybook/.babelrc lib/storybook/",
+    "prepublish": "npm run compile"
+  },
+  "main": "lib/scot4.js",
+  "bin": {
+    "scot4": ".bin/scot4.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Travelab/scot4.git"
+  },
+  "author": "Dmitry Bukov <sukazavr@gmail.com> (sukazavr.ru)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Travelab/scot4/issues"
+  },
+  "homepage": "https://github.com/Travelab/scot4",
+  "dependencies": {
+    "@kadira/storybook": "^2.13.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-require": "^3.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-bluebird": "^1.0.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "bluebird": "^3.4.6",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "cool-trim": "^1.1.1",
+    "file-loader": "^0.9.0",
+    "glob": "^7.0.6",
+    "image-webpack-loader": "^3.1.0",
+    "inquirer": "^2.0.0",
+    "loader-utils": "^0.2.15",
+    "open": "0.0.5",
+    "portfinder": "^1.0.7",
+    "process-bootstrap": "^1.0.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "svg-url-loader": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "rimraf": "^2.5.4"
+  },
+  "scot4": {
+    "components": [
+      "atoms"
+    ]
+  }
+}

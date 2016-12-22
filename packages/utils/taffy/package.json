@@ -1,0 +1,24 @@
+{
+  "name": "taffy",
+  "version": "0.0.1",
+  "description": "JSS helper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "jss": "^6.0.1",
+    "jss-camel-case": "^3.0.0",
+    "jss-default-unit": "^5.0.1",
+    "jss-expand": "^2.0.1",
+    "jss-extend": "^3.0.0",
+    "jss-nested": "^3.0.0",
+    "jss-props-sort": "^3.0.0",
+    "jss-vendor-prefixer": "^4.0.0",
+    "perdido": "^2.0.1",
+    "react-jss": "^5.1.0"
+  }
+}

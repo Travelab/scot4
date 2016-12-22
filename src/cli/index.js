@@ -1,0 +1,21 @@
+import bootstrap from 'process-bootstrap'
+import commander from 'commander'
+import manifest from '../../package.json'
+
+import dev from './dev'
+
+// Some basic process setup
+bootstrap('scot4', 'SCOT4')
+
+commander
+	.version(manifest.version)
+
+commander
+	.command('dev [components...]')
+	.description('Start development environment for a specific component')
+	.action(dev)
+
+commander.parse(process.argv)
+
+// Execute default watch command
+if (!commander.args.length) commander.help()
