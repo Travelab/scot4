@@ -13,7 +13,7 @@
   },
   "main": "lib/scot4.js",
   "bin": {
-    "scot4": ".bin/scot4.js"
+    "scot4": "bin/scot4.js"
   },
   "repository": {
     "type": "git",
