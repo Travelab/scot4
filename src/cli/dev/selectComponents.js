@@ -3,10 +3,20 @@ import chalk from 'chalk'
 import inquirer from 'inquirer'
 import coolTrim from 'cool-trim'
 
-import manifest from '../../../package.json'
-import { packagesPath } from '../../path'
+import path, { cliBase, packagesPath } from '../../path'
 
-const dirOfComponents = manifest.scot4.components
+const manifestOfDevDir = require(path.join(cliBase, 'package.json'))
+
+let dirOfComponents = []
+if (manifestOfDevDir.scot4) {
+
+	if (Array.isArray(manifestOfDevDir.scot4.components)) {
+
+		dirOfComponents = manifestOfDevDir.scot4.components
+
+	} else console.log(chalk.red('package.json should contain "scot4.components" property as array'))
+
+} else console.log(chalk.red('package.json should contain "scot4" property'))
 
 export default function (cmps = []) {
 
