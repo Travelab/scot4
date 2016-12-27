@@ -1,1 +1,4 @@
-src
+/.babelrc
+/.nvmrc
+/.travis.yml
+/src
