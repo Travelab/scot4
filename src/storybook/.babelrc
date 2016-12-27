@@ -8,6 +8,12 @@
 		"transform-decorators-legacy",
 		"transform-react-jsx",
 		"add-module-exports",
-		"react-require"
+		"react-require",
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }]
 	]
 }
