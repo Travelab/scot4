@@ -9,6 +9,9 @@
 		"transform-react-jsx",
 		"add-module-exports",
 		"react-require",
+    ["lodash", {
+      "id": ["lodash", "recompose"]
+    }],
     ["transform-runtime", {
       "helpers": false,
       "polyfill": false,
