@@ -1,0 +1,11 @@
+{
+  "scot4": {
+    "components": [
+      "atoms"
+    ],
+    "loaded": [
+      "atoms/QwertTt",
+      "atoms/QwertTy"
+    ]
+  }
+}

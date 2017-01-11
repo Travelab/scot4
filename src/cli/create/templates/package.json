@@ -1,0 +1,9 @@
+{
+  "name": "<%= componentNameKebab %>",
+  "description": "<%= componentDescription %>",
+  "version": "0.0.1",
+  "main": "index.jsx.js",
+  "author": "<%- author %>",
+  "private": true,
+  "license": "UNLICENSED"
+}

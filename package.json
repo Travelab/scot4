@@ -45,13 +45,16 @@
     "image-webpack-loader": "^3.1.0",
     "inquirer": "^2.0.0",
     "loader-utils": "^0.2.15",
+    "lodash": "^4.17.4",
     "open": "0.0.5",
     "portfinder": "^1.0.7",
     "process-bootstrap": "^1.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "svg-url-loader": "^1.1.0",
-    "why-did-you-update": "0.0.8"
+    "why-did-you-update": "0.0.8",
+    "yeoman-environment": "^1.6.6",
+    "yeoman-generator": "^1.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

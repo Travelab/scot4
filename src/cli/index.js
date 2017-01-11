@@ -3,6 +3,7 @@ import commander from 'commander'
 import manifest from '../../package.json'
 
 import dev from './dev'
+import create from './create'
 
 // Some basic process setup
 bootstrap('scot4', 'SCOT4')
@@ -14,6 +15,11 @@ commander
 	.command('dev [components...]')
 	.description('Start development environment for a specific component')
 	.action(dev)
+
+commander
+	.command('create [packageName]')
+	.description('Generate some kind of package')
+	.action(create)
 
 commander.parse(process.argv)
 

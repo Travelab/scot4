@@ -1,0 +1,9 @@
+{
+  "name": "qwert-ty",
+  "description": "QwertTy component created as part of Atoms",
+  "version": "0.0.1",
+  "main": "index.jsx.js",
+  "author": "Dmitry Bukov <bukov.dmitry@gmail.com>",
+  "private": true,
+  "license": "UNLICENSED"
+}

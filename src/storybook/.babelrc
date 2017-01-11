@@ -1,14 +1,14 @@
 {
-	"presets": [
-		"es2015",
-		"stage-0",
-		"bluebird"
-	],
-	"plugins": [
-		"transform-decorators-legacy",
-		"transform-react-jsx",
-		"add-module-exports",
-		"react-require",
+  "presets": [
+    "es2015",
+    "stage-0",
+    "bluebird"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-react-jsx",
+    "add-module-exports",
+    "react-require",
     ["lodash", {
       "id": ["lodash", "recompose"]
     }],
@@ -18,5 +18,5 @@
       "regenerator": true,
       "moduleName": "babel-runtime"
     }]
-	]
+  ]
 }
