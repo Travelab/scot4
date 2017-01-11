@@ -1,4 +1,5 @@
 /.babelrc
 /.nvmrc
 /.travis.yml
+/.yo-rc.json
 /src

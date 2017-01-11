@@ -1,6 +1,9 @@
 # Compiled files
 /lib
 
+# Yeoman configuration
+/.yo-rc.json
+
 # Logs
 logs
 *.log

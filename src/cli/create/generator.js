@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import Base from 'yeoman-generator'
+import { Base } from '../../yo-yo'
 import { upperFirst, camelCase, kebabCase } from 'lodash'
 
 import path, { cliBase, packagesPath } from '../../path'
@@ -34,35 +34,17 @@ const mapComponentProps = [
 	{ f: 'props', t: 'props' },
 ]
 
-function copy (src, dest) {
-	this.fs.copyTpl(
-		this.templatePath(src),
-		this.destinationPath(dest|| src),
-		this.context
-	)
-}
-
 export default class extends Base {
 
 	constructor(args, opts) {
 
 		super(args, opts)
 
+		this.author = `${this.user.git.name()} <${this.user.git.email()}>`
+
 		this.argument('packageName', { type: String, required: false })
 
 		this.sourceRoot(templatesPath)
-
-		this.copy = copy.bind(this)
-	}
-
-	initializing () {
-
-		const userName = this.user.git.name()
-
-		this.log(chalk.green(`Hello ${chalk.yellow(userName)}! It's the package generator :-)`))
-
-		this.author = `${userName} <${this.user.git.email()}>`
-		this.foldersOfComponents = this.config.get('components')
 	}
 
 	prompting () {
@@ -80,7 +62,7 @@ export default class extends Base {
 				type: 'list',
 				name: 'folder',
 				message: ({ name }) => (`In which folder do you want to put the ${chalk.yellow(name)} component?`),
-				choices: this.foldersOfComponents
+				choices: this.getConfig('components')
 			},
 			{
 				type: 'checkbox',
@@ -102,7 +84,7 @@ export default class extends Base {
 				type: 'confirm',
 				name: 'doInject',
 				message: ({ name, folder }) => {
-					const p = chalk.yellow(`${folder}/${name}`)
+					const p = chalk.yellow(path.join(folder, name))
 					return `Do you want to inject ${p} component into ${chalk.magenta('Storybull')}?`
 				}
 			}
@@ -144,6 +126,7 @@ export default class extends Base {
 		const { componentPath, style, duck, saga } = this.context
 
 		// Чтобы копировать всё в папку с новым компонентом
+		// потому что copy() работает от дестРута
 		this.destinationRoot(path.join(packagesPath, componentPath))
 
 		this.copy('package.json')
@@ -157,18 +140,15 @@ export default class extends Base {
 
 	end () {
 
-		// Чтобы искать .yo-rc.json в корне
-		this.destinationRoot(cliBase)
-
 		const { doInject } = this.answers
 		const { componentPath } = this.context
 
 		if (doInject) {
 
 			var nextLoaded
-			var prevLoaded = this.config.get('loaded')
+			var prevLoaded = this.getConfig('loaded')
 
-			if (prevLoaded && Array.isArray(prevLoaded)) {
+			if (Array.isArray(prevLoaded)) {
 
 				if (!~prevLoaded.indexOf(componentPath)) {
 
@@ -178,10 +158,10 @@ export default class extends Base {
 				nextLoaded = [ componentPath ]
 			}
 
-			nextLoaded && this.config.set('loaded', nextLoaded)
+			nextLoaded && this.setConfig('loaded', nextLoaded)
 		}
 
-		this.log(chalk.green(`The ${chalk.yellow(componentPath)} component created! See you next time :-)`))
+		this.log(chalk.green(`The ${chalk.yellow(componentPath)} component created!`))
 	}
 
 }
