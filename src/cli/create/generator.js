@@ -36,7 +36,7 @@ const mapComponentProps = [
 
 export default class extends Base {
 
-	constructor(args, opts) {
+	constructor (args, opts) {
 
 		super(args, opts)
 
@@ -78,7 +78,7 @@ export default class extends Base {
 				name: 'additionalParams',
 				message: ({ name, folder }) => `Quack! Quack! What else?`,
 				choices: additionalParamsChoices,
-				when: ({ generalParams }) => (!!~generalParams.indexOf('Ducks'))
+				when: ({ generalParams }) => (!!~generalParams.indexOf(params.duck))
 			},
 			{
 				type: 'confirm',
