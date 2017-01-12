@@ -6,8 +6,8 @@
     "start": "babel-node src/cli/index.js",
     "clean": "rimraf lib/*",
     "precompile": "npm run clean",
-    "compile": "babel src --out-dir lib --source-maps inline --copy-files",
-    "postcompile": "cp src/storybook/.babelrc lib/storybook/",
+    "compile": "babel src --out-dir lib --source-maps inline --copy-files --ignore cli/**/templates/*",
+    "postcompile": "rsync --include='*/' --include='.babelrc' --include='cli/**/templates/***' --exclude='*' -a src/ lib/",
     "prepublish": "npm run compile",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -62,10 +62,5 @@
     "babel-cli": "^6.18.0",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.2"
-  },
-  "scot4": {
-    "components": [
-      "atoms"
-    ]
   }
 }
