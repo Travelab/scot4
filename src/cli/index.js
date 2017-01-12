@@ -2,7 +2,7 @@ import bootstrap from 'process-bootstrap'
 import commander from 'commander'
 import manifest from '../../package.json'
 
-import dev from './dev'
+import dev from './dev/index_.js'
 import create from './create'
 
 // Some basic process setup
@@ -12,7 +12,7 @@ commander
 	.version(manifest.version)
 
 commander
-	.command('dev [components...]')
+	.command('dev [componentsPaths...]')
 	.description('Start development environment for a specific component')
 	.action(dev)
 

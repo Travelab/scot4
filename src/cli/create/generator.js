@@ -36,17 +36,6 @@ const mapComponentProps = [
 
 export default class extends Base {
 
-	constructor (args, opts) {
-
-		super(args, opts)
-
-		this.author = `${this.user.git.name()} <${this.user.git.email()}>`
-
-		this.argument('packageName', { type: String, required: false })
-
-		this.sourceRoot(templatesPath)
-	}
-
 	prompting () {
 
 		const prompts = [
@@ -108,7 +97,7 @@ export default class extends Base {
 			componentNameKebab: kebabCase(name),
 			componentType: folder,
 			componentDescription: `${name} component created as part of ${upperFirst(folder)}`,
-			author: this.author,
+			author: `${this.getConfig('username')} <${this.getConfig('email')}>`,
 		}
 
 		for (var param in params) context[param] = !!~finalParams.indexOf(params[param])
@@ -128,6 +117,7 @@ export default class extends Base {
 		// Чтобы копировать всё в папку с новым компонентом
 		// потому что copy() работает от дестРута
 		this.destinationRoot(path.join(packagesPath, componentPath))
+		this.sourceRoot(templatesPath)
 
 		this.copy('package.json')
 		this.copy('index.jsx.js')

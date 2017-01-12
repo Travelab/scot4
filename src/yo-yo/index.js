@@ -14,28 +14,25 @@ const postName = gn('post')
 const yo = (generators = []) => {
 
 	if (!Array.isArray(generators))
-		return console.log(chalk.red('generators should be Array type'))
+		return console.log(chalk.red('Generators should be Array type'))
 
 	const env = yeoman.createEnv()
 
 	generators = generators.map((gen) => {
 
-		let { name, generator, args = [], opts = {} } = gen
+		const { name, generator, options } = gen
+		const namespace = gn(name)
 
-		opts.arguments = args.filter((v) => (v)) // Remove undefined
+		env.registerStub(generator, namespace)
 
-		args = gn(name)
-
-		env.registerStub(generator, args)
-
-		return { name, generator, args, opts }
+		return { name, generator, options, namespace }
 	})
 
 	class Entry extends Base {
 		initializing () {
 			this.composeWith(preName)
 			generators.forEach((gen) => {
-				this.composeWith(gen.args, gen.opts)
+				this.composeWith(gen.namespace, gen.options)
 			})
 			this.composeWith(postName)
 		}
