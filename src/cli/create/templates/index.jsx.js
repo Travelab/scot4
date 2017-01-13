@@ -29,7 +29,7 @@ const <%= componentName %> = ({ <%= componentProps %> }) => {
 	const txtExample = l('Example')
 <% } %>
 	return (
-		<div></div>
+		<div<% if (style) { %> className={$.container}<% } %>></div>
 	)
 }
 
