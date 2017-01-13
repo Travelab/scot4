@@ -96,6 +96,7 @@ export default class extends Base {
 			componentNameCamel: camelCase(name),
 			componentNameKebab: kebabCase(name),
 			componentType: folder,
+			componentPackageName: kebabCase(componentPath),
 			componentDescription: `${name} component created as part of ${upperFirst(folder)}`,
 			author: `${this.getConfig('username')} <${this.getConfig('email')}>`,
 		}
