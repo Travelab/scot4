@@ -2,7 +2,7 @@ import bootstrap from 'process-bootstrap'
 import commander from 'commander'
 import manifest from '../../package.json'
 
-import dev from './dev/index_.js'
+import dev from './dev'
 import create from './create'
 
 // Some basic process setup

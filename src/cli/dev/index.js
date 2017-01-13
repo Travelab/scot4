@@ -1,16 +1,14 @@
-import open from 'open'
+import yo from '../../yo-yo'
+import Generator from './generator.js'
 
-import selectPort from './selectPort'
-import startServer from './startServer'
-import selectComponents from './selectComponents'
-import { setComponents } from './shareComponents'
+export default (componentsPaths) => {
 
-export default (cmps) => {
-
-	Promise.all([
-		selectPort(),
-		selectComponents(cmps).then(setComponents)
+	yo([
+		{
+			name: 'dev',
+			generator: Generator,
+			options: { componentsPaths }
+		}
 	])
-		.then(([ port ]) => startServer(null, port))
-		.then((address) => open(address))
+
 }

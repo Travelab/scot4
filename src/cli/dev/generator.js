@@ -5,9 +5,8 @@ import autocomplete from 'inquirer-autocomplete-prompt'
 
 import selectPort from './selectPort'
 import startServer from './startServer'
-import selectComponents from './selectComponents'
-import { setComponents } from './shareComponents'
 import { packagesPath } from '../../path'
+import { setShared } from '../../utils'
 import { Base } from '../../yo-yo'
 
 
@@ -85,7 +84,7 @@ export default class extends Base {
 
 	end () {
 
-		setComponents(this.components)
+		setShared('components', this.components)
 
 		startServer(null, this.port)
 			.then((address) => open(address))
