@@ -10,7 +10,7 @@ module.exports = function (source) {
 
 	loader.cacheable && loader.cacheable()
 
-	let { components } = loaderUtils.parseQuery(loader.query)
+	let { components, patchWhyDidYouUpdate } = loaderUtils.parseQuery(loader.query)
 
 	if (!components) components = []
 
@@ -24,7 +24,9 @@ module.exports = function (source) {
 
 	}).join('\n')
 
-	source = source.replace(placeholder, requiredStories)
+	source = source
+		.replace(placeholder, requiredStories)
+		.replace('patchWhyDidYouUpdate', patchWhyDidYouUpdate ? 'true' : 'false')
 
 	return source
 }

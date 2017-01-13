@@ -66,6 +66,12 @@ export default class extends Base {
 				validate: (component) => (!!~availableComponents.indexOf(component)),
 				source: chooser,
 				when: () => (!this.components)
+			},
+			{
+				type: 'confirm',
+				name: 'patchWhyDidYouUpdate',
+				message: 'Do you need notify when potentially unnecessary re-renders occur?',
+				store: true
 			}
 		]
 
@@ -79,6 +85,8 @@ export default class extends Base {
 
 				if (!this.components)
 					this.components = [ answers.component ]
+
+				setShared('patchWhyDidYouUpdate', answers.patchWhyDidYouUpdate)
 			})
 	}
 
