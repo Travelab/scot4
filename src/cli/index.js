@@ -3,6 +3,7 @@ import commander from 'commander'
 import manifest from '../../package.json'
 
 import dev from './dev'
+import build from './build'
 import create from './create'
 
 // Some basic process setup
@@ -20,6 +21,11 @@ commander
 	.command('create [packageName]')
 	.description('Generate some kind of package')
 	.action(create)
+
+commander
+	.command('build')
+	.description('Build a specific environment')
+	.action(build)
 
 commander.parse(process.argv)
 
