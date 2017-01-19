@@ -1,5 +1,9 @@
-import SVGPreset from './loader-presets/svg'
 import createSCPreset from './loader-presets/select-components'
+import { packagesPath } from '../path'
+
+import css from '../webpack-blocks/css'
+import svg from '../webpack-blocks/svg'
+import image from '../webpack-blocks/image'
 
 // Export a function. Accept the base config as the only param.
 export default function (storybookBaseConfig, configType) {
@@ -18,7 +22,9 @@ export default function (storybookBaseConfig, configType) {
 
 	loaders = [
 		...loaders,
-		...SVGPreset,
+		...css({ include: packagesPath })().module.loaders,
+		...svg({ include: packagesPath })().module.loaders,
+		...image({ include: packagesPath })().module.loaders,
 		...createSCPreset()
 	]
 

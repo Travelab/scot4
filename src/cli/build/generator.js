@@ -1,14 +1,21 @@
 import glob from 'glob'
+import open from 'open'
 import chalk from 'chalk'
 import rimraf from 'rimraf'
 import autocomplete from 'inquirer-autocomplete-prompt'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { addPlugins, createConfig, entryPoint, setOutput, customConfig, webpack } from '@webpack-blocks/webpack2'
+import { addPlugins, createConfig, entryPoint, setOutput, customConfig } from '@webpack-blocks/webpack2'
+import webpack from 'webpack'
 import Dashboard from 'webpack-dashboard'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 import babel from '@webpack-blocks/babel6'
+import css from '../../webpack-blocks/css'
 import svg from '../../webpack-blocks/svg'
+import image from '../../webpack-blocks/image'
+
+import selectPort from './selectPort'
+import startServer from './startServer'
 
 import path, { packagesPath, buildPath } from '../../path'
 import { Base } from '../../yo-yo'
@@ -26,7 +33,7 @@ export default class extends Base {
 
 		const components = this.getConfig('components')
 		const availableComponents = glob
-			.sync(`environment/*/`, { cwd: packagesPath })
+			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
 			.map((name) => name.slice(0, -1))
 
 		const choicesComponents = availableComponents.map((component) => {
@@ -36,7 +43,7 @@ export default class extends Base {
 			return {
 				name: `${name} ${chalk.gray(folder)}`,
 				short: name,
-				value: name
+				value: component
 			}
 		})
 
@@ -49,38 +56,33 @@ export default class extends Base {
 			)
 		}
 
-		/*let { componentsPaths } = this.options
-		if (Array.isArray(componentsPaths)) {
-
-			componentsPaths = componentsPaths
-				.filter((c) => ~availableComponents.indexOf(c))
-
-			if (componentsPaths.length) {
-				const choosedComponents = componentsPaths.map((c) => chalk.yellow(c)).join(', ')
-				this.log(`Components were choosed: ${choosedComponents}`)
-				this.components = componentsPaths
-			}
-		}*/
-
 		const prompts = [
 			{
 				type: 'autocomplete',
 				name: 'component',
-				message: `Which ${chalk.yellow('environment')} do you want to build?`,
+				message: `Which ${chalk.yellow('component')} do you want to build?`,
 				validate: (component) => (!!~availableComponents.indexOf(component)),
 				source: chooser,
-				when: () => (!this.components)
+			},
+			{
+				type: 'confirm',
+				name: 'needTestServer',
+				message: 'Do you need to run server for manual testing?',
+				store: true
 			}
 		]
 
 		return this
 			.prompt(prompts)
-			.then((answers) => { this.component = answers.component })
+			.then((answers) => {
+				this.component = answers.component
+				this.needTestServer = answers.needTestServer
+			})
 	}
 
 	configuring () {
 
-		const rootComponentPath = path.join(packagesPath, 'environment', this.component, 'index.jsx.js')
+		const rootComponentPath = path.join(packagesPath, this.component, 'index.jsx.js')
 		const entryHtmlPath = path.join(__dirname, 'entry', 'index.html')
 		const entryPointPath = path.join(__dirname, 'entry', 'index.js')
 		const outputPath = path.join(buildPath, 'bundle.js')
@@ -137,7 +139,9 @@ export default class extends Base {
 					}]
 				]
 			}),
+			css({ include: packagesPath }),
 			svg({ include: packagesPath }),
+			image({ include: packagesPath }),
 			customConfig({
 				resolve: {
 					modules: [ 'node_modules', packagesPath ],
@@ -158,13 +162,18 @@ export default class extends Base {
 		compiler.apply(new DashboardPlugin(dashboard.setData))
 
 		const remove = Promise.promisify(rimraf)
-		const build = Promise.promisify(compiler.run.bind(compiler))
+		const build = Promise.promisify(compiler.run, { context: compiler })
 
 		return remove(buildPath)
+			.then(() => build())
 			.then(() => {
-				return build().then(() => {
-					this.log(chalk.green('Bundle successfully built!'))
-				})
+
+				if (this.needTestServer) {
+
+					return selectPort()
+						.then((port) => startServer(null, port))
+						.then((address) => open(address))
+				}
 			})
 			.catch((err) => {
 				this.log(chalk.red(err))

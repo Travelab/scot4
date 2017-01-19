@@ -10,7 +10,7 @@ import { storybookPath } from '../../path'
 export default function (host, port) {
 
 	// Used with `app.listen` below
-	const listenAddr = [port]
+	const listenAddr = [ port ]
 
 	if (host) {
 		listenAddr.push(host)

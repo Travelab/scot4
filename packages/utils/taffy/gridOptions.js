@@ -1,4 +1,5 @@
 
+// https://github.com/wldcordeiro/perdido
 export default {
 
 	// accepts any unit value (default: '30px')

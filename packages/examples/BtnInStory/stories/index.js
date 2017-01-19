@@ -1,7 +1,6 @@
 import { storiesOf, action } from '@kadira/storybook'
 
-
-storiesOf('button', module)
+storiesOf('BtnInStory', module)
 	.add('with text', () => (
 		<div>
 			<button onClick={action('clicked')}>Hello</button>
