@@ -28,6 +28,7 @@
   "dependencies": {
     "@kadira/storybook": "^2.13.0",
     "@webpack-blocks/babel6": "^0.3.0",
+    "@webpack-blocks/extract-text2": "^0.4.0-rc",
     "@webpack-blocks/webpack2": "^0.4.0-rc.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-lodash": "^3.2.11",

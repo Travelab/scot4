@@ -10,6 +10,7 @@ import webpack from 'webpack'
 import Dashboard from 'webpack-dashboard'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 import babel from '@webpack-blocks/babel6'
+import extractText from '@webpack-blocks/extract-text2'
 import css from '../../webpack-blocks/css'
 import svg from '../../webpack-blocks/svg'
 import image from '../../webpack-blocks/image'
@@ -82,10 +83,11 @@ export default class extends Base {
 
 	configuring () {
 
+		const bundleName = (ext) => (`[hash:18].bundle.${ext}`)
 		const rootComponentPath = path.join(packagesPath, this.component, 'index.jsx.js')
 		const entryHtmlPath = path.join(__dirname, 'entry', 'index.html')
 		const entryPointPath = path.join(__dirname, 'entry', 'index.js')
-		const outputPath = path.join(buildPath, 'bundle.js')
+		const outputPath = path.join(buildPath, bundleName('js'))
 
 		this.webpackConfig = createConfig([
 			entryPoint(entryPointPath),
@@ -117,29 +119,31 @@ export default class extends Base {
 				})
 			]),
 			babel({
-				"presets": [
-					"es2015",
-					"stage-0",
-					"bluebird"
-				],
-				"plugins": [
-					"transform-react-inline-elements",
-					"transform-decorators-legacy",
-					"transform-react-jsx",
-					"add-module-exports",
-					"react-require",
-					["lodash", {
-						"id": ["lodash", "recompose"]
-					}],
-					["transform-runtime", {
-						"helpers": false,
-						"polyfill": false,
-						"regenerator": true,
-						"moduleName": "babel-runtime"
-					}]
+				presets: [ 'es2015', 'stage-0', 'bluebird' ],
+				plugins: [
+					'transform-react-inline-elements',
+					'transform-decorators-legacy',
+					'transform-react-jsx',
+					'add-module-exports',
+					'react-require',
+					[
+						'lodash',
+						{
+							id: [ 'lodash', 'recompose' ]
+						}
+					],
+					[
+						'transform-runtime',
+						{
+							helpers: false,
+							polyfill: false,
+							regenerator: true,
+							moduleName: 'babel-runtime'
+						}
+					]
 				]
 			}),
-			css({ include: packagesPath }),
+			extractText(bundleName('css')),
 			svg({ include: packagesPath }),
 			image({ include: packagesPath }),
 			customConfig({
