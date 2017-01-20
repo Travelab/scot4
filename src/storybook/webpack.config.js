@@ -15,20 +15,16 @@ export default function (storybookBaseConfig, configType) {
 	//console.log(storybookBaseConfig.resolveLoader)
 
 	storybookBaseConfig.resolve = {
-		modulesDirectories: ['node_modules', 'packages']
+		modulesDirectories: [ 'node_modules', 'packages' ]
 	}
 
-	let loaders = storybookBaseConfig.module.loaders
-
-	loaders = [
-		...loaders,
+	storybookBaseConfig.module.loaders = [
+		...storybookBaseConfig.module.loaders,
 		...css({ include: packagesPath })().module.loaders,
 		...svg({ include: packagesPath })().module.loaders,
 		...image({ include: packagesPath })().module.loaders,
 		...createSCPreset()
 	]
-
-	storybookBaseConfig.module.loaders = loaders
 
 	// Return the altered config
 	return storybookBaseConfig

@@ -8,8 +8,8 @@ export default (options = {}) => {
 		include
 	} = options
 
-	if (!Array.isArray(exclude)) exclude = [ exclude ]
-	if (!Array.isArray(include)) include = [ include ]
+	if (exclude && !Array.isArray(exclude)) exclude = [ exclude ]
+	if (include && !Array.isArray(include)) include = [ include ]
 
 	return (context) => ({
 		module: {

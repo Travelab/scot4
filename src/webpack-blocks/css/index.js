@@ -4,12 +4,12 @@ export default (options = {}) => {
 
 	let {
 		test = /\.css$/,
-		exclude = /\/node_modules\//,
+		exclude,
 		include
 	} = options
 
-	if (!Array.isArray(exclude)) exclude = [ exclude ]
-	if (!Array.isArray(include)) include = [ include ]
+	if (exclude && !Array.isArray(exclude)) exclude = [ exclude ]
+	if (include && !Array.isArray(include)) include = [ include ]
 
 	return (context) => ({
 		module: {
