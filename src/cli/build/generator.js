@@ -18,7 +18,7 @@ import image from '../../webpack-blocks/image'
 import selectPort from './selectPort'
 import startServer from './startServer'
 
-import path, { packagesPath, buildPath } from '../../path'
+import path, { packagesPath, buildPath, entryHtmlPath, entryDirectPath } from '../../path'
 import { Base } from '../../yo-yo'
 
 
@@ -83,11 +83,10 @@ export default class extends Base {
 
 	configuring () {
 
+		const entryPointPath = entryDirectPath
 		const bundleName = (ext) => (`[hash:18].bundle.${ext}`)
-		const rootComponentPath = path.join(packagesPath, this.component, 'index.jsx.js')
-		const entryHtmlPath = path.join(__dirname, 'entry', 'index.html')
-		const entryPointPath = path.join(__dirname, 'entry', 'index.js')
 		const outputPath = path.join(buildPath, bundleName('js'))
+		const rootComponentPath = path.join(packagesPath, this.component, 'index.jsx.js')
 
 		this.webpackConfig = createConfig([
 			entryPoint(entryPointPath),

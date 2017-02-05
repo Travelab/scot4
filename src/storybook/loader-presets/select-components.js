@@ -1,8 +1,8 @@
 import { getShared } from '../../utils'
-import { storybookPath, selectComponentsLoaderPath } from '../../path'
+import { entryPath, selectComponentsLoaderPath } from '../../path'
 
-const test = /config\.js$/
-const include = [ storybookPath ]
+const test = /storybull\.js$/
+const include = [ entryPath ]
 const exclude = []
 
 export default () => {
