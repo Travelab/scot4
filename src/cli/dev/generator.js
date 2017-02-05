@@ -67,12 +67,6 @@ export default class extends Base {
 				source: chooser,
 				when: () => (!this.components)
 			},
-			{
-				type: 'confirm',
-				name: 'patchWhyDidYouUpdate',
-				message: 'Do you need notify when potentially unnecessary re-renders occur?',
-				store: true
-			}
 		]
 
 		return Promise
@@ -81,12 +75,10 @@ export default class extends Base {
 				this.prompt(prompts)
 			])
 			.then(([ port, answers ]) => {
+
 				this.port = port
 
-				if (!this.components)
-					this.components = [ answers.component ]
-
-				setShared('patchWhyDidYouUpdate', answers.patchWhyDidYouUpdate)
+				if (!this.components) this.components = [ answers.component ]
 			})
 	}
 

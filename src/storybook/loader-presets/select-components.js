@@ -8,7 +8,6 @@ const exclude = []
 export default () => {
 
 	const components = getShared('components')
-	const patchWhyDidYouUpdate = getShared('patchWhyDidYouUpdate')
 
 	return [
 		{
@@ -16,7 +15,6 @@ export default () => {
 			loader: selectComponentsLoaderPath,
 			query: {
 				components,
-				patchWhyDidYouUpdate
 			}
 		}
 	]

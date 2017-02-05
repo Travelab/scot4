@@ -64,7 +64,6 @@
     "svg-url-loader": "^1.1.0",
     "webpack": "^2.2.0",
     "webpack-dashboard": "^0.2.1",
-    "why-did-you-update": "0.0.8",
     "yeoman-environment": "^1.6.6",
     "yeoman-generator": "^1.0.1"
   },
