@@ -1,23 +1,37 @@
 import { createEnhancer } from 'utils/decoract'
 <% if (duck) { %>
 import duck from './ducks/index.js'<% } %><% if (style) { %>
-import style from './styles/index.js'<% } %>
+import style from './styles/index.js'<% } %><% if (cq) { %>
 
-const enhancer = createEnhancer({<% if (duck) { %>
+const cq = {
+	f320t1024: {
+		minWidth: 320,
+		maxWidth: 1024,
+	}
+}<% } %>
+
+const enhancer = createEnhancer({<% if (cq) { %>
+	cq,<% } %><% if (duck) { %>
 	duck,<% } %><% if (style) { %>
 	style,<% } %><% if (args) { %>
-	args: {},<% } %><% if (!lang) { %>
-	withLang: false,<% } %><% if (isfwl) { %>
-	isfwl: true,<% } %>
+	args: {},<% } %><% if (!pure) { %>
+	pure: false,<% } %><% if (!lang) { %>
+	withLang: false,<% } %>
 })
 
 const <%= componentName %> = ({ <%= componentProps %> }) => {
-<% if (duck) { %>
+<% if (cq) { %>
+	// Component Query decomposition
+	const { f320t1024 } = cq
+<% } %><% if (duck) { %>
 	// Duck's state decomposition
 	const {  } = state
 
 	// Duck's actions decomposition
 	const {  } = actions
+<% } %><% if (duckling) { %>
+	// Ditches decomposition
+	const { SomeDitch } = ditch.getDitches()
 <% } %><% if (args) { %>
 	// Arguments
 	const {  } = args

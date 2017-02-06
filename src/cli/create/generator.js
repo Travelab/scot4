@@ -9,29 +9,36 @@ const templatesPath = path.join(__dirname, 'templates')
 const params = {
 	duck: 'Ducks',
 	style: 'Styles → $',
+	cq: 'Component Query',
+	pure: 'Pure Component',
 	args: 'Args',
 	props: 'Props',
 	lang: 'Lang → l()',
 	isfwl: 'Staff For Watch Lifecycle',
 	saga: 'Sagas',
+	duckling: 'Ducklings',
 }
 const generalParamsChoices = [
 	{ name: params.duck },
 	{ name: params.style, checked: true },
+	{ name: params.cq, checked: true },
 	{ name: params.lang, checked: true },
 	{ name: params.args },
 	{ name: params.props },
+	{ name: params.pure, checked: true },
 ]
 const additionalParamsChoices = [
+	{ name: params.duckling, checked: true },
 	{ name: params.saga, checked: true },
 	{ name: params.isfwl },
 ]
 const mapComponentProps = [
 	{ f: 'style', t: '$' },
+	{ f: 'cq', t: 'cq' },
 	{ f: 'lang', t: 'l' },
-	{ f: 'duck', t: 'state, actions' },
+	{ f: 'duck', t: 'state, actions, ditch' },
 	{ f: 'args', t: 'args' },
-	{ f: 'props', t: 'props' },
+	{ f: 'props', t: '...props' },
 ]
 
 export default class extends Base {

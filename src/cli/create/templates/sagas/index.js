@@ -1,8 +1,5 @@
 import { saga, sagaEffects } from 'libs/lash'
-const { take, put, call, fork, cancel, cancelled } = sagaEffects
-
-import duck from '../ducks/index.js'
-const { constants, actions } = duck
+const { take, put, call, fork, cancel, cancelled, select } = sagaEffects
 
 
 /******************************************************************************/
@@ -18,7 +15,9 @@ function* functionName1 () {}
 /******************************************************************************/
 
 // Description
-function* watchFunctionName2 () {
+function* watchFunctionName2 (ditch) {
+
+	const { constants, actions, selector } = ditch
 
 	try {
 		while (true) {
@@ -37,10 +36,10 @@ function* watchFunctionName2 () {
 /******************************************************************************/
 /****************************      Root     ***********************************/
 /******************************************************************************/
-export default function* () {
+export default function* (ditch) {
 
 	yield [
-		fork(watchFunctionName2),
+		fork(watchFunctionName2, ditch),
 		fork(watchFunctionName2)
 	]
 }
