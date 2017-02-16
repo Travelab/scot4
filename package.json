@@ -51,7 +51,7 @@
     "html-webpack-plugin": "^2.26.0",
     "image-webpack-loader": "^3.1.0",
     "inquirer": "^3.0.1",
-    "inquirer-autocomplete-prompt": "^0.4.0",
+    "inquirer-autocomplete-prompt": "^0.6.0",
     "loader-utils": "^0.2.15",
     "lodash": "^4.17.4",
     "open": "0.0.5",
