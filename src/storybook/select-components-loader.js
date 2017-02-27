@@ -1,4 +1,4 @@
-import loaderUtils from 'loader-utils'
+import { stringifyRequest, getOptions } from 'loader-utils'
 import pathNode, { packagesPath } from '../path'
 
 const storyPath = 'stories/index.js'
@@ -10,7 +10,7 @@ module.exports = function (source) {
 
 	loader.cacheable && loader.cacheable()
 
-	let { components } = loaderUtils.parseQuery(loader.query)
+	let { components } = getOptions(loader)
 
 	if (!components) components = []
 
@@ -18,7 +18,7 @@ module.exports = function (source) {
 
 		let componentPath = pathNode.join(packagesPath, componentName, storyPath)
 
-		componentPath = loaderUtils.stringifyRequest(loader, componentPath)
+		componentPath = stringifyRequest(loader, componentPath)
 
 		return `require(${componentPath})`
 
