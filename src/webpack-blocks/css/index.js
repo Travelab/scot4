@@ -16,11 +16,7 @@ export default (options = {}) => {
 			loaders: [
 				{
 					test, include, exclude,
-					loader: 'style-loader',
-				},
-				{
-					test, include, exclude,
-					loader: 'css-loader',
+					loader: 'style-loader!css-loader'
 				}
 			]
 		}
