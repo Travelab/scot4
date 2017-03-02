@@ -1,6 +1,7 @@
 import { storiesOf, action } from '@kadira/storybook'
 
 import leftArrow from '../leftArrow.svg'
+import {tm} from '@utils/taffy'
 
 storiesOf('BtnInStory', module)
 	.add('with text', () => (

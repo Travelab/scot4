@@ -77,7 +77,7 @@
   "knit": {
     "needle": {
       "paths": {
-        "modulesStub": "modules"
+        "modulesStub": "packages"
       }
     }
   }
