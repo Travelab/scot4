@@ -1,0 +1,9 @@
+{
+  "name": "taffy",
+  "version": "0.0.1",
+  "description": "JSS helper",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
