@@ -4,7 +4,7 @@ export const pkgBase = __dirname
 export const cliBase = process.cwd()
 
 export const nodeModulesPath = path.join(cliBase, 'node_modules')
-export const packagesPath = path.join(cliBase, 'modules', 'node_modules')
+export const packagesPath = path.join(cliBase, 'modules')
 export const buildPath = path.join(cliBase, 'build')
 
 export const storybookPath							= path.join(pkgBase, 'storybook')

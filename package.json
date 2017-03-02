@@ -73,5 +73,12 @@
   },
   "devDependencies": {
     "semantic-release": "^6.3.2"
+  },
+  "knit": {
+    "needle": {
+      "paths": {
+        "modulesStub": "modules"
+      }
+    }
   }
 }
