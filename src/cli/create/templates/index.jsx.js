@@ -1,4 +1,4 @@
-import { createEnhancer } from 'utils/decoract'
+import { createEnhancer } from '@utils/decoract'
 <% if (duck) { %>
 import duck from './ducks/index.js'<% } %><% if (style) { %>
 import style from './styles/index.js'<% } %><% if (cq) { %>

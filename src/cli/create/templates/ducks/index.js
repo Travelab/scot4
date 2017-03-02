@@ -1,4 +1,4 @@
-import { createDuck, untouch } from 'libs/lash'
+import { createDuck, untouch } from '@libs/lash'
 <% if (duckling) { %>
 import SomeDuck from 'path/to/ducks/index.js'
 

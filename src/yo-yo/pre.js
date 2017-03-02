@@ -3,13 +3,13 @@ import { validate as emailValidator } from 'email-validator'
 import Base from './base.js'
 
 const defaultComponentChoices = [
-	{ name: 'atoms', checked: true },
-	{ name: 'molecules', checked: true },
-	{ name: 'organisms', checked: true },
-	{ name: 'ecosystems', checked: true },
-	{ name: 'environment', checked: true },
-	{ name: 'examples', checked: true },
-	{ name: 'shit' },
+	{ name: '@atoms', checked: true },
+	{ name: '@molecules', checked: true },
+	{ name: '@organisms', checked: true },
+	{ name: '@ecosystems', checked: true },
+	{ name: '@environment', checked: true },
+	{ name: '@examples', checked: true },
+	{ name: '@shit' },
 ]
 
 export default class extends Base {

@@ -5,7 +5,6 @@ import { upperFirst, camelCase, kebabCase } from 'lodash'
 import path, { cliBase, packagesPath } from '../../path'
 const templatesPath = path.join(__dirname, 'templates')
 
-
 const params = {
 	duck: 'Ducks',
 	style: 'Styles → $',
