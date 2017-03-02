@@ -1,4 +1,4 @@
-import { saga, sagaEffects } from 'libs/lash'
+import { saga, sagaEffects } from '@libs/lash'
 const { take, put, call, fork, cancel, cancelled, select } = sagaEffects
 
 

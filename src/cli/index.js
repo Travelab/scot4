@@ -5,6 +5,7 @@ import manifest from '../../package.json'
 import dev from './dev'
 import build from './build'
 import create from './create'
+import update from './update';
 
 // Some basic process setup
 bootstrap('scot4', 'SCOT4')
@@ -16,6 +17,11 @@ commander
 	.command('dev [componentsPaths...]')
 	.description('Start development environment for a specific component')
 	.action(dev)
+
+commander
+	.command('update')
+	.description('Update dependencies for component\'s')
+	.action(update)
 
 commander
 	.command('create [packageName]')

@@ -1,4 +1,4 @@
-import { grid } from 'utils/taffy'
+import { grid } from '@utils/taffy'
 
 export default {
 
