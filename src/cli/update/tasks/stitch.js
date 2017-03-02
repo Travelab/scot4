@@ -6,7 +6,7 @@ const needle = require('@knit/needle')
 
 const createKnitTask = (m) => ({
   title: m,
-  task: ctx => knit.findDependencies(m, needle.paths).then(used => {
+  task: (ctx) => knit.findDependencies(m, needle.paths).then((used) => {
     const pkg = ctx.pkgs[m]
     const pkgM = knit.updateModulePkg({
       internal: ctx.modules,
@@ -23,7 +23,7 @@ const createKnitTask = (m) => ({
     }
 
     return pkgM
-  }).then(pkg => (
+  }).then((pkg) => (
     writePkg(
       knit.pathJoin(needle.paths.modules, m),
       pkg
@@ -34,6 +34,6 @@ const createKnitTask = (m) => ({
 export default [
   {
     title: 'stitching together updated modules',
-    task: ctx => new Listr(ctx.updated.map(createKnitTask), { concurrent: true })
+    task: (ctx) => new Listr(ctx.updated.map(createKnitTask), { concurrent: true })
   }
 ]
