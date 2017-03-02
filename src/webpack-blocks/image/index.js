@@ -16,7 +16,7 @@ export default (options = {}) => {
 			loaders: [
 				{
 					test, include, exclude,
-					loader: 'file-loader',
+					loader: 'file',
 					query: {
 						name: '[path][name].[ext]?[hash:4]'
 					}

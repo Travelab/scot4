@@ -16,7 +16,7 @@ export default (options = {}) => {
 			loaders: [
 				{
 					test, include, exclude,
-					loader: 'style-loader!css-loader'
+					loader: 'style!css'
 				}
 			]
 		}

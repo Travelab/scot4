@@ -16,7 +16,7 @@ export default (options = {}) => {
 			loaders: [
 				{
 					test, include, exclude,
-					loader: 'svg-url-loader',
+					loader: 'svg-url',
 					query: {
 						limit: 1024,
 						noquotes: true,
@@ -28,7 +28,7 @@ export default (options = {}) => {
 				},
 				{
 					test, include, exclude,
-					loader: 'image-webpack-loader'
+					loader: 'image-webpack'
 					// https://github.com/tcoopman/image-webpack-loader
 					// https://github.com/svg/svgo#what-it-can-do
 				}
