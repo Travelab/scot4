@@ -127,7 +127,7 @@ export default class extends Base {
 		this.sourceRoot(templatesPath)
 
 		this.copy('package.json')
-		this.copy('index.jsx.js')
+		this.copy('index.js')
 		this.copy('stories/index.js')
 
 		style && this.copy('styles/index.js')
