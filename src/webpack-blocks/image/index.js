@@ -13,20 +13,16 @@ export default (options = {}) => {
 
 	return (context) => ({
 		module: {
-			loaders: [
+			rules: [
 				{
 					test, include, exclude,
-					loader: 'file',
-					query: {
-						name: '[path][name].[ext]?[hash:4]'
-					}
-				},
-				/*{
-					test, include, exclude,
-					loader: 'image-webpack-loader'
-					// https://github.com/tcoopman/image-webpack-loader
-					// https://github.com/svg/svgo#what-it-can-do
-				}*/
+					use: [{
+						loader: 'file-loader',
+						query: {
+							name: '[path][name].[ext]?[hash:4]'
+						}
+					}]
+				}
 			]
 		}
 	})

@@ -12,10 +12,12 @@ export default () => {
 	return [
 		{
 			test, include, exclude,
-			loader: selectComponentsLoaderPath,
-			query: {
-				components,
-			}
+			use: [{
+				loader: selectComponentsLoaderPath,
+				query: {
+					components
+				}
+			}]
 		}
 	]
 }
