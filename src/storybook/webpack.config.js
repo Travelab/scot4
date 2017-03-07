@@ -1,8 +1,7 @@
 import createSCPreset from './loader-presets/select-components'
 import {
  packagesPath,
- entryStorybullPath,
- nodeModulesPath
+ entryStorybullPath
 } from '../path'
 
 import css from '../webpack-blocks/css'
@@ -18,19 +17,23 @@ export default function (storybookBaseConfig, configType) {
 	//console.log(storybookBaseConfig.entry.preview)
 	//console.log(storybookBaseConfig.resolveLoader)
 
+
 	storybookBaseConfig.resolve = {
-		modulesDirectories: [ 'node_modules', 'packages' ],
+		...storybookBaseConfig.resolve,
+		modules: [
+			...storybookBaseConfig.resolve.modules,
+			'packages'
+		],
 		alias: {
 			'entry-storybull': entryStorybullPath,
-		},
-		extensions: ['', '.js', '.css']
+		}
 	}
 
-	storybookBaseConfig.module.loaders = [
-		...storybookBaseConfig.module.loaders,
-		...css({ include: [packagesPath, nodeModulesPath] })().module.loaders,
-		...svg({ include: packagesPath })().module.loaders,
-		...image({ include: packagesPath })().module.loaders,
+	storybookBaseConfig.module.rules = [
+		...storybookBaseConfig.module.rules,
+		...css({ include: packagesPath })().module.rules,
+		...svg({ include: packagesPath })().module.rules,
+		...image({ include: packagesPath })().module.rules,
 		...createSCPreset(),
 	]
 

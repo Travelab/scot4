@@ -11,12 +11,18 @@ export default (options = {}) => {
 	if (exclude && !Array.isArray(exclude)) exclude = [ exclude ]
 	if (include && !Array.isArray(include)) include = [ include ]
 
+	console.log({test});
+
 	return (context) => ({
 		module: {
-			loaders: [
+			rules: [
 				{
 					test, include, exclude,
-					loader: 'style!css'
+					use: [{
+						loader: 'style-loader'
+					}, {
+						loader: 'css-loader'
+					}]
 				}
 			]
 		}
