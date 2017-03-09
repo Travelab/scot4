@@ -18,6 +18,7 @@ export default function (host, port) {
 
 	const app = express()
 
+	console.log(storybookPath)
 	app.use(storybook(storybookPath))
 
 	return Promise.promisify(app.listen, { context: app })(...listenAddr)
