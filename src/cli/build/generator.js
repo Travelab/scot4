@@ -183,5 +183,4 @@ export default class extends Base {
 				this.log(chalk.red(err))
 			})
 	}
-
-}
+ }
