@@ -1,6 +1,6 @@
-import { getShared } from '../../utils'
+import { getShared } from '../../../utils'
 
-export function component(options ={}) {
+export default function(options ={}) {
 	let {
 		test = /storybull\.js$/,
 		exclude,

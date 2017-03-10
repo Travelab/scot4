@@ -1,4 +1,4 @@
-export function style(options = {}) {
+export default function(options = {}) {
 	let {
 		test = /\.css$/,
 		exclude,

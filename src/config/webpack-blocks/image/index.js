@@ -1,4 +1,4 @@
-export function image(options = {}) {
+export default function(options = {}) {
 	let {
 		test = /\.(gif|ico|jpe?g|png)$/,
 		exclude,
