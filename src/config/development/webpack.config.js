@@ -25,10 +25,10 @@ export default function (storybookBaseConfig, configType) {
 		],
 		module: {
 			rules: [
-				svg({ include, exclude }),
 				babel({ include, exclude }),
-				style({ include }),
+				style(),
 				image({ include, exclude }),
+				svg({ include, exclude }),
 				component({ entryPath, exclude })
 			]
 		},
@@ -43,7 +43,7 @@ export default function (storybookBaseConfig, configType) {
 			hints: false
 		}
 	}
-
+	
 	// Return the altered config
 	return storybookBaseConfig
 }
