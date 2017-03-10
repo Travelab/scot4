@@ -1,4 +1,4 @@
-export function babel(options = {}) {
+export default function(options = {}) {
 	let {
 		test = /\.js$/,
 		exclude,
@@ -13,6 +13,7 @@ export function babel(options = {}) {
 		use: [{
 			loader: 'babel-loader',
 			query: {
+				babelrc: false,
 				cacheDirectory: true,
 				presets: [
 					require.resolve('babel-preset-react')

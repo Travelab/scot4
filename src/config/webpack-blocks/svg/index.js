@@ -1,4 +1,4 @@
-export function svg(options = {}) {
+export default function(options = {}) {
 	let {
 		test = /\.svg$/,
 		exclude,

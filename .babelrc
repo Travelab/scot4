@@ -1,14 +1,11 @@
 {
   "presets": [
     "es2015",
-    "stage-0",
     "bluebird"
   ],
   "plugins": [
+    "transform-object-rest-spread",
     "transform-decorators-legacy",
-    "transform-react-jsx",
-    "add-module-exports",
-    "react-require",
-    "lodash"
+    "add-module-exports"
   ]
 }

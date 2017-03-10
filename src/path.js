@@ -7,8 +7,7 @@ export const nodeModulesPath = path.join(cliBase, 'node_modules')
 export const packagesPath = path.join(cliBase, 'packages')
 export const buildPath = path.join(cliBase, 'build')
 
-export const storybookPath							= path.join(pkgBase, 'storybook')
-export const selectComponentsLoaderPath		= path.join(storybookPath, 'select-components-loader.js')
+export const storybookPath	= path.join(pkgBase, 'config', 'development')
 
 export const entryPath = path.join(packagesPath, 'entry')
 export const entryHtmlPath = path.join(entryPath, 'index.html')

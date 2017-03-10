@@ -1,3 +1,9 @@
-export React from 'react'
-export ReactDOM from 'react-dom'
-export storybook from '@kadira/storybook'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import storybook from '@kadira/storybook'
+
+export {
+	React,
+	ReactDOM,
+	storybook
+}

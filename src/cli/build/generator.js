@@ -4,23 +4,15 @@ import chalk from 'chalk'
 import rimraf from 'rimraf'
 import autocomplete from 'inquirer-autocomplete-prompt'
 
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { addPlugins, createConfig, entryPoint, setOutput, customConfig } from '@webpack-blocks/webpack2'
 import webpack from 'webpack'
 import Dashboard from 'webpack-dashboard'
 import DashboardPlugin from 'webpack-dashboard/plugin'
-import babel from '@webpack-blocks/babel6'
-import extractText from '@webpack-blocks/extract-text2'
-//import css from '../../webpack-blocks/css'
-//import svg from '../../webpack-blocks/svg'
-//import image from '../../webpack-blocks/image'
 
+import loadConfig from '../../config/production'
 import selectPort from './selectPort'
 import startServer from './startServer'
-
 import path, { packagesPath, buildPath, entryHtmlPath, entryDirectPath } from '../../path'
 import { Base } from '../../yo-yo'
-
 
 export default class extends Base {
 
@@ -85,76 +77,15 @@ export default class extends Base {
 
 		const entryPointPath = entryDirectPath
 		const bundleName = (ext) => (`[hash:18].bundle.${ext}`)
-		const outputPath = path.join(buildPath, bundleName('js'))
-		const rootComponentPath = path.join(packagesPath, this.component, 'index.jsx.js')
+		const outputPath = buildPath
+		const rootComponentPath = path.join(packagesPath, this.component, 'index.js')
 
-		this.webpackConfig = createConfig([
-			entryPoint(entryPointPath),
-			setOutput(outputPath),
-			addPlugins([
-				new HtmlWebpackPlugin({
-					inject: true,
-					template: entryHtmlPath
-				}),
-				new webpack.LoaderOptionsPlugin({
-					minimize: true,
-					debug: false
-				}),
-				new webpack.DefinePlugin({
-					'process.env': {
-						'NODE_ENV': JSON.stringify('production')
-					}
-				}),
-				new webpack.optimize.UglifyJsPlugin({
-					beautify: false,
-					mangle: {
-						screw_ie8: true,
-						keep_fnames: true
-					},
-					compress: {
-						screw_ie8: true
-					},
-					comments: false
-				})
-			]),
-			babel({
-				presets: [ 'es2015', 'stage-0', 'bluebird' ],
-				plugins: [
-					'transform-react-inline-elements',
-					'transform-decorators-legacy',
-					'transform-react-jsx',
-					'add-module-exports',
-					'react-require',
-					[
-						'lodash',
-						{
-							id: [ 'lodash', 'recompose' ]
-						}
-					],
-					[
-						'transform-runtime',
-						{
-							helpers: false,
-							polyfill: false,
-							regenerator: true,
-							moduleName: 'babel-runtime'
-						}
-					]
-				]
-			}),
-			extractText(bundleName('css')),
-			// TODO: replace to custom webpack config
-			//svg({ include: packagesPath }),
-			//image({ include: packagesPath }),
-			customConfig({
-				resolve: {
-					modules: [ 'node_modules', packagesPath ],
-					alias: {
-						'root-component': rootComponentPath
-					}
-				}
-			})
-		])
+		this.webpackConfig = loadConfig({
+			entryPointPath,
+			outputPath,
+			bundleName,
+			rootComponentPath
+		})
 	}
 
 	end () {
