@@ -11,9 +11,9 @@ import Dashboard from 'webpack-dashboard'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 import babel from '@webpack-blocks/babel6'
 import extractText from '@webpack-blocks/extract-text2'
-import css from '../../webpack-blocks/css'
-import svg from '../../webpack-blocks/svg'
-import image from '../../webpack-blocks/image'
+//import css from '../../webpack-blocks/css'
+//import svg from '../../webpack-blocks/svg'
+//import image from '../../webpack-blocks/image'
 
 import selectPort from './selectPort'
 import startServer from './startServer'
@@ -143,8 +143,9 @@ export default class extends Base {
 				]
 			}),
 			extractText(bundleName('css')),
-			svg({ include: packagesPath }),
-			image({ include: packagesPath }),
+			// TODO: replace to custom webpack config
+			//svg({ include: packagesPath }),
+			//image({ include: packagesPath }),
 			customConfig({
 				resolve: {
 					modules: [ 'node_modules', packagesPath ],
