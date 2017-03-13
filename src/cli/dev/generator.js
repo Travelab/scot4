@@ -1,15 +1,18 @@
+import fs from 'fs'
 import glob from 'glob'
 import open from 'open'
 import chalk from 'chalk'
 import autocomplete from 'inquirer-autocomplete-prompt'
+import webpack from 'webpack'
 
 import selectPort from './selectPort'
 import startServer from './startServer'
-import { packagesPath } from '../../path'
+import loadConfig from '../../config/dll'
+import { dllPath, packagesPath } from '../../path'
 import { setShared } from '../../utils'
 import { Base } from '../../yo-yo'
 
-
+const logger = console.log
 export default class extends Base {
 
 	constructor (args, opts) {
@@ -80,6 +83,15 @@ export default class extends Base {
 
 				if (!this.components) this.components = [ answers.component ]
 			})
+	}
+
+	generating() {
+		if (!fs.existsSync(dllPath)) {
+			const compiler = webpack(loadConfig(dllPath))
+			logger('=> Create dll manifest')
+      return Promise.promisify(compiler.run, {context: compiler})()
+	      .then(() => logger('=> Dll manifest created'))
+		}
 	}
 
 	end () {

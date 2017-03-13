@@ -6,6 +6,7 @@ export const cliBase = process.cwd()
 export const nodeModulesPath = path.join(cliBase, 'node_modules')
 export const packagesPath = path.join(cliBase, 'packages')
 export const buildPath = path.join(cliBase, 'build')
+export const dllPath = path.join(cliBase, '__vendor')
 
 export const storybookPath	= path.join(pkgBase, 'config', 'development')
 
