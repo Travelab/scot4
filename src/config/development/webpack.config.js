@@ -1,5 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
+import HappyPack from 'happypack'
 import {
 	svg,
 	babel,
@@ -20,7 +21,6 @@ export default function (storybookBaseConfig, configType) {
 
 	storybookBaseConfig = {
 		...storybookBaseConfig,
-		devtool: 'eval',
 		plugins: [
 			new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }), 
     	new webpack.HotModuleReplacementPlugin(),
@@ -28,7 +28,7 @@ export default function (storybookBaseConfig, configType) {
 		],
 		module: {
 			rules: [
-				babel({ include, exclude, isProduction: true }),
+				babel({ include, exclude, isProduction: false }),
 				style(),
 				image({ include, exclude }),
 				svg({ include, exclude }),
