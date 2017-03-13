@@ -22,9 +22,6 @@ export default function({
 	return {
 		entry: {
 			bundle: entryPointPath,
-			react: ['react', 'react-dom', 'redux', 'react-redux'],
-			utils: ['lodash', 'recompose', 'timezone'],
-			style: ['jss']
 		},
 		output: {
 			path: outputPath,
@@ -47,13 +44,8 @@ export default function({
 					drop_console: true
 				}
 			}),
-			new webpack.optimize.CommonsChunkPlugin({
-      	minChunks(module) {
-        	return module.context && module.context.indexOf('node_modules') !== -1
-      	},
-      	names: ['react', 'utils', 'style'],
-    	}),
 			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }), 
+			new webpack.IgnorePlugin(/^\.\/locale$/, /timezone$/),
 			new ExtractTextPlugin(bundleName('css'))
 		],
 		module: {
@@ -76,6 +68,6 @@ export default function({
 				'root-component': rootComponentPath
 			},
 			unsafeCache: true
-		}
+		},
 	}
 }
