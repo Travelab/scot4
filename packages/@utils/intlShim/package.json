@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "intlShim",
+  "description": "Conditional polyfill for Intl",
+  "main": "index.js",
+  "dependencies": {
+    "intl": "^1.2.5"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

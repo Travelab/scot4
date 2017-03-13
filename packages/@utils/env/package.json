@@ -1,0 +1,13 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "env",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

@@ -1,0 +1,14 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "SerpOffersViewer",
+  "description": "A component with offers, sorting and pagination",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

@@ -1,0 +1,10 @@
+{
+  "license": "UNLICENSED",
+  "author": "menscrem",
+  "private": false,
+  "name": "react-pagination",
+  "description": "Paginator for anything",
+  "main": "index.js",
+  "optionalDependencies": {},
+  "build": false
+}

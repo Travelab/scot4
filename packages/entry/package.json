@@ -1,8 +1,10 @@
 {
-  "name": "entry",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC"
+	"name": "entry",
+	"version": "0.0.1",
+	"description": "A component with an animated image",
+	"main": "direct.js",
+	"author": "",
+	"private": true,
+	"license": "ISC",
+	"dependencies": {}
 }

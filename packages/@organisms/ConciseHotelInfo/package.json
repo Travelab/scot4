@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "ConciseHotelInfo",
+  "description": "A component with concise info about hotel",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

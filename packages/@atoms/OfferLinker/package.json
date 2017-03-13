@@ -1,0 +1,15 @@
+{
+  "license": "UNLICENSED",
+  "author": "homer <dimmokr@gmail.com>",
+  "private": false,
+  "name": "atoms-offer-linker",
+  "description": "A wraper for other component for transformation them to a link on an offer",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

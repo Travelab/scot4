@@ -1,0 +1,14 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "RoomFareCondition",
+  "description": "A description of roof fare conditions (free cancelation of postpay)",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

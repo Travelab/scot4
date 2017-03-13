@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "@travelab/molecule-date-range-picker",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "@kadira/storybook-addon-actions": "^1.1.1"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

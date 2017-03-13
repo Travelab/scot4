@@ -1,0 +1,16 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "confy",
+  "description": "Configuration manager",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "mousetrap": "^1.6.0"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

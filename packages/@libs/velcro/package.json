@@ -1,0 +1,12 @@
+{
+  "license": "UNLICENSED",
+  "author": "homer <dimmokr@gmail.com>",
+  "private": false,
+  "name": "velcro",
+  "description": "A container for react-sticky",
+  "main": "index.js",
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

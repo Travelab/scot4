@@ -1,0 +1,15 @@
+{
+  "license": "UNLICENSED",
+  "author": "SergeyPoluektov <spoluer@gmail.com>",
+  "private": false,
+  "name": "molecules-overlay-wrapper",
+  "description": "OverlayWrapper component created as part of Molecules",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

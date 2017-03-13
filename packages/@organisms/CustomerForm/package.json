@@ -1,0 +1,15 @@
+{
+  "license": "UNLICENSED",
+  "author": "SergeyPoluektov <spoluer@gmail.com>",
+  "private": false,
+  "name": "organisms-customer-form",
+  "description": "CustomerForm component created as part of Organisms",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

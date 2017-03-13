@@ -1,0 +1,14 @@
+{
+  "license": "UNLICENSED",
+  "author": "SergeyPoluektov <spoluer@gmail.com>",
+  "private": false,
+  "name": "atoms-search-info-bar",
+  "description": "SearchInfoBar component created as part of Atoms",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

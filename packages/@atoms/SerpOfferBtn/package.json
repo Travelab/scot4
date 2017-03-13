@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "SerpOfferBtn",
+  "description": "A button for booking offer",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

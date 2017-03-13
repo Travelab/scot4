@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "HotelAmenities",
+  "description": "A list of icons of available amenities in a hotel",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

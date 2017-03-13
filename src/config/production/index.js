@@ -2,7 +2,6 @@ import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import DashboardPlugin from 'webpack-dashboard/plugin'
 import { entryHtmlPath } from '../../path'
 import {
 	svg,
@@ -11,7 +10,6 @@ import {
 	style
 } from '../webpack-blocks'
 
-// TODO: add default parms
 export default function({ 
 	entryPointPath,
 	outputPath,
@@ -21,9 +19,13 @@ export default function({
 	const include = path.resolve('./packages')
 	const exclude = path.resolve('./node_modules')
 
-	console.log('Root path: ', rootComponentPath);
 	return {
-		entry: entryPointPath,
+		entry: {
+			bundle: entryPointPath,
+			react: ['react', 'react-dom', 'redux', 'react-redux'],
+			utils: ['lodash', 'recompose', 'timezone'],
+			style: ['jss']
+		},
 		output: {
 			path: outputPath,
 			filename: bundleName('js') 
@@ -33,11 +35,11 @@ export default function({
 				inject: true,
 				template: entryHtmlPath
 			}),
+    	new webpack.NamedModulesPlugin(),
 			new webpack.LoaderOptionsPlugin({
 				minimize: true,
 				debug: false
 			}),
-			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }), 
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					warnings: false,
@@ -45,19 +47,25 @@ export default function({
 					drop_console: true
 				}
 			}),
+			new webpack.optimize.CommonsChunkPlugin({
+      	minChunks(module) {
+        	return module.context && module.context.indexOf('node_modules') !== -1
+      	},
+      	names: ['react', 'utils', 'style'],
+    	}),
+			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }), 
 			new ExtractTextPlugin(bundleName('css'))
 		],
 		module: {
 			rules: [
 				svg({ include, exclude }),
-				babel({ include, exclude }),
+				babel({ include, exclude, isProduction: true }),
 				image({ include, exclude }),
 				{
 					test: /\.css$/, 
-					include: include,
 					use: ExtractTextPlugin.extract({
 						fallback: 'style-loader',
-						use: 'css-loader'
+						use: 'css-loader?importLoaders=1'
 					})
 				}
 			]
@@ -66,7 +74,8 @@ export default function({
 			modules: [ include, exclude ],
 			alias: {
 				'root-component': rootComponentPath
-			}
+			},
+			unsafeCache: true
 		}
 	}
 }

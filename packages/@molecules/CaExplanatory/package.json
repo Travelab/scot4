@@ -1,0 +1,16 @@
+{
+  "license": "UNLICENSED",
+  "author": "homer <dimmokr@gmail.com>",
+  "private": false,
+  "name": "molecules-ca-explanatory",
+  "description": "A component with explanatory text about our tech",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4",
+    "react-tooltip": "^3.2.7"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

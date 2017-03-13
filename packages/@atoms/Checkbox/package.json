@@ -1,0 +1,15 @@
+{
+  "license": "UNLICENSED",
+  "author": "SergeyPoluektov <spoluer@gmail.com>",
+  "private": false,
+  "name": "atoms-checkbox",
+  "description": "Checkbox component created as part of Atoms",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "@kadira/storybook-addon-actions": "^1.1.1"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

@@ -1,0 +1,16 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "HotelGallery",
+  "description": "A gallery with images of a hotel",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "react-swipe": "^5.0.6",
+    "react-swipeable": "^3.9.2"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}
