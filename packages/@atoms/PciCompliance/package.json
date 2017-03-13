@@ -1,0 +1,14 @@
+{
+  "license": "UNLICENSED",
+  "author": "homer <dimmokr@gmail.com>",
+  "private": false,
+  "name": "atoms-pci-compliance",
+  "description": "A component with info about PCI compliance",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

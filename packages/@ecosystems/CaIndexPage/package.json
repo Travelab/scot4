@@ -1,0 +1,14 @@
+{
+  "license": "UNLICENSED",
+  "author": "VK <vanya_22@mail.ru>",
+  "private": false,
+  "name": "ecosystems-ca-index-page",
+  "description": "CaIndexPage component created as part of Ecosystems",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

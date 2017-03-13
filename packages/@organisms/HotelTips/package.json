@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "HotelTips",
+  "description": "Hotel tips",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

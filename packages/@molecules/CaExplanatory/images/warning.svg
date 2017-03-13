@@ -1,0 +1,12 @@
+<svg width="32px" height="28px" viewBox="281 16 32 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#DDA20C" offset="0%"></stop>
+            <stop stop-color="#E1A200" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="entypo/warning" stroke="none" fill="none" transform="translate(281.000000, 16.000000)" fill-rule="evenodd">
+        <rect id="Rectangle-path" fill="#FFFFFF" x="12" y="8" width="8" height="18"></rect>
+        <path d="M31.072,26.1088 L16.9632,1.3456 C16.768,1.0032 16.4016,0.792 16.0048,0.792 C15.6096,0.792 15.2432,1.0032 15.048,1.3456 L0.9392,26.1088 C0.7472,26.4432 0.7504,26.8544 0.9472,27.1872 C1.144,27.52 1.5056,27.7232 1.896,27.7232 L30.1168,27.7232 C30.5056,27.7232 30.8672,27.5184 31.0656,27.1872 C31.2592,26.8544 31.2624,26.4432 31.072,26.1088 L31.072,26.1088 Z M17.7488,24.5552 L14.2624,24.5552 L14.2624,21.3872 L17.7488,21.3872 L17.7488,24.5552 L17.7488,24.5552 Z M17.7488,19.0096 L14.2624,19.0096 L14.2624,9.5056 L17.7488,9.5056 L17.7488,19.0096 L17.7488,19.0096 Z" id="Shape" fill="url(#linearGradient-1)"></path>
+    </g>
+</svg>

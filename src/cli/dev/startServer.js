@@ -17,8 +17,21 @@ export default function (host, port) {
 	}
 
 	const app = express()
-	
-	app.use(storybook(storybookPath))
+
+
+	const storybookMiddleware = storybook({
+		configDir: storybookPath,
+		webpackDevMiddlewareConfig: {
+			noInfo: false,
+			stats: 'verbose'/*{
+				colors: true,
+				maxModules: Infinity,
+				exclude: undefined
+			}*/
+		}
+	})
+
+	app.use(storybookMiddleware)
 
 	return Promise.promisify(app.listen, { context: app })(...listenAddr)
 		.then(() => {

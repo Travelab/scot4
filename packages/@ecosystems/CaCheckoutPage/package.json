@@ -1,0 +1,16 @@
+{
+  "license": "UNLICENSED",
+  "author": "homer <dimmokr@gmail.com>",
+  "private": false,
+  "name": "ecosystems-ca-checkout-page",
+  "description": "A checkout page for CA",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4",
+    "qs": "^6.3.1"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

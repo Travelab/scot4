@@ -1,0 +1,14 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "HotelAvailRooms",
+  "description": "A component shows count available rooms in a hotel",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

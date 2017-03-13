@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "SerpOfferInfo",
+  "description": "Concise info about offer",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

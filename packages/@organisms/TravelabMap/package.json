@@ -1,0 +1,17 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "TravelabMap",
+  "description": "A map component",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "google-map-react": "^0.22.3",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

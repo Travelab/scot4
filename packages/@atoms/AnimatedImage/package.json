@@ -1,0 +1,14 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "build": false,
+  "name": "AnimatedImage",
+  "description": "A component with an animated image",
+  "main": "index.js",
+  "dependencies": {
+    "react-motion": "^0.4.7"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {}
+}

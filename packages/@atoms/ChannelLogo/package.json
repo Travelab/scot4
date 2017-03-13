@@ -1,0 +1,15 @@
+{
+  "license": "UNLICENSED",
+  "author": "homer <dimmokr@gmail.com>",
+  "private": false,
+  "name": "atoms-ca-logo",
+  "description": "The logo of clickavia",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "react-inlinesvg": "^0.5.5"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

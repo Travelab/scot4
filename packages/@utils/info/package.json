@@ -1,0 +1,13 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "info",
+  "description": "A component with an animated image",
+  "main": "index.js",
+  "dependencies": {},
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

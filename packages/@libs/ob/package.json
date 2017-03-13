@@ -1,0 +1,15 @@
+{
+  "license": "ISC",
+  "author": "Jin",
+  "private": false,
+  "name": "ob",
+  "description": "Streaming backend wrapper",
+  "main": "index.js",
+  "dependencies": {
+    "blueimp-md5": "^2.7.0",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

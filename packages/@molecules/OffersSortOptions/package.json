@@ -1,0 +1,16 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "OffersSortOptions",
+  "description": "Sort options for offers on SERP",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

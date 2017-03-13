@@ -1,0 +1,17 @@
+{
+  "license": "UNLICENSED",
+  "author": "Dmitry Bukov <bukov.dmitry@gmail.com>",
+  "private": false,
+  "name": "organisms-order-tickets-info",
+  "description": "OrderTicketsInfo component created as part of Organisms",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4",
+    "timezone": "^1.0.6"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}

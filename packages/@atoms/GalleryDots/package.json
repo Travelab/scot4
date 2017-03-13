@@ -1,0 +1,15 @@
+{
+  "license": "UNLICENSED",
+  "author": "homer <dimmokr@gmail.com>",
+  "private": false,
+  "name": "atoms-gallery-dots",
+  "description": "A pointer on a current image in gallery",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}

@@ -1,3 +1,4 @@
+import fs from 'fs'
 import glob from 'glob'
 import open from 'open'
 import chalk from 'chalk'
@@ -76,7 +77,7 @@ export default class extends Base {
 	configuring () {
 
 		const entryPointPath = entryDirectPath
-		const bundleName = (ext) => (`[hash:18].bundle.${ext}`)
+		const bundleName = (ext) => (`[name].[chunkhash].${ext}`)
 		const outputPath = buildPath
 		const rootComponentPath = path.join(packagesPath, this.component, 'index.js')
 

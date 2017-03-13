@@ -1,4 +1,9 @@
 import {render} from 'react-dom'
 import RootComponent from 'root-component'
+import checkIntl from '@utils/intlShim'
 
-render(<RootComponent/>, document.getElementById('root'))
+const runApp = () => (
+	render(<RootComponent/>, document.getElementById('root'))
+)
+
+checkIntl(runApp)

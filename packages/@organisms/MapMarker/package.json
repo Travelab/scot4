@@ -1,0 +1,16 @@
+{
+  "license": "ISC",
+  "author": "",
+  "private": false,
+  "name": "MapMarker",
+  "description": "A marker component for maps",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "react-inlinesvg": "^0.5.5"
+  },
+  "peerDependencies": {
+  },
+  "optionalDependencies": {},
+  "build": false
+}
