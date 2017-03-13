@@ -3,14 +3,9 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { entryHtmlPath } from '../../path'
-import {
-	svg,
-	babel,
-	image,
-	style
-} from '../webpack-blocks'
+import { babel, image, svg } from '../webpack-blocks'
 
-export default function({ 
+export default function({
 	entryPointPath,
 	outputPath,
 	bundleName,
@@ -54,7 +49,7 @@ export default function({
 				babel({ include, exclude, isProduction: true }),
 				image({ include, exclude }),
 				{
-					test: /\.css$/, 
+					test: /\.css$/,
 					use: ExtractTextPlugin.extract({
 						fallback: 'style-loader',
 						use: 'css-loader?importLoaders=1'

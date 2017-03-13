@@ -1,19 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
-import HappyPack from 'happypack'
-import {
-	svg,
-	babel,
-	style,
-	image,
-	component
-} from '../webpack-blocks'
-import {
-	entryPath,
- 	entryStorybullPath,
- 	packagesPath,
- 	nodeModulesPath
-} from '../../path'
+import { babel, component, image, style, svg } from '../webpack-blocks'
+import { dllPath, entryPath, entryStorybullPath, nodeModulesPath, packagesPath } from '../../path'
 
 export default function (storybookBaseConfig, configType) {
 	const exclude = path.resolve('./node_modules')
@@ -21,10 +9,19 @@ export default function (storybookBaseConfig, configType) {
 
 	storybookBaseConfig = {
 		...storybookBaseConfig,
+		devtool: 'eval',
 		plugins: [
 			new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }), 
     	new webpack.HotModuleReplacementPlugin(),
     	new webpack.NamedModulesPlugin(),
+    	new webpack.DllReferencePlugin({
+    		context: storybookBaseConfig.output.path,
+    		manifest: require(path.join(dllPath, 'storybook-manifest.json'))
+    	}),
+    	new webpack.DllReferencePlugin({
+    		context: storybookBaseConfig.output.path,
+    		manifest: require(path.join(dllPath, 'vendor-manifest.json'))
+    	})
 		],
 		module: {
 			rules: [
