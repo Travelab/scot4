@@ -1017,7 +1017,7 @@ babel-polyfill@^6.16.0, babel-polyfill@^6.23.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
-babel-preset-bluebird@^1.0.0:
+babel-preset-bluebird@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/babel-preset-bluebird/-/babel-preset-bluebird-1.0.1.tgz#353b92436ef0ba38136dc3292f419748b0516356"
   dependencies:
@@ -2704,7 +2704,7 @@ express-http-proxy@0.10.1:
     es6-promise "^3.2.1"
     raw-body "^2.1.7"
 
-express@4.14.0:
+express@4.14.0, express@^4.14.0:
   version "4.14.0"
   resolved "https://registry.yarnpkg.com/express/-/express-4.14.0.tgz#c1ee3f42cdc891fb3dc650a8922d51ec847d0d66"
   dependencies:
@@ -2735,7 +2735,7 @@ express@4.14.0:
     utils-merge "1.0.0"
     vary "~1.1.0"
 
-express@^4.14.0, express@^4.15.2:
+express@^4.15.2:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.2.tgz#af107fc148504457f2dca9a6f2571d7129b97b35"
   dependencies:

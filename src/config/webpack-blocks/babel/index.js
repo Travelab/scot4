@@ -15,6 +15,7 @@ export default function(options = {}) {
 		presets.push(require.resolve('babel-preset-es2015'))
 	}
 	presets.push(require.resolve('babel-preset-react'))
+	presets.push(require.resolve('babel-preset-bluebird'))
 
 	return {
 		test, include, exclude,
