@@ -1,6 +1,7 @@
 # Compiled files
 /lib
 /build
+.idea
 
 # Yeoman configuration
 /.yo-rc.json
