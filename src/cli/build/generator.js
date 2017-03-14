@@ -1,4 +1,3 @@
-import fs from 'fs'
 import glob from 'glob'
 import open from 'open'
 import chalk from 'chalk'
@@ -12,7 +11,7 @@ import DashboardPlugin from 'webpack-dashboard/plugin'
 import loadConfig from '../../config/production'
 import selectPort from './selectPort'
 import startServer from './startServer'
-import path, { packagesPath, buildPath, entryHtmlPath, entryDirectPath } from '../../path'
+import path, { packagesPath, buildPath, entryDirectPath } from '../../path'
 import { Base } from '../../yo-yo'
 
 export default class extends Base {
