@@ -10,6 +10,7 @@ export default function(options = {}) {
 	if (include && !Array.isArray(include)) include = [ include ]
 
 	const presets = []
+	// TODO: add check for NODE_ENV
 	if ( isProduction ) {
 		presets.push(require.resolve('babel-preset-es2015'))
 	}
