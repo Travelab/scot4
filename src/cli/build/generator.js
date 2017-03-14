@@ -5,8 +5,10 @@ import chalk from 'chalk'
 import rimraf from 'rimraf'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import webpack from 'webpack'
+import {FuseBox} from 'fuse-box'
 
 import loadConfig from '../../config/production'
+import loadFuse from '../../config/fusebox'
 import selectPort from './selectPort'
 import startServer from './startServer'
 import { buildPath, entryDirectPath, packagesPath } from '../../path'
@@ -76,7 +78,7 @@ export default class extends Base {
 
   configuring () {
 
-    const entryPointPath = entryDirectPath
+	  const entryPointPath = entryDirectPath
     const bundleName = (ext) => (`[name].[chunkhash].${ext}`)
     const outputPath = buildPath
     const rootComponentPath = path.join(packagesPath, this.component, 'index.js')
@@ -90,7 +92,15 @@ export default class extends Base {
   }
 
   end () {
-    const dashboard = new Dashboard()
+  	const config = loadFuse({
+		  outputPath: buildPath,
+		  rootComponentPath: path.join(packagesPath, this.component, 'index.js')
+	  })
+	  console.log('Fuse Config: ', config)
+	  const fuse = FuseBox.init(config)
+	  fuse.bundle('>direct.js -react -react-dom -timezone')
+
+    /*const dashboard = new Dashboard()
     const compiler = webpack(this.webpackConfig)
     compiler.apply(new DashboardPlugin(dashboard))
 
@@ -110,6 +120,6 @@ export default class extends Base {
       })
       .catch((err) => {
         this.log(chalk.red(err))
-      })
+      })*/
   }
 }
