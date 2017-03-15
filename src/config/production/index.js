@@ -40,7 +40,6 @@ export default function({
 				}
 			}),
 			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }), 
-			new webpack.IgnorePlugin(/^\.\/locale$/, /timezone$/),
 			new ExtractTextPlugin(bundleName('css'))
 		],
 		module: {
