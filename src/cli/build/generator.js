@@ -90,7 +90,9 @@ export default class extends Base {
   }
 
   end () {
+    const dashboard = new Dashboard()
     const compiler = webpack(this.webpackConfig)
+    compiler.apply(new DashboardPlugin(dashboard.setData))
 
     const remove = Promise.promisify(rimraf)
     const build = Promise.promisify(compiler.run, {context: compiler})
