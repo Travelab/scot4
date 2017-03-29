@@ -18,7 +18,7 @@ export default function(options = {}) {
 				name: '[path][name].[ext]?[hash:4]'
 			}
 		}, {
-			loader: 'image-webpack-loader'
+			loader: 'image-webpack-loader&bypassOnDebug'
 		}]
 	}
 }
