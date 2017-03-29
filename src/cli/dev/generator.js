@@ -45,12 +45,13 @@ export default class extends Base {
 			return componentPath
 		}
 
-		let { componentName } = this.options
+		let { componentName, doLinter } = this.options
     const component = normalizePath(componentName)
 		if ( !availableComponents.includes(component) ) {
 		  throw new Error(`Component ${componentName} not found in ${packagesPath}`)
 		}
 		this.component = component
+		this.linter = doLinter
 
 		return selectPort().then((port) => this.port = port)
 	}
@@ -82,6 +83,7 @@ export default class extends Base {
 		}*/
 
 		setShared('component', this.component)
+		setShared('linter', this.linter)
 
 		startServer(null, this.port)
 			.then((address) => open(address))

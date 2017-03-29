@@ -14,10 +14,9 @@ commander
 	.version(manifest.version)
 
 commander
-	.command('dev [componentName]')
+	.command('dev <componentName> [lint]')
 	.description('Start development environment for a specific component')
-	.action(dev)
-
+  .action((c, l) => dev(c, l === 'lint' || l === 'l'))
 
 commander
 	.command('update')
