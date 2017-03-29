@@ -7,8 +7,8 @@ const enhancer = createEnhancer({
 	withLang: false
 })
 
-const BarLoader = ({ $ }) => {
-	return <div className={$.bar}/>
-}
+const BarLoader = ({ $ }) => (
+	<div className={$.bar}/>
+)
 
 export default enhancer(BarLoader)

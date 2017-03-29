@@ -1,9 +1,11 @@
 import fs from 'fs'
+import path from 'path'
 import glob from 'glob'
 import open from 'open'
 import chalk from 'chalk'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import webpack from 'webpack'
+import {CLIEngine} from 'eslint'
 
 import selectPort from './selectPort'
 import startServer from './startServer'
@@ -61,16 +63,19 @@ export default class extends Base {
 			}
 		}
 
-		const prompts = [
-			{
-				type: 'autocomplete',
-				name: 'component',
-				message: `Which ${chalk.yellow('component')} do you want to dev?`,
-				validate: (component) => (!!~availableComponents.indexOf(component)),
-				source: chooser,
-				when: () => (!this.components)
-			},
-		]
+    const prompts = [{
+      type: 'autocomplete',
+      name: 'component',
+      message: `Which ${chalk.yellow('component')} do you want to dev?`,
+      validate: (component) => (!!~availableComponents.indexOf(component)),
+      source: chooser,
+      when: () => (!this.components)
+    }, {
+      type: 'confirm',
+      name: 'doLinter',
+      message: `Do you want use eslint?`,
+      default: false
+    }]
 
 		return Promise
 			.all([
@@ -80,6 +85,7 @@ export default class extends Base {
 			.then(([ port, answers ]) => {
 
 				this.port = port
+				this.answers = answers
 
 				if (!this.components) this.components = [ answers.component ]
 			})
@@ -95,6 +101,21 @@ export default class extends Base {
 	}
 
 	end () {
+
+		const {doLinter} = this.answers
+
+		if (doLinter) {
+      const linter = new CLIEngine({
+        configFile: require.resolve('eslint-config-tl3')
+      })
+      const lintFiles = this.components.map(component => path.join(packagesPath, component))
+			const report = linter.executeOnFiles(lintFiles)
+			if (report.errorCount > 0 || report.warningCount > 0) {
+        const messageFormatter = linter.getFormatter()
+        logger(messageFormatter(report.results))
+        return;
+			}
+		}
 
 		setShared('components', this.components)
 
