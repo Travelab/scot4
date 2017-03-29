@@ -10,19 +10,19 @@ module.exports = function (source) {
 
 	loader.cacheable && loader.cacheable()
 
-	let { components } = getOptions(loader)
+	let { component } = getOptions(loader)
 
-	if (!components) components = []
+	if (!component) component = null
 
-	let requiredStories = components.map((componentName) => {
+	let requiredStories = () => {
 
-		let componentPath = pathNode.join(packagesPath, componentName, storyPath)
+		let componentPath = pathNode.join(packagesPath, component, storyPath)
 
 		componentPath = stringifyRequest(loader, componentPath)
 
 		return `require(${componentPath})`
 
-	}).join('\n')
+	}
 
 	source = source
 		.replace(placeholder, requiredStories)

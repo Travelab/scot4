@@ -2,8 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
 import open from 'open'
-import chalk from 'chalk'
-import autocomplete from 'inquirer-autocomplete-prompt'
 import webpack from 'webpack'
 import {CLIEngine} from 'eslint'
 
@@ -19,8 +17,6 @@ export default class extends Base {
 
 	constructor (args, opts) {
 		super(args, opts)
-
-		this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
 	}
 
 	prompting () {
@@ -30,79 +26,47 @@ export default class extends Base {
 			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
 			.map((name) => name.slice(0, -1))
 
-		const choicesComponents = availableComponents.map((component) => {
+		const normalizePath = (component) => {
+			let componentPath = component.toString()
 
-			const [ folder, name ] = component.split('/')
+			// replace packages path
+			componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')
 
-			return {
-				name: `${name} ${chalk.gray(folder)}`,
-				short: name,
-				value: component
-			}
-		})
+      // remove delimiter
+			if ( componentPath.endsWith(path.sep) ) {
+        componentPath = componentPath.slice(0, -1)
+      }
 
-		const chooser = (answers, input) => {
+      // add @ to starts
+      if ( !componentPath.startsWith('@') ) {
+			  componentPath = '@' + componentPath
+      }
 
-			return Promise.resolve(
-				input
-					? choicesComponents.filter((c) => ~c.name.indexOf(input))
-					: choicesComponents
-			)
+			return componentPath
 		}
 
-		let { componentsPaths } = this.options
-		if (Array.isArray(componentsPaths)) {
-
-			componentsPaths = componentsPaths
-				.filter((c) => ~availableComponents.indexOf(c))
-
-			if (componentsPaths.length) {
-				const choosedComponents = componentsPaths.map((c) => chalk.yellow(c)).join(', ')
-				this.log(`Components were choosed: ${choosedComponents}`)
-				this.components = componentsPaths
-			}
+		let { componentName } = this.options
+    const component = normalizePath(componentName)
+		if ( !availableComponents.includes(component) ) {
+		  throw new Error(`Component ${componentName} not found in ${packagesPath}`)
 		}
+		this.component = component
 
-    const prompts = [{
-      type: 'autocomplete',
-      name: 'component',
-      message: `Which ${chalk.yellow('component')} do you want to dev?`,
-      validate: (component) => (!!~availableComponents.indexOf(component)),
-      source: chooser,
-      when: () => (!this.components)
-    }, {
-      type: 'confirm',
-      name: 'doLinter',
-      message: `Do you want use eslint?`,
-      default: false
-    }]
-
-		return Promise
-			.all([
-				selectPort(),
-				this.prompt(prompts)
-			])
-			.then(([ port, answers ]) => {
-
-				this.port = port
-				this.answers = answers
-
-				if (!this.components) this.components = [ answers.component ]
-			})
+		return selectPort().then((port) => this.port = port)
 	}
 
 	generating() {
 		if (!fs.existsSync(dllPath)) {
 			const compiler = webpack(loadConfig(dllPath))
 			logger('=> Create dll manifest')
-      return Promise.promisify(compiler.run, {context: compiler})()
+      return Promise.promisify(compiler.run, { context: compiler })()
 	      .then(() => logger('=> Dll manifest created'))
 		}
 	}
 
 	end () {
 
-		const {doLinter} = this.answers
+		/*const {doLinter} = this.answers
 
 		if (doLinter) {
       const linter = new CLIEngine({
@@ -115,12 +79,11 @@ export default class extends Base {
         logger(messageFormatter(report.results))
         return;
 			}
-		}
+		}*/
 
-		setShared('components', this.components)
+		setShared('component', this.component)
 
 		startServer(null, this.port)
 			.then((address) => open(address))
 	}
-
 }
