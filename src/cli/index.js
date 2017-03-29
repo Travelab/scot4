@@ -14,9 +14,10 @@ commander
 	.version(manifest.version)
 
 commander
-	.command('dev [componentsPaths...]')
+	.command('dev [componentName]')
 	.description('Start development environment for a specific component')
 	.action(dev)
+
 
 commander
 	.command('update')

@@ -10,13 +10,13 @@ export default function(options ={}) {
 	if (exclude && !Array.isArray(exclude)) exclude = [ exclude ]
 	if (include && !Array.isArray(include)) include = [ include ]
 
-	const components = getShared('components')
+	const component = getShared('component')
 	return {
 		test, include, exclude,
 		use: [{
 			loader: require.resolve('./component-loader'),
 			query: {
-				components
+				component
 			} 
 		}]
 	}
