@@ -1,11 +1,14 @@
 import path from 'path'
 import webpack from 'webpack'
-import { babel, component, image, style, svg } from '../webpack-blocks'
+import { getShared } from '../../utils'
+import { babel, component, image, style, svg, linter } from '../webpack-blocks'
 import { dllPath, entryPath, entryStorybullPath, nodeModulesPath, packagesPath } from '../../path'
 
-export default function (storybookBaseConfig, configType) {
+export default function (storybookBaseConfig) {
 	const exclude = path.resolve('./node_modules')
 	const include = path.resolve('./packages')
+
+	const doLinter = getShared('linter')
 
 	storybookBaseConfig = {
 		...storybookBaseConfig,
@@ -44,6 +47,17 @@ export default function (storybookBaseConfig, configType) {
 		performance: {
 			hints: false
 		}
+	}
+
+	if ( doLinter ) {
+	  const component = getShared('component')
+	  storybookBaseConfig.module.rules.push(
+	    linter({
+		    exclude,
+		    include: path.join(packagesPath, component),
+		    config: require('eslint-config-tl3')
+	    })
+	  )
 	}
 
 	// Return the altered config
