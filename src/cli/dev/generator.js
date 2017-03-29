@@ -50,6 +50,7 @@ export default class extends Base {
 		if ( !availableComponents.includes(component) ) {
 		  throw new Error(`Component ${componentName} not found in ${packagesPath}`)
 		}
+
 		this.component = component
 		this.linter = doLinter
 
@@ -66,21 +67,6 @@ export default class extends Base {
 	}
 
 	end () {
-
-		/*const {doLinter} = this.answers
-
-		if (doLinter) {
-      const linter = new CLIEngine({
-        configFile: require.resolve('eslint-config-tl3')
-      })
-      const lintFiles = this.components.map(component => path.join(packagesPath, component))
-			const report = linter.executeOnFiles(lintFiles)
-			if (report.errorCount > 0 || report.warningCount > 0) {
-        const messageFormatter = linter.getFormatter()
-        logger(messageFormatter(report.results))
-        return;
-			}
-		}*/
 
 		setShared('component', this.component)
 		setShared('linter', this.linter)
