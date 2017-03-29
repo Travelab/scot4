@@ -18,7 +18,10 @@ export default function(options = {}) {
 				name: '[path][name].[ext]?[hash:4]'
 			}
 		}, {
-			loader: 'image-webpack-loader&bypassOnDebug'
+      loader: 'image-webpack-loader',
+      query: {
+        bypassOnDebug: false
+      }
 		}]
 	}
 }
