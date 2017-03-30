@@ -14,9 +14,11 @@ commander
 	.version(manifest.version)
 
 commander
-	.command('dev <componentName> [lint]')
+	.command('dev [componentName] [lint]')
 	.description('Start development environment for a specific component')
-  .action((c, l) => dev(c, l === 'lint' || l === 'l'))
+  .action((componentName, linter) =>
+	  dev(componentName, linter === 'lint' || l === 'l')
+  )
 
 commander
 	.command('update')
@@ -29,9 +31,11 @@ commander
 	.action(create)
 
 commander
-	.command('build')
+	.command('build [componentName] [needTestServer]')
 	.description('Build a specific environment')
-	.action(build)
+	.action((componentName, needTestServer) =>
+		build(componentName, needTestServer === 'server' || 's')
+	)
 
 commander.parse(process.argv)
 
