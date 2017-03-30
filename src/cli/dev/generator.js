@@ -2,8 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
 import open from 'open'
+import chalk from 'chalk'
+import autocomplete from 'inquirer-autocomplete-prompt'
 import webpack from 'webpack'
-import {CLIEngine} from 'eslint'
 
 import selectPort from './selectPort'
 import startServer from './startServer'
@@ -17,7 +18,9 @@ export default class extends Base {
 
 	constructor (args, opts) {
 		super(args, opts)
-	}
+
+    this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
+  }
 
 	prompting () {
 
@@ -26,35 +29,84 @@ export default class extends Base {
 			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
 			.map((name) => name.slice(0, -1))
 
-		const normalizePath = (component) => {
-			let componentPath = component.toString()
+		let { componentName } = this.options
+    if ( componentName ) {
+		  const { doLinter } = this.options
 
-			// replace packages path
-			componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')
+      const normalizePath = (component) => {
+        let componentPath = component.toString()
 
-      // remove delimiter
-			if ( componentPath.endsWith(path.sep) ) {
-        componentPath = componentPath.slice(0, -1)
+        // replace packages path
+        componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')
+
+        // remove delimiter
+        if (componentPath.endsWith(path.sep)) {
+          componentPath = componentPath.slice(0, -1)
+        }
+
+        // add @ to starts
+        if (!componentPath.startsWith('@')) {
+          componentPath = '@' + componentPath
+        }
+
+        return componentPath
       }
 
-      // add @ to starts
-      if ( !componentPath.startsWith('@') ) {
-			  componentPath = '@' + componentPath
+      const component = normalizePath(componentName)
+      if (!availableComponents.includes(component)) {
+        throw new Error(`Component ${componentName} not found in ${packagesPath}`)
       }
 
-			return componentPath
-		}
+      this.component = component
+      this.linter = doLinter
+      return selectPort().then((port) => this.port = port)
+    }
 
-		let { componentName, doLinter } = this.options
-    const component = normalizePath(componentName)
-		if ( !availableComponents.includes(component) ) {
-		  throw new Error(`Component ${componentName} not found in ${packagesPath}`)
-		}
+    const choicesComponents = availableComponents.map((component) => {
+      const [ folder, name ] = component.split('/')
 
-		this.component = component
-		this.linter = doLinter
+      return {
+        name: `${name} ${chalk.gray(folder)}`,
+        short: name,
+        value: component
+      }
+    })
 
-		return selectPort().then((port) => this.port = port)
+    const chooser = (answers, input) => Promise.resolve(
+      input
+        ? choicesComponents.filter((c) => ~c.name.indexOf(input))
+        : choicesComponents
+    )
+
+    const prompts = [
+      {
+        type: 'autocomplete',
+        name: 'component',
+        message: `Which ${chalk.yellow('component')} do you want to dev?`,
+        validate: (component) => (!!~availableComponents.indexOf(component)),
+        source: chooser,
+        when: () => (!this.component)
+      },
+      {
+        type: 'confirm',
+        name: 'doLinter',
+        message: `Do you want use eslint?`,
+        default: false
+      }
+    ]
+
+    return Promise
+      .all([
+        selectPort(),
+        this.prompt(prompts)
+      ])
+      .then(([ port, answers ]) => {
+
+        this.port = port
+        this.linter = answers.doLinter
+
+        if (!this.component) this.component = answers.component
+      })
 	}
 
 	generating() {
@@ -67,9 +119,8 @@ export default class extends Base {
 	}
 
 	end () {
-
+    setShared('linter', this.linter)
 		setShared('component', this.component)
-		setShared('linter', this.linter)
 
 		startServer(null, this.port)
 			.then((address) => open(address))
