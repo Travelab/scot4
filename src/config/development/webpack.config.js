@@ -6,7 +6,7 @@ import { dllPath, entryPath, entryStorybullPath, nodeModulesPath, packagesPath }
 
 export default function (storybookBaseConfig) {
 	const exclude = path.resolve('./node_modules')
-	const include = path.resolve('./packages')
+	const include = path.resolve('./components')
 
 	const doLinter = getShared('linter')
 
@@ -14,9 +14,8 @@ export default function (storybookBaseConfig) {
 		...storybookBaseConfig,
 		devtool: 'eval',
 		plugins: [
-			new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }), 
-    	new webpack.HotModuleReplacementPlugin(),
-    	new webpack.NamedModulesPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
     	new webpack.DllReferencePlugin({
     		context: storybookBaseConfig.output.path,
     		manifest: require(path.join(dllPath, 'storybook-manifest.json'))

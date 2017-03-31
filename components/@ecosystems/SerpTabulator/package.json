@@ -1,0 +1,13 @@
+{
+  "name": "ecosystems-serp-tabulator",
+  "description": "SerpTabulator component created as part of @ecosystems",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Tagir-A <tccup1@gmail.com>",
+  "license": "UNLICENSED",
+  "browser": true,
+  "private": false,
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {}
+}

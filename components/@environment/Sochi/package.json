@@ -1,0 +1,17 @@
+{
+  "license": "UNLICENSED",
+  "author": "SergeyPoluektov <spoluer@gmail.com>",
+  "private": false,
+  "name": "environment-togliatti",
+  "description": "Clickavia app",
+  "main": "index.js",
+  "dependencies": {
+    "@kadira/storybook": "^2.35.3",
+    "normalize.css": "^5.0.0",
+    "react-redux": "^5.0.3"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "build": false
+}
