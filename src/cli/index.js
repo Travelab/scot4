@@ -17,7 +17,7 @@ commander
 	.command('dev [componentName] [lint]')
 	.description('Start development environment for a specific component')
   .action((componentName, linter) =>
-	  dev(componentName, linter === 'lint' || l === 'l')
+	  dev(componentName, linter === 'lint' || linter === 'l')
   )
 
 commander
@@ -34,7 +34,7 @@ commander
 	.command('build [componentName] [needTestServer]')
 	.description('Build a specific environment')
 	.action((componentName, needTestServer) =>
-		build(componentName, needTestServer === 'server' || 's')
+		build(componentName, needTestServer === 'server' || needTestServer === 's')
 	)
 
 commander.parse(process.argv)

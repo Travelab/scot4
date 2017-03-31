@@ -17,7 +17,10 @@ export default function(options = {}) {
     test, include, exclude,
     use: [{
       loader: 'eslint-loader',
-      options: config
+      options: {
+        ...config,
+        formatter: require('eslint-friendly-formatter')
+      }
     }]
   }
 }

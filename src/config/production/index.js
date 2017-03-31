@@ -11,7 +11,7 @@ export default function({
 	bundleName,
 	rootComponentPath
 }) {
-	const include = path.resolve('./packages')
+	const include = path.resolve('./components')
 	const exclude = path.resolve('./node_modules')
 
 	return {
