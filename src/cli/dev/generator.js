@@ -36,7 +36,7 @@ export default class extends Base {
       const normalizePath = (component) => {
         let componentPath = component.toString()
 
-        // replace packages path
+        // replace components path
         componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')
 
         // remove delimiter

@@ -1,0 +1,13 @@
+{
+  "name": "organisms-ca-serp-offers-list",
+  "description": "CaSerpOffersList component created as part of @organisms",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Mika Kuliev <mika.kuliev@me.com>",
+  "license": "UNLICENSED",
+  "browser": true,
+  "private": false,
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {}
+}
