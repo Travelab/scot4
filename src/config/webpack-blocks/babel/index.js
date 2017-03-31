@@ -9,14 +9,6 @@ export default function(options = {}) {
 	if (exclude && !Array.isArray(exclude)) exclude = [ exclude ]
 	if (include && !Array.isArray(include)) include = [ include ]
 
-	const presets = []
-	// TODO: add check for NODE_ENV
-	if ( isProduction ) {
-		presets.push(require.resolve('babel-preset-es2015'))
-	}
-	presets.push(require.resolve('babel-preset-react'))
-	presets.push(require.resolve('babel-preset-bluebird'))
-
 	return {
 		test, include, exclude,
 		use: [{
@@ -24,7 +16,15 @@ export default function(options = {}) {
 			query: {
 				babelrc: false,
 				cacheDirectory: true,
-				presets: presets,
+				presets: [
+          [require.resolve('babel-preset-env'), {
+            "targets": {
+              "browsers": ["last 2 versions", "safari >= 7"]
+            }
+          }],
+          require.resolve('babel-preset-react'),
+          require.resolve('babel-preset-bluebird')
+				],
 				plugins: [
 					require.resolve('babel-plugin-transform-object-rest-spread'),
 					require.resolve('babel-plugin-transform-class-properties'),
