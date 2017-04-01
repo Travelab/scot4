@@ -1,4 +1,3 @@
-import path from 'path'
 import glob from 'glob'
 import open from 'open'
 import chalk from 'chalk'
@@ -9,8 +8,8 @@ import startServer from './startServer'
 import { packagesPath } from '../../path'
 import { setShared } from '../../utils'
 import { Base } from '../../yo-yo'
+import { normalizePath } from '../../utils'
 
-const logger = console.log
 export default class extends Base {
 
 	constructor (args, opts) {
@@ -30,26 +29,7 @@ export default class extends Base {
     if ( componentName ) {
 		  const { doLinter } = this.options
 
-      const normalizePath = (component) => {
-        let componentPath = component.toString()
-
-        // replace components path
-        componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')
-
-        // remove delimiter
-        if (componentPath.endsWith(path.sep)) {
-          componentPath = componentPath.slice(0, -1)
-        }
-
-        // add @ to starts
-        if (!componentPath.startsWith('@')) {
-          componentPath = '@' + componentPath
-        }
-
-        return componentPath
-      }
-
-      const component = normalizePath(componentName)
+      const component = normalizePath(componentName, packagesPath)
       if (!availableComponents.includes(component)) {
         throw new Error(`Component ${componentName} not found in ${packagesPath}`)
       }

@@ -1,9 +1,11 @@
 import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { entryHtmlPath } from '../../path'
 import { babel, image, svg } from '../webpack-blocks'
+
+import Dashboard from 'webpack-dashboard'
+import DashboardPlugin from 'webpack-dashboard/plugin'
 
 export default function({
 	entryPointPath,
@@ -13,6 +15,8 @@ export default function({
 }) {
 	const include = path.resolve('./components')
 	const exclude = path.resolve('./node_modules')
+
+	const dashboard = new Dashboard()
 
 	return {
 		entry: {
@@ -39,21 +43,14 @@ export default function({
 					drop_console: true
 				}
 			}),
-			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }), 
-			new ExtractTextPlugin(bundleName('css'))
+			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
+			new DashboardPlugin(dashboard.setData)
 		],
 		module: {
 			rules: [
 				svg({ include, exclude }),
 				babel({ include, exclude, isProduction: true }),
-				image({ include, exclude }),
-				{
-					test: /\.css$/,
-					use: ExtractTextPlugin.extract({
-						fallback: 'style-loader',
-						use: 'css-loader?importLoaders=1'
-					})
-				}
+				image({ include, exclude })
 			]
 		},
 		resolve: {
@@ -63,5 +60,8 @@ export default function({
 			},
 			unsafeCache: true
 		},
+    performance: {
+		  hints: false
+    }
 	}
 }
