@@ -2,9 +2,10 @@ import bootstrap from 'process-bootstrap'
 import commander from 'commander'
 import manifest from '../../package.json'
 
+import create from './create'
 import dev from './dev'
 import build from './build'
-import create from './create'
+import linter from './linter';
 import update from './update';
 
 // Some basic process setup
@@ -14,6 +15,11 @@ commander
 	.version(manifest.version)
 
 commander
+	.command('create [packageName]')
+	.description('Generate some kind of package')
+	.action(create)
+
+commander
 	.command('dev [componentName] [lint]')
 	.description('Start development environment for a specific component')
   .action((componentName, linter) =>
@@ -21,14 +27,9 @@ commander
   )
 
 commander
-	.command('update')
-	.description('Update dependencies for component\'s')
-	.action(update)
-
-commander
-	.command('create [packageName]')
-	.description('Generate some kind of package')
-	.action(create)
+	.command('lint [componentName]')
+	.description('Build a specific environment')
+	.action(linter)
 
 commander
 	.command('build [componentName] [needTestServer]')
@@ -36,6 +37,11 @@ commander
 	.action((componentName, needTestServer) =>
 		build(componentName, needTestServer === 'server' || needTestServer === 's')
 	)
+
+commander
+	.command('update')
+	.description('Update dependencies for component\'s')
+	.action(update)
 
 commander.parse(process.argv)
 
