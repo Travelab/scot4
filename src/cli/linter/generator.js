@@ -20,24 +20,7 @@ export default class extends Base {
     this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
   }
 
-  prompting () {
-
-    const components = this.getConfig('components')
-    const availableComponents = glob
-      .sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
-      .map((name) => name.slice(0, -1))
-
-    let { componentName } = this.options
-    if ( componentName ) {
-      const component = normalizePath(componentName, packagesPath)
-      if (!availableComponents.includes(component)) {
-        throw new Error(`Component ${componentName} not found in ${packagesPath}`)
-      }
-
-      this.component = component
-      return
-    }
-
+  _promptComponent(availableComponents) {
     const choicesComponents = availableComponents.map((component) => {
       const [ folder, name ] = component.split('/')
 
@@ -69,7 +52,27 @@ export default class extends Base {
       .prompt(prompts)
       .then((answers) => {
         this.component = answers.component
-      }).then()
+      })
+  }
+
+  prompting () {
+    const components = this.getConfig('components')
+    const availableComponents = glob
+      .sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
+      .map((name) => name.slice(0, -1))
+
+    let { componentName } = this.options
+    if ( componentName ) {
+      const component = normalizePath(componentName, packagesPath)
+      if (!availableComponents.includes(component)) {
+        this.log(chalk.red(`Component ${componentName} not found in ${packagesPath}`))
+        return this._promptComponent(availableComponents)
+      }
+
+      this.component = component
+      return
+    }
+    return this._promptComponent(availableComponents)
   }
 
   end () {
