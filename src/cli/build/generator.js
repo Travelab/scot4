@@ -11,9 +11,7 @@ import selectPort from './selectPort'
 import startServer from './startServer'
 import { buildPath, entryDirectPath, packagesPath } from '../../path'
 import { Base } from '../../yo-yo'
-
-import Dashboard from 'webpack-dashboard'
-import DashboardPlugin from 'webpack-dashboard/plugin'
+import { normalizePath } from '../../utils'
 
 export default class extends Base {
 
@@ -34,26 +32,7 @@ export default class extends Base {
     if ( componentName ) {
 		  const { needTestServer } = this.options
 
-      const normalizePath = (component) => {
-        let componentPath = component.toString()
-
-        // replace components path
-        componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')
-
-        // remove delimiter
-        if (componentPath.endsWith(path.sep)) {
-          componentPath = componentPath.slice(0, -1)
-        }
-
-        // add @ to starts
-        if (!componentPath.startsWith('@')) {
-          componentPath = '@' + componentPath
-        }
-
-        return componentPath
-      }
-
-      const component = normalizePath(componentName)
+      const component = normalizePath(componentName, packagesPath)
       if (!availableComponents.includes(component)) {
         throw new Error(`Component ${componentName} not found in ${packagesPath}`)
       }
@@ -120,9 +99,7 @@ export default class extends Base {
   }
 
   end () {
-    const dashboard = new Dashboard()
     const compiler = webpack(this.webpackConfig)
-    compiler.apply(new DashboardPlugin(dashboard.setData))
 
     const remove = Promise.promisify(rimraf)
     const build = Promise.promisify(compiler.run, {context: compiler})
