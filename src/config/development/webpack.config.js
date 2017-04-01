@@ -4,6 +4,8 @@ import { getShared } from '../../utils'
 import { babel, component, image, style, svg, linter } from '../webpack-blocks'
 import { dllPath, entryPath, entryStorybullPath, nodeModulesPath, packagesPath } from '../../path'
 
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
+
 export default function (storybookBaseConfig) {
 	const exclude = path.resolve('./node_modules')
 	const include = path.resolve('./components')
@@ -16,14 +18,20 @@ export default function (storybookBaseConfig) {
 		plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
+
     	new webpack.DllReferencePlugin({
     		context: storybookBaseConfig.output.path,
     		manifest: require(path.join(dllPath, 'storybook-manifest.json'))
     	}),
+
     	new webpack.DllReferencePlugin({
     		context: storybookBaseConfig.output.path,
     		manifest: require(path.join(dllPath, 'vendor-manifest.json'))
-    	})
+    	}),
+
+			new FriendlyErrorsWebpackPlugin({
+        clearConsole: true
+			})
 		],
 		module: {
 			rules: [
