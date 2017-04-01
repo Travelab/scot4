@@ -57,6 +57,5 @@ export default function (storybookBaseConfig) {
 	  )
 	}
 
-	// Return the altered config
 	return storybookBaseConfig
 }

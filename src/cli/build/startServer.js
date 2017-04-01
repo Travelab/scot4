@@ -1,9 +1,7 @@
 import chalk from 'chalk'
-import express from 'express'
 import coolTrim from 'cool-trim'
 import { createServer } from 'spa-http-server'
 import { buildPath } from '../../path'
-
 
 export default function (host, port) {
 
