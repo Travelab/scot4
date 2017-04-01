@@ -62,7 +62,7 @@ export default function (host, port) {
         // Add the source code of modules
         source: false,
         // Add timing information
-        timings: false,
+        timings: true,
         // Show which exports of a module are used
         usedExports: false,
         // Add webpack version information
