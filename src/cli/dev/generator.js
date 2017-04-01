@@ -12,33 +12,13 @@ import { normalizePath } from '../../utils'
 
 export default class extends Base {
 
-	constructor (args, opts) {
-		super(args, opts)
+  constructor (args, opts) {
+    super(args, opts)
 
     this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
   }
 
-	prompting () {
-
-		const components = this.getConfig('components')
-		const availableComponents = glob
-			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
-			.map((name) => name.slice(0, -1))
-
-		let { componentName } = this.options
-    if ( componentName ) {
-		  const { doLinter } = this.options
-
-      const component = normalizePath(componentName, packagesPath)
-      if (!availableComponents.includes(component)) {
-        throw new Error(`Component ${componentName} not found in ${packagesPath}`)
-      }
-
-      this.component = component
-      this.linter = doLinter
-      return selectPort().then((port) => this.port = port)
-    }
-
+  _promptComponent(availableComponents) {
     const choicesComponents = availableComponents.map((component) => {
       const [ folder, name ] = component.split('/')
 
@@ -84,6 +64,32 @@ export default class extends Base {
 
         if (!this.component) this.component = answers.component
       })
+  }
+
+	prompting () {
+
+		const components = this.getConfig('components')
+		const availableComponents = glob
+			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
+			.map((name) => name.slice(0, -1))
+
+		let { componentName } = this.options
+    if ( componentName ) {
+		  const { doLinter } = this.options
+
+      const component = normalizePath(componentName, packagesPath)
+
+      if (!availableComponents.includes(component)) {
+		    this.log(chalk.red(`Component ${component} not found in ${packagesPath}`))
+        return this._promptComponent(availableComponents)
+      }
+
+      this.component = component
+      this.linter = doLinter
+      return selectPort().then((port) => this.port = port)
+    }
+
+    return this._promptComponent(availableComponents)
 	}
 
 	end () {

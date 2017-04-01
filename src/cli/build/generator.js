@@ -21,27 +21,7 @@ export default class extends Base {
     this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
   }
 
-  prompting () {
-
-    const components = this.getConfig('components')
-		const availableComponents = glob
-			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
-			.map((name) => name.slice(0, -1))
-
-		let { componentName } = this.options
-    if ( componentName ) {
-		  const { needTestServer } = this.options
-
-      const component = normalizePath(componentName, packagesPath)
-      if (!availableComponents.includes(component)) {
-        throw new Error(`Component ${componentName} not found in ${packagesPath}`)
-      }
-
-      this.component = component
-      this.needTestServer = needTestServer
-      return
-    }
-
+  _promptComponent(availableComponents) {
     const choicesComponents = availableComponents.map((component) => {
       const [ folder, name ] = component.split('/')
 
@@ -81,6 +61,30 @@ export default class extends Base {
         this.component = answers.component
         this.needTestServer = answers.needTestServer
       })
+  }
+
+  prompting () {
+
+    const components = this.getConfig('components')
+		const availableComponents = glob
+			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
+			.map((name) => name.slice(0, -1))
+
+		let { componentName } = this.options
+    if ( componentName ) {
+		  const { needTestServer } = this.options
+
+      const component = normalizePath(componentName, packagesPath)
+      if (!availableComponents.includes(component)) {
+        this.log(chalk.red(`Component ${componentName} not found in ${packagesPath}`))
+        return this._promptComponent(availableComponents)
+      }
+
+      this.component = component
+      this.needTestServer = needTestServer
+      return
+    }
+    return this._promptComponent(availableComponents)
   }
 
   configuring () {
