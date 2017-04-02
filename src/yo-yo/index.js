@@ -17,31 +17,24 @@ const yo = (generators = []) => {
 		return console.log(chalk.red('Generators should be Array type'))
 
 	const env = yeoman.createEnv()
-
-	generators = generators.map((gen) => {
-
-		const { name, generator, options } = gen
-		const namespace = gn(name)
-
-		env.registerStub(generator, namespace)
-
-		return { name, generator, options, namespace }
-	})
+	env.registerStub(Pre, preName)
+	env.registerStub(Post, postName)
 
 	class Entry extends Base {
 		initializing () {
 			this.composeWith(preName)
 			generators.forEach((gen) => {
-				this.composeWith(gen.namespace, gen.options)
+        const { name, generator, options } = gen
+        const namespace = gn(name)
+
+        env.registerStub(generator, namespace)
+        this.composeWith(namespace, options)
 			})
 			this.composeWith(postName)
 		}
 	}
 
-	env.registerStub(Entry, baseName)
-	env.registerStub(Pre, preName)
-	env.registerStub(Post, postName)
-
+  env.registerStub(Entry, baseName)
 	env.run(baseName)
 }
 

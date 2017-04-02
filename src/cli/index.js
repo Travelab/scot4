@@ -27,16 +27,16 @@ commander
   )
 
 commander
-	.command('lint [componentName]')
-	.description('Build a specific environment')
-	.action(linter)
-
-commander
 	.command('build [componentName] [needTestServer]')
 	.description('Build a specific environment')
 	.action((componentName, needTestServer) =>
 		build(componentName, needTestServer === 'server' || needTestServer === 's')
 	)
+
+commander
+	.command('lint [componentName]')
+	.description('Build a specific environment')
+	.action(linter)
 
 commander
 	.command('update')

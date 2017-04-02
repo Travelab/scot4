@@ -1,7 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { entryHtmlPath } from '../../path'
+import { entryHtmlPath, modulesPath } from '../../path'
 import { babel, image, svg } from '../webpack-blocks'
 
 import Dashboard from 'webpack-dashboard'
@@ -49,12 +49,12 @@ export default function({
 		module: {
 			rules: [
 				svg({ include, exclude }),
-				babel({ include, exclude, isProduction: true }),
+				babel({ include: [include, modulesPath], exclude, isProduction: true }),
 				image({ include, exclude })
 			]
 		},
 		resolve: {
-			modules: [ include, exclude ],
+			modules: [ include, exclude, modulesPath ],
 			alias: {
 				'root-component': rootComponentPath
 			},

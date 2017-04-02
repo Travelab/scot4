@@ -1,4 +1,4 @@
-import { storiesOf, action } from '@kadira/storybook'<% if (duck) { %>
+import { storiesOf } from '@kadira/storybook'<% if (duck) { %>
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'<% } %>
 
 import <%= componentName %> from '../index.js'<% if (duck) { %>
