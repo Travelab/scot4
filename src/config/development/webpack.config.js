@@ -2,7 +2,7 @@ import path from 'path'
 import webpack from 'webpack'
 import { getShared } from '../../utils'
 import { babel, component, image, style, svg, linter } from '../webpack-blocks'
-import { entryPath, entryStorybullPath, nodeModulesPath, packagesPath } from '../../path'
+import { entryPath, entryStorybullPath, nodeModulesPath, packagesPath, modulesPath } from '../../path'
 
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 
@@ -25,7 +25,7 @@ export default function (storybookBaseConfig) {
 		],
 		module: {
 			rules: [
-				babel({ include, exclude, isProduction: false }),
+				babel({ include: [include, modulesPath], exclude, isProduction: false }),
 				style(),
 				image({ include, exclude }),
 				svg({ include, exclude }),
@@ -34,7 +34,7 @@ export default function (storybookBaseConfig) {
 		},
 		resolve: {
 			...storybookBaseConfig.resolve, 
-			modules: [nodeModulesPath, packagesPath],
+			modules: [nodeModulesPath, packagesPath, modulesPath],
 			alias: {
 				...storybookBaseConfig.resolve.alias,
 				'entry-storybull': require.resolve(entryStorybullPath)
