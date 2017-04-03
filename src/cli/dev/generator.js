@@ -5,7 +5,7 @@ import autocomplete from 'inquirer-autocomplete-prompt'
 
 import selectPort from './selectPort'
 import startServer from './startServer'
-import { packagesPath } from '../../path'
+import path, { cliBase, packagesPath } from '../../path'
 import { setShared } from '../../utils'
 import { Base } from '../../yo-yo'
 import { normalizePath } from '../../utils'
@@ -68,10 +68,9 @@ export default class extends Base {
 
 	prompting () {
 
-		const components = this.getConfig('components')
-		const availableComponents = glob
-			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
-			.map((name) => name.slice(0, -1))
+    const availableComponents = glob
+			.sync(`${packagesPath}/@*/*/`, { cwd: packagesPath })
+		  .map((folder) => folder.replace(`${packagesPath}${path.sep}`, ''))
 
 		let { componentName } = this.options
     if ( componentName ) {

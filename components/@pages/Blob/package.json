@@ -1,0 +1,13 @@
+{
+  "name": "pages-blob",
+  "description": "Blob component created as part of @pages",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Dmitry <menscrem@gmail.com>",
+  "license": "UNLICENSED",
+  "browser": true,
+  "private": false,
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {}
+}

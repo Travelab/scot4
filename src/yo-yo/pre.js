@@ -1,6 +1,8 @@
+import glob from 'glob'
 import chalk from 'chalk'
 import { validate as emailValidator } from 'email-validator'
 import Base from './base.js'
+import path, {packagesPath, cliBase} from '../path'
 
 const defaultComponentChoices = [
 	{ name: '@atoms', checked: true },
@@ -22,6 +24,11 @@ export default class extends Base {
 	}
 
 	prompting () {
+
+	  // TODO: put in helpers
+		const availableComponents = glob
+			.sync(`${packagesPath}/@*/`, {cwd: cliBase})
+		  .map((folder) => path.basename(folder))
 
 		const prompts = [
 			{
@@ -46,7 +53,7 @@ export default class extends Base {
 				message: 'Choose folders for components',
 				choices: defaultComponentChoices,
 				validate: (answer) => (answer.length < 1 ? 'You must choose at least one folder' : true),
-				when: () => (!this.getConfig('components')),
+				when: () => (!availableComponents),
 			}
 		]
 
@@ -54,13 +61,14 @@ export default class extends Base {
 			.prompt(prompts)
 			.then((answers) => {
 
-				const { username, email, defaultFoldersOfComponents } = answers
+				const { username, email } = answers
 
 				username && this.setConfig('username', username)
 				email && this.setConfig('email', email)
 
-				if (Array.isArray(defaultFoldersOfComponents))
-					this.setConfig('components', defaultFoldersOfComponents)
+        // TODO: remove next refactoring
+				//if (Array.isArray(defaultFoldersOfComponents))
+					//this.setConfig('components', defaultFoldersOfComponents)
 			})
 	}
 
