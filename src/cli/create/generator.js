@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import glob from 'glob'
 import { Base } from '../../yo-yo'
 import { upperFirst, camelCase, kebabCase } from 'lodash'
 
@@ -44,6 +45,10 @@ export default class extends Base {
 
 	prompting () {
 
+	  const availableComponents = glob
+			.sync(`${packagesPath}/@*/`, {cwd: cliBase})
+		  .map((folder) => path.basename(folder))
+
 		const prompts = [
 			{
 				type: 'input',
@@ -57,7 +62,7 @@ export default class extends Base {
 				type: 'list',
 				name: 'folder',
 				message: ({ name }) => (`In which folder do you want to put the ${chalk.yellow(name)} component?`),
-				choices: this.getConfig('components')
+				choices: availableComponents
 			},
 			{
 				type: 'checkbox',

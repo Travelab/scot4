@@ -65,10 +65,9 @@ export default class extends Base {
 
   prompting () {
 
-    const components = this.getConfig('components')
-		const availableComponents = glob
-			.sync(`+(${components.join('|')})/*/`, { cwd: packagesPath })
-			.map((name) => name.slice(0, -1))
+    const availableComponents = glob
+			.sync(`${packagesPath}/@*/*/`, { cwd: packagesPath })
+		  .map((folder) => folder.replace(`${packagesPath}${path.sep}`, ''))
 
 		let { componentName } = this.options
     if ( componentName ) {
