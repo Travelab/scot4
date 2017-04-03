@@ -1231,6 +1231,14 @@ base64-arraybuffer@0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-0.1.5.tgz#73926771923b5a19747ad666aa5cd4bf9c6e9ce8"
 
+base64-inline-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/base64-inline-loader/-/base64-inline-loader-1.1.0.tgz#9f0f527dfe2a97eff709ec4b5b486fa4b1965953"
+  dependencies:
+    file-loader "^0.10.0"
+    loader-utils "^0.2.16"
+    mime-types "^2.1.12"
+
 base64-js@^1.0.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
@@ -3273,7 +3281,7 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@0.10.0:
+file-loader@0.10.0, file-loader@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.10.0.tgz#bbe6db7474ac92c7f54fdc197cf547e98b6b8e12"
   dependencies:
