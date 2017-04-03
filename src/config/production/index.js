@@ -48,9 +48,9 @@ export default function({
 		],
 		module: {
 			rules: [
-				svg({ include, exclude }),
+				svg({ include: [include, modulesPath], exclude }),
 				babel({ include: [include, modulesPath], exclude, isProduction: true }),
-				image({ include, exclude })
+				image({ include: [include, modulesPath], exclude })
 			]
 		},
 		resolve: {

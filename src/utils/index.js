@@ -19,8 +19,8 @@ export const normalizePath = (component, packagesPath) => {
   componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')
 
   // remove delimiter
-  if (componentPath.endsWith(path.sep)) {
-    componentPath = componentPath.slice(0, -1)
+  if (!componentPath.endsWith(path.sep)) {
+    componentPath = componentPath + '/'
   }
 
   // add @ to starts
