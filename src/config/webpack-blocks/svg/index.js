@@ -15,7 +15,7 @@ export default function(options = {}) {
 			query: {
 				limit: 1024,
 				noquotes: true,
-				name: '[path][name].[ext]?[hash:4]'
+				name: '[path][[sha512:hash:base64:7].[ext]'
 			}
 		}, {
       loader: 'image-webpack-loader',
