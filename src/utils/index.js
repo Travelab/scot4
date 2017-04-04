@@ -28,5 +28,5 @@ export const normalizePath = (component, packagesPath) => {
     componentPath = '@' + componentPath
   }
 
-  return componentPath
+  return path.normalize(componentPath)
 }

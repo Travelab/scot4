@@ -1,11 +1,11 @@
 import path from 'path'
+import chalk from 'chalk'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { entryHtmlPath, modulesPath } from '../../path'
 import { babel, image, svg } from '../webpack-blocks'
 
-import Dashboard from 'webpack-dashboard'
-import DashboardPlugin from 'webpack-dashboard/plugin'
+import ProgressBarPlugin from 'progress-bar-webpack-plugin'
 
 export default function({
 	entryPointPath,
@@ -16,7 +16,7 @@ export default function({
 	const include = path.resolve('./components')
 	const exclude = path.resolve('./node_modules')
 
-	const dashboard = new Dashboard()
+  process.traceDeprecation = true
 
 	return {
 		entry: {
@@ -44,7 +44,10 @@ export default function({
 				}
 			}),
 			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
-			new DashboardPlugin(dashboard.setData)
+      new ProgressBarPlugin({
+        format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+        clear: false
+      })
 		],
 		module: {
 			rules: [
