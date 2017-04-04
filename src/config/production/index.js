@@ -2,6 +2,7 @@ import path from 'path'
 import chalk from 'chalk'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { entryHtmlPath, modulesPath } from '../../path'
 import { babel, image, svg } from '../webpack-blocks'
 
@@ -44,6 +45,7 @@ export default function({
 				}
 			}),
 			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
+      new ExtractTextPlugin(bundleName('css')),
       new ProgressBarPlugin({
         format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
         clear: false
@@ -53,7 +55,14 @@ export default function({
 			rules: [
 				svg({ include: [include, modulesPath], exclude }),
 				babel({ include: [include, modulesPath], exclude, isProduction: true }),
-				image({ include: [include, modulesPath], exclude })
+				image({ include: [include, modulesPath], exclude }),
+        {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader?importLoaders=1'
+          })
+        }
 			]
 		},
 		resolve: {
