@@ -56,7 +56,7 @@ export default class extends Base {
   }
 
   prompting () {
-    const availableComponents = glob.sync('/@*/*', { cwd: packagesPath })
+    const availableComponents = glob.sync('@*/*', { cwd: packagesPath })
 
     let { componentName } = this.options
     if ( componentName ) {
