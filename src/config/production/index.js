@@ -54,7 +54,7 @@ export default function({
 		module: {
 			rules: [
 				svg({ include: [include, modulesPath], exclude }),
-				babel({ include: [include, modulesPath], exclude, isProduction: true }),
+				babel({ include: [include, modulesPath], exclude }),
 				image({ include: [include, modulesPath], exclude }),
         {
           test: /\.css$/,

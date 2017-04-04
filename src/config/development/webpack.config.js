@@ -25,7 +25,7 @@ export default function (storybookBaseConfig) {
 		],
 		module: {
 			rules: [
-				babel({ include: [include, modulesPath], exclude, isProduction: false }),
+				babel({ include: [include, modulesPath], exclude }),
 				style(),
 				image({ include: [include, modulesPath], exclude }),
 				svg({ include: [include, modulesPath], exclude }),
