@@ -3,7 +3,6 @@ export default function(options = {}) {
 		test = /\.js$/,
 		exclude,
 		include,
-		isProduction
 	} = options
 
 	if (exclude && !Array.isArray(exclude)) exclude = [ exclude ]
@@ -32,12 +31,7 @@ export default function(options = {}) {
 					[require.resolve('babel-plugin-lodash'), {
 						id: ['lodash', 'recompose']
 					}],
-					[require.resolve('babel-plugin-transform-runtime'), {
-      			"helpers": false,
-      			"polyfill": false,
-      			"regenerator": true,
-      			"moduleName": "babel-runtime"
-    			}]
+					require.resolve('babel-plugin-transform-runtime')
 				]
 			}
 		}]
