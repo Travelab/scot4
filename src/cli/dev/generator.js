@@ -5,7 +5,7 @@ import autocomplete from 'inquirer-autocomplete-prompt'
 
 import selectPort from './selectPort'
 import startServer from './startServer'
-import path, { cliBase, packagesPath } from '../../path'
+import path, { packagesPath } from '../../path'
 import { setShared } from '../../utils'
 import { Base } from '../../yo-yo'
 import { normalizePath } from '../../utils'
@@ -69,14 +69,17 @@ export default class extends Base {
 	prompting () {
 
     const availableComponents = glob
-			.sync(`${packagesPath}/@*/*/`, { cwd: packagesPath })
+			.sync(`${packagesPath}/@*/*/`, { cwd: packagesPath, })
 		  .map((folder) => folder.replace(`${packagesPath}${path.sep}`, ''))
+
+    console.log('File Path: ', availableComponents)
 
 		let { componentName } = this.options
     if ( componentName ) {
 		  const { doLinter } = this.options
 
       const component = normalizePath(componentName, packagesPath)
+      console.log('Normalize Path: ', component)
 
       if (!availableComponents.includes(component)) {
 		    this.log(chalk.red(`Component ${component} not found in ${packagesPath}`))
