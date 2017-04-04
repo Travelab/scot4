@@ -68,18 +68,13 @@ export default class extends Base {
 
 	prompting () {
 
-    const availableComponents = glob
-			.sync(`${packagesPath}/@*/*/`, { cwd: packagesPath, })
-		  .map((folder) => folder.replace(`${packagesPath}${path.sep}`, ''))
-
-    console.log('File Path: ', availableComponents)
+    const availableComponents = glob.sync('@*/*', { cwd: packagesPath })
 
 		let { componentName } = this.options
     if ( componentName ) {
 		  const { doLinter } = this.options
 
       const component = normalizePath(componentName, packagesPath)
-      console.log('Normalize Path: ', component)
 
       if (!availableComponents.includes(component)) {
 		    this.log(chalk.red(`Component ${component} not found in ${packagesPath}`))

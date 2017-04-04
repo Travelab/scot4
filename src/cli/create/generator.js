@@ -45,9 +45,7 @@ export default class extends Base {
 
 	prompting () {
 
-	  const availableComponents = glob
-			.sync(`${packagesPath}/@*/`, {cwd: cliBase})
-		  .map((folder) => path.basename(folder))
+	  const availableComponents = glob.sync(`@*`, { cwd: packagesPath })
 
 		const prompts = [
 			{
