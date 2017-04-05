@@ -1,3 +1,4 @@
+import path from 'path'
 export default function(options = {}) {
 	let {
 		test = /\.js$/,
@@ -17,21 +18,31 @@ export default function(options = {}) {
 				cacheDirectory: true,
 				presets: [
           [require.resolve('babel-preset-env'), {
-            "targets": {
-              "browsers": ["last 2 versions", "safari >= 7"]
-            }
+            targets: {
+              ie: 9,
+              uglify: true,
+            },
+	          useBuiltIns: false,
+	          modules: false
           }],
           require.resolve('babel-preset-react'),
           require.resolve('babel-preset-bluebird')
 				],
 				plugins: [
-					require.resolve('babel-plugin-transform-object-rest-spread'),
-					require.resolve('babel-plugin-transform-class-properties'),
-					require.resolve('babel-plugin-react-require'),
+          require.resolve('babel-plugin-transform-class-properties'),
+					[require.resolve('babel-plugin-transform-object-rest-spread'), {
+				    useBuiltIns: true
+					}],
 					[require.resolve('babel-plugin-lodash'), {
 						id: ['lodash', 'recompose']
 					}],
-					require.resolve('babel-plugin-transform-runtime')
+          require.resolve('babel-plugin-react-require'),
+					[require.resolve('babel-plugin-transform-runtime'), {
+				    helpers: false,
+						polyfill: false,
+            regenerator: true,
+						moduleName: path.dirname(require.resolve('babel-runtime/package'))
+					}]
 				]
 			}
 		}]
