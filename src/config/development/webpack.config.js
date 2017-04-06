@@ -21,7 +21,7 @@ export default function (storybookBaseConfig) {
 
 			new FriendlyErrorsWebpackPlugin({
         clearConsole: true
-			})
+			}),
 		],
 		module: {
 			rules: [

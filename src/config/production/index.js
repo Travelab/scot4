@@ -17,9 +17,8 @@ export default function({
 	const include = path.resolve('./components')
 	const exclude = path.resolve('./node_modules')
 
-  process.traceDeprecation = true
-
 	return {
+		devtool: 'source-map',
 		entry: {
 			bundle: entryPointPath,
 		},
@@ -42,7 +41,8 @@ export default function({
 					warnings: false,
 					dead_code: true,
 					drop_console: true
-				}
+				},
+				sourceMap: true
 			}),
 			new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
       new ExtractTextPlugin(bundleName('css')),
