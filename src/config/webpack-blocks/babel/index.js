@@ -29,6 +29,7 @@ export default function(options = {}) {
           require.resolve('babel-preset-bluebird')
 				],
 				plugins: [
+					require.resolve('babel-plugin-prejss'),
           require.resolve('babel-plugin-transform-class-properties'),
 					[require.resolve('babel-plugin-transform-object-rest-spread'), {
 				    useBuiltIns: true
