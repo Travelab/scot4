@@ -32,6 +32,7 @@
     "babel-core": "^6.24.0",
     "babel-loader": "v7.0.0-beta.1",
     "babel-plugin-lodash": "^3.2.11",
+    "babel-plugin-prejss": "^0.0.5",
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -74,6 +75,7 @@
     "react-dom": "^15.4.2",
     "rimraf": "^2.6.1",
     "spa-http-server": "^0.9.0",
+    "sugarss": "^0.2.0",
     "svg-url-loader": "^2.0.2",
     "watch-ignore-webpack-plugin": "^1.0.0",
     "webpack": "^2.3.3",
@@ -133,5 +135,9 @@
         "modulesStub": "components"
       }
     }
+  },
+  "postcss": {
+    "parser": "sugarss",
+    "map": false
   }
 }
