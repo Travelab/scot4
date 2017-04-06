@@ -69,6 +69,7 @@
     "lodash-es": "^4.17.4",
     "open": "0.0.5",
     "portfinder": "^1.0.13",
+    "precss": "^1.4.0",
     "process-bootstrap": "^1.0.0",
     "progress-bar-webpack-plugin": "^1.9.3",
     "react": "^15.4.2",
@@ -138,6 +139,9 @@
   },
   "postcss": {
     "parser": "sugarss",
-    "map": false
+    "map": false,
+    "plugins": {
+      "precss": {}
+     }
   }
 }

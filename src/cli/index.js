@@ -5,6 +5,7 @@ import manifest from '../../package.json'
 import create from './create'
 import dev from './dev'
 import build from './build'
+import buildCI from './buildCI'
 import linter from './linter';
 import update from './update';
 
@@ -32,6 +33,11 @@ commander
 	.action((componentName, needTestServer) =>
 		build(componentName, needTestServer === 'server' || needTestServer === 's')
 	)
+
+commander
+	.command('build-ci <componentName>')
+	.description('Build a for ci environment')
+	.action(buildCI)
 
 commander
 	.command('lint [componentName]')
