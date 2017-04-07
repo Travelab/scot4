@@ -3,9 +3,9 @@ import glob from 'glob'
 import chalk from 'chalk'
 import rimraf from 'rimraf'
 import webpack from 'webpack'
-import loadConfig from '../../config/production'
+import loadConfig from '../../config/webpack.config.js'
 import { buildPath, entryDirectPath, packagesPath } from '../../path'
-import { normalizePath } from '../../utils'
+import { setShared, normalizePath } from '../../utils'
 
 const logger = console.log
 export default (componentName) => {
@@ -17,19 +17,11 @@ export default (componentName) => {
 		return
 	}
 
-	const entryPointPath = entryDirectPath
-  const bundleName = (ext) => (`[name].[chunkhash].${ext}`)
-  const outputPath = buildPath
-  const rootComponentPath = path.join(packagesPath, component, 'index.js')
-
-  const webpackConfig = loadConfig({
-    entryPointPath,
-    outputPath,
-    bundleName,
-    rootComponentPath
+  const config = loadConfig({
+    componentPath: component,
+    checkoutLinter: false
   })
-
-  const compiler = webpack(webpackConfig)
+  const compiler = webpack(config)
 
   const remove = Promise.promisify(rimraf)
   const build = Promise.promisify(compiler.run, { context: compiler })

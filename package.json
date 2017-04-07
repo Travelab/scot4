@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Travelab/scot4",
   "dependencies": {
-    "@kadira/storybook": "https://github.com/Travelab/react-storybook.git",
+    "@kadira/storybook": "file:../react-storybook/",
     "@knit/knit": "^0.2.0",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
@@ -128,7 +128,8 @@
     "scroll-into-view": "^1.8.0",
     "semantic-release": "^6.3.2",
     "superagent": "^3.5.2",
-    "timezone": "^1.0.6"
+    "timezone": "^1.0.6",
+    "vorpal": "^1.11.4"
   },
   "knit": {
     "needle": {
@@ -142,6 +143,6 @@
     "map": false,
     "plugins": {
       "precss": {}
-     }
+    }
   }
 }

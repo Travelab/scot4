@@ -1,5 +1,5 @@
 import { stringifyRequest, getOptions } from 'loader-utils'
-import pathNode, { packagesPath } from '../../../path'
+import path, { packagesPath } from '../../../path'
 
 const storyPath = 'stories/index.js'
 const placeholder = '/* Place of required stories from CLI */'
@@ -16,7 +16,7 @@ module.exports = function (source) {
 
 	let requiredStories = () => {
 
-		let componentPath = pathNode.join(packagesPath, component, storyPath)
+		let componentPath = path.join(packagesPath, component, storyPath)
 
 		componentPath = stringifyRequest(loader, componentPath)
 

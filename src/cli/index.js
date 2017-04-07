@@ -23,21 +23,26 @@ commander
 commander
 	.command('dev [componentName] [lint]')
 	.description('Start development environment for a specific component')
-  .action((componentName, linter) =>
+  .action((componentName, linter) => {
+		process.env.NODE_ENV = 'development'
 	  dev(componentName, linter === 'lint' || linter === 'l')
-  )
+	})
 
 commander
 	.command('build [componentName] [needTestServer]')
 	.description('Build a specific environment')
-	.action((componentName, needTestServer) =>
+	.action((componentName, needTestServer) => {
+		process.env.NODE_ENV = 'production'
 		build(componentName, needTestServer === 'server' || needTestServer === 's')
-	)
+	})
 
 commander
 	.command('build-ci <componentName>')
 	.description('Build a for ci environment')
-	.action(buildCI)
+	.action((componentName) => {
+		process.env.NODE_ENV = 'production'
+		buildCI(componentName)
+	})
 
 commander
 	.command('lint [componentName]')

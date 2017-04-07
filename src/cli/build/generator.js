@@ -6,7 +6,7 @@ import rimraf from 'rimraf'
 import autocomplete from 'inquirer-autocomplete-prompt'
 import webpack from 'webpack'
 
-import loadConfig from '../../config/production'
+import loadConfig from '../../config/webpack.config.js'
 import selectPort from './selectPort'
 import startServer from './startServer'
 import { buildPath, entryDirectPath, packagesPath } from '../../path'
@@ -84,23 +84,12 @@ export default class extends Base {
     return this._promptComponent(availableComponents)
   }
 
-  configuring () {
-
-    const entryPointPath = entryDirectPath
-    const bundleName = (ext) => (`[name].[chunkhash].${ext}`)
-    const outputPath = buildPath
-    const rootComponentPath = path.join(packagesPath, this.component, 'index.js')
-
-    this.webpackConfig = loadConfig({
-      entryPointPath,
-      outputPath,
-      bundleName,
-      rootComponentPath
-    })
-  }
-
   end () {
-    const compiler = webpack(this.webpackConfig)
+    const config = loadConfig({
+      componentPath: this.component,
+      checkoutLinter: false
+    })
+    const compiler = webpack(config)
 
     const remove = Promise.promisify(rimraf)
     const build = Promise.promisify(compiler.run, {context: compiler})

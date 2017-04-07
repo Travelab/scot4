@@ -1,17 +1,5 @@
 import path from 'path'
 
-const shared = {}
-
-export function setShared (key, val) {
-
-	shared[key] = val
-}
-
-export function getShared (key) {
-
-	return shared[key]
-}
-
 export const normalizePath = (component, packagesPath) => {
   let componentPath = component.toString()
 

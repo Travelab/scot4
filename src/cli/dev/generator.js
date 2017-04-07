@@ -3,10 +3,10 @@ import open from 'open'
 import chalk from 'chalk'
 import autocomplete from 'inquirer-autocomplete-prompt'
 
+import loadConfig from '../../config/webpack.config.js'
 import selectPort from './selectPort'
 import startServer from './startServer'
 import path, { packagesPath } from '../../path'
-import { setShared } from '../../utils'
 import { Base } from '../../yo-yo'
 import { normalizePath } from '../../utils'
 
@@ -90,10 +90,14 @@ export default class extends Base {
 	}
 
 	end () {
-    setShared('linter', this.linter)
-		setShared('component', this.component)
+    const config = loadConfig({
+      componentPath: this.component,
+      checkoutLinter: this.linter
+    })
 
-		startServer(null, this.port)
-			.then((address) => open(address))
+		startServer({
+      port: this.port,
+      webpackConfig: config
+    }).then((address) => open(address))
 	}
 }
