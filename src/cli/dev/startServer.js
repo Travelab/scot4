@@ -5,7 +5,11 @@ import storybook from '@kadira/storybook/dist/server/middleware'
 
 import { storybookPath } from '../../path'
 
-export default function (host, port) {
+export default ({
+  host,
+  port,
+  webpackConfig
+}) => {
 
 	const listenAddr = [ port ]
 
@@ -16,7 +20,7 @@ export default function (host, port) {
 	const app = express()
 
 	const storybookMiddleware = storybook({
-		configDir: storybookPath,
+    config: webpackConfig,
 		webpackDevMiddlewareConfig: {
 			noInfo: false,
 			quite: true,
