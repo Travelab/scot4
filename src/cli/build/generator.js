@@ -34,7 +34,7 @@ export default class extends Base {
 
     const chooser = (answers, input) => Promise.resolve(
       input
-        ? choicesComponents.filter((c) => ~c.name.indexOf(input))
+        ? choicesComponents.filter((c) => ~c.value.indexOf(input))
         : choicesComponents
     )
 
@@ -43,15 +43,13 @@ export default class extends Base {
         type: 'autocomplete',
         name: 'component',
         message: `Which ${chalk.yellow('component')} do you want to dev?`,
-        validate: (component) => (!!~availableComponents.indexOf(component)),
         source: chooser,
-        when: () => (!this.component)
       },
       {
         type: 'confirm',
         name: 'needTestServer',
         message: 'Do you need to run server for manual testing?',
-        store: true
+        default: true,
       }
     ]
 
@@ -92,7 +90,7 @@ export default class extends Base {
     const compiler = webpack(config)
 
     const remove = Promise.promisify(rimraf)
-    const build = Promise.promisify(compiler.run, {context: compiler})
+    const build = Promise.promisify(compiler.run, { context: compiler })
 
     return remove(buildPath)
       .then(() => build())
