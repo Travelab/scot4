@@ -31,7 +31,7 @@ export default class extends Base {
 
     const chooser = (answers, input) => Promise.resolve(
       input
-        ? choicesComponents.filter((c) => ~c.name.indexOf(input))
+        ? choicesComponents.filter((c) => ~c.value.indexOf(input))
         : choicesComponents
     )
 
@@ -40,14 +40,12 @@ export default class extends Base {
         type: 'autocomplete',
         name: 'component',
         message: `Which ${chalk.yellow('component')} do you want to dev?`,
-        validate: (component) => (!!~availableComponents.indexOf(component)),
         source: chooser,
-        when: () => (!this.component)
       },
       {
         type: 'confirm',
         name: 'doLinter',
-        message: `Do you want use eslint?`,
+        message: `Do you need use eslint for find errors?`,
         default: false
       }
     ]
