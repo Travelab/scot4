@@ -10,7 +10,6 @@ import {
 	entryDirectPath,
 	entryStorybullPath,
 } from '../path'
-import { getShared } from '../utils'
 
 import svg from './parts/svg'
 import hmr from './parts/hotModuleReloading'
