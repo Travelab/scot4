@@ -74,7 +74,7 @@ export default class extends Base {
 
 		let { componentName } = this.options
     if ( componentName ) {
-		  const { needLinter, needStorybook } = this.options
+		  const { needLinter, needStory } = this.options
 
       const component = normalizePath(componentName, packagesPath)
 
@@ -84,8 +84,8 @@ export default class extends Base {
       }
 
       this.component = component
-      this.linter = needLinter
-      this.storybook = needStorybook
+      this.linter = !!needLinter
+      this.storybook = !!needStory
       return selectPort().then((port) => this.port = port)
     }
 
@@ -93,7 +93,6 @@ export default class extends Base {
 	}
 
 	end () {
-    console.log(this.storybook)
     const config = loadConfig({
       componentPath: this.component,
       checkoutLinter: this.linter,
