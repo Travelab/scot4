@@ -43,26 +43,24 @@ const common = {
 export default (
 	{
 		componentPath,
-		checkoutLinter
+		checkoutLinter,
+		checkoutStorybook
 	} = {}
 ) => {
 	const rootComponent = path.join(packagesPath, componentPath)
 
 	const config = merge(
 		sourceMap(),
-		entry({
-			build: entryDirectPath,
-			dev: entryStorybullPath,
-			rootComponent
-		}),
+		entry({ rootComponent, checkoutStorybook }),
 
-		component({ include: includePath, componentPath }),
 		babel({ include: includePath, basePath: buildPath }),
 		style({ include: includePath }),
 		image({ include: includePath }),
 		svg({ include: includePath }),
 		html({ templatePath: entryHtmlPath }),
+		
 		checkoutLinter && linter({ include: rootComponent }),
+		checkoutStorybook && component({ include: includePath, componentPath }),
 
 		minimize(),
 		progress(),

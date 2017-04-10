@@ -6,10 +6,10 @@ import { validate as emailValidator } from 'email-validator'
 export default class extends Base {
 
 	initializing () {
+		this.name = this.getConfig('username')
+		this.email = this.getConfig('email')
 
-		const name = this.getConfig('username') || 'anonymous'
-
-		this.log(chalk.green(`Hello ${chalk.yellow(name)}! Wana drink? :-)`))
+		this.log(chalk.green(`Hello ${chalk.yellow(this.name || 'anonymous')}! Wana drink? :-)`))
 	}
 
 	prompting () {
@@ -20,7 +20,7 @@ export default class extends Base {
 				message: 'What\'s your Github username',
 				default: this.user.git.name(),
 				validate: (input) => (input !== ''),
-				when: () => (!this.getConfig('username')),
+				when: () => (!this.name),
 			},
 			{
 				type: 'input',
@@ -28,15 +28,15 @@ export default class extends Base {
 				message: 'What\'s your email',
 				default: this.user.git.email(),
 				validate: (input) => (!emailValidator(input) ? 'Pls, type correct email' : true),
-				when: () => (!this.getConfig('email')),
+				when: () => (!this.email),
 			}
 		]
 
 		return this
 			.prompt(prompts)
 			.then(({username, email}) => {
-				this.setConfig('username', username)
-				this.setConfig('email', email)
+				username && this.setConfig('username', username)
+				email && this.setConfig('email', email)
 			})
 	}
 }
