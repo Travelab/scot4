@@ -6,8 +6,8 @@ import create from './create'
 import dev from './dev'
 import build from './build'
 import buildCI from './buildCI'
-import linter from './linter';
-import update from './update';
+import linter from './linter'
+import update from './update'
 
 // Some basic process setup
 bootstrap('scot4', 'SCOT4')
@@ -21,10 +21,11 @@ commander
 	.action(create)
 
 commander
-	.command('dev [componentName] [lint]')
+	.command('dev [componentName] [lint] [storybook]')
 	.description('Start development environment for a specific component')
   .action((componentName, linter) => {
 		process.env.NODE_ENV = 'development'
+
 	  dev(componentName, linter === 'lint' || linter === 'l')
 	})
 

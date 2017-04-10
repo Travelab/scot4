@@ -1,22 +1,43 @@
-import { ifProd } from './utils'
+import path from 'path'
+import {
+	entryDirectPath,
+	entryStorybullPath,
+} from '../../path'
+import {ifProd} from './utils'
 
 export default (
 	{ 
-    build,
-    dev,
-    rootComponent
+    rootComponent,
+    checkoutStorybook
 	} = {}
-) => ifProd({
-  entry: {
-    bundle: build
-  },
-  resolve: {
-    alias: {
-      'root-component': rootComponent
+) => {
+  if ( !checkoutStorybook ) {
+    return {
+      entry: {
+        common: entryDirectPath
+      },
+      resolve: {
+        alias: {
+          'root-component': rootComponent,
+          'duck': path.join(rootComponent, 'ducks'),
+          'saga': path.join(rootComponent, 'sagas')
+        }
+      }
     }
   }
- }, {
-  entry: {
-    preview: [require.resolve(dev)],
-  }
-})
+
+  return ifProd({
+    entry: {
+      bundle: entryDirectPath
+    },
+    resolve: {
+      alias: {
+        'root-component': rootComponent
+      }
+    }
+  }, {
+    entry: {
+      preview: [require.resolve(entryStorybullPath)],
+    }
+  })
+}
