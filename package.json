@@ -104,7 +104,7 @@
     "jss-global": "^0.4.1",
     "jss-nested": "^3.0.1",
     "jss-props-sort": "^3.0.0",
-    "jss-vendor-prefixer": "^4.0.0",
+    "jss-vendor-prefixer": "^5.0.0",
     "lodash": "^4.17.4",
     "mousetrap": "^1.6.1",
     "normalize.css": "^6.0.0",
