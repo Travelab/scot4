@@ -1,9 +1,11 @@
 import path from 'path'
+import fs from 'fs'
 import {
 	entryDirectPath,
 	entryStorybullPath,
 } from '../../path'
 import {ifProd} from './utils'
+
 
 export default (
 	{ 
@@ -19,8 +21,8 @@ export default (
       resolve: {
         alias: {
           'root-component': rootComponent,
-          'duck': path.join(rootComponent, 'ducks'),
-          'saga': path.join(rootComponent, 'sagas')
+          'duck': path.join(rootComponent, 'ducks') || '',
+          'saga': path.join(rootComponent, 'sagas') || ''
         }
       }
     }

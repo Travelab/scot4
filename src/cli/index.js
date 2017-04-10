@@ -23,10 +23,20 @@ commander
 commander
 	.command('dev [componentName] [lint] [storybook]')
 	.description('Start development environment for a specific component')
-  .action((componentName, linter) => {
+  .action((componentName, lint, story) => {
 		process.env.NODE_ENV = 'development'
 
-	  dev(componentName, linter === 'lint' || linter === 'l')
+	  if ( lint === 'lint' || lint === 'l' ) {
+		  lint = 'lint'
+	  } else if ( lint === 'story' || lint === 's' ) {
+		  lint = 'story'
+	  }
+
+	  if (story === 'story' || story === 's' ) {
+		  story = 'story'
+	  }
+
+	  dev(componentName, lint === 'lint', lint === 'story' || story === 'story')
 	})
 
 commander
