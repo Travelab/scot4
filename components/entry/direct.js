@@ -4,21 +4,34 @@ import checkIntl from '@utils/intlShim'
 import {configureStore} from '@libs/lash'
 
 import RootComponent from 'root-component'
-import duck from 'duck'
-import saga from 'saga'
 
-const ditch = duck.makeDitch()
-const store = configureStore(ditch.reducer, ditch.initialState)
-if ( saga ) {
-  store.runSaga(saga.bind(saga, ditch))
-}
+Promise.all([
+  System.import('duck'),
+  System.import('saga')
+])
+  .then(([duck, saga]) => {
+    const ditch = duck.makeDitch()
+    const store = configureStore(ditch.reducer, ditch.initialState)
 
-const runApp = () => (
-  render(
-    <Provider store={store}>
-      <RootComponent ditch={ditch} />
-    </Provider>,
-    document.getElementById('root'))
-)
+    if ( saga ) {
+      store.runSaga(saga.bind(saga, ditch))
+    }
 
-checkIntl(runApp)
+    const runApp = () => {
+      render(
+        <Provider store={store}>
+          <RootComponent ditch={ditch} />
+        </Provider>,
+        document.getElementById('root'))
+    }
+
+    checkIntl(runApp)
+  })
+  .catch(() => {
+    const runApp = () => {
+      render(<RootComponent />, document.getElementById('root'))
+    }
+
+    checkIntl(runApp)
+  })
+
