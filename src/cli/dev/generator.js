@@ -44,7 +44,13 @@ export default class extends Base {
       },
       {
         type: 'confirm',
-        name: 'doLinter',
+        name: 'needStorybook',
+        message: `Do you need use storybook?`,
+        default: true
+      },
+      {
+        type: 'confirm',
+        name: 'needLinter',
         message: `Do you need use eslint for find errors?`,
         default: false
       }
@@ -56,21 +62,19 @@ export default class extends Base {
         this.prompt(prompts)
       ])
       .then(([ port, answers ]) => {
-
         this.port = port
-        this.linter = answers.doLinter
-
-        if (!this.component) this.component = answers.component
+        this.component = answers.component
+        this.linter = answers.needLinter
+        this.storybook = answers.needStorybook
       })
   }
 
 	prompting () {
-
     const availableComponents = glob.sync('@*/*', { cwd: packagesPath })
 
 		let { componentName } = this.options
     if ( componentName ) {
-		  const { doLinter } = this.options
+		  const { needLinter, needStorybook } = this.options
 
       const component = normalizePath(componentName, packagesPath)
 
@@ -80,7 +84,8 @@ export default class extends Base {
       }
 
       this.component = component
-      this.linter = doLinter
+      this.linter = needLinter
+      this.storybook = needStorybook
       return selectPort().then((port) => this.port = port)
     }
 
@@ -88,14 +93,17 @@ export default class extends Base {
 	}
 
 	end () {
+    console.log(this.storybook)
     const config = loadConfig({
       componentPath: this.component,
-      checkoutLinter: this.linter
+      checkoutLinter: this.linter,
+      checkoutStorybook: this.storybook
     })
 
 		startServer({
       port: this.port,
-      webpackConfig: config
-    }).then((address) => open(address))
+      webpackConfig: config,
+      checkoutStorybook: this.storybook
+    }).then(open)
 	}
 }
