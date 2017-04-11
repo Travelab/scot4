@@ -16,7 +16,7 @@ commander
 	.version(manifest.version)
 
 commander
-	.command('create [packageName]')
+	.command('create [componentName]')
 	.description('Generate some kind of package')
 	.action(create)
 

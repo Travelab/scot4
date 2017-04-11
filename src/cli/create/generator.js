@@ -52,21 +52,22 @@ export default class extends Base {
 				type: 'input',
 				name: 'name',
 				message: `How do you want to name the ${chalk.yellow('component')}?`,
-				default: this.options.packageName,
+				//default: this.options.componentName,
 				validate: (input) => (input !== ''),
-				filter: (name) => upperFirst(camelCase(name))
+				//filter: (name) => upperFirst(camelCase(name)),
+				when: () => (!this.options.componentName)
 			},
 			{
 				type: 'list',
 				name: 'folder',
-				message: ({ name }) => (`In which folder do you want to put the ${chalk.yellow(name)} component?`),
+				message: ({ name }) => (`In which folder do you want to put the ${chalk.yellow(name || this.options.componentName)} component?`),
 				choices: availableComponents
 			},
 			{
 				type: 'checkbox',
 				name: 'generalParams',
 				message: ({ name, folder }) => {
-					const p = chalk.yellow(path.join(folder, name))
+					const p = chalk.yellow(path.join(folder, name || this.options.componentName))
 					return `What do you want to include to the ${p} component?`
 				},
 				choices: generalParamsChoices
@@ -82,7 +83,7 @@ export default class extends Base {
 				type: 'confirm',
 				name: 'doInject',
 				message: ({ name, folder }) => {
-					const p = chalk.yellow(path.join(folder, name))
+					const p = chalk.yellow(path.join(folder, name || this.options.componentName))
 					return `Do you want to inject ${p} component into ${chalk.magenta('Storybull')}?`
 				}
 			}
@@ -95,7 +96,8 @@ export default class extends Base {
 
 	configuring () {
 
-		const { name, folder, generalParams, additionalParams } = this.answers
+		const { folder, generalParams, additionalParams } = this.answers
+    const name = upperFirst(camelCase(this.answers.name || this.options.componentName))
 		const finalParams = generalParams.concat(additionalParams || [])
 		const componentPath = path.join(folder, name)
 
