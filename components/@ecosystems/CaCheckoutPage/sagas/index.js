@@ -8,7 +8,7 @@ import orderForm from '@organisms/OrderForm/sagas'
 import Offer from '@libs/offer'
 import { processCard, processPassenger } from '../helpers/processing.js'
 import { redirectTo3ds } from '../helpers/pay.js'
-import { OFFER_STATUS, REQ_CONSIST_STATUS } from '../ducks'
+import { OFFER_STATUS, REQ_CONSIST_STATUS } from '../ducks/index'
 
 const { put, take, fork, call, select, cancel } = sagaEffects
 

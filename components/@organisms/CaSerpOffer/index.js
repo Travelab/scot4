@@ -2,9 +2,9 @@ import { createEnhancer } from '@utils/decoract'
 import { calculateRoute, getAirlines, getBaggageWeight } from '@utils/flight-calc'
 
 import style from './styles/index.js'
-import BaggageIcon from './BaggageIcon.jsx'
-import Flight from './Flight.jsx'
-import AirlineImg from './AirlineImg.jsx'
+import BaggageIcon from './BaggageIcon.jsx.js'
+import Flight from './Flight.jsx.js'
+import AirlineImg from './AirlineImg.jsx.js'
 
 
 const enhancer = createEnhancer({

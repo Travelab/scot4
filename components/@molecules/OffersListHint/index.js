@@ -1,7 +1,7 @@
 import { createEnhancer } from '@utils/decoract'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 import closeImg from './images/close.svg'
 import flightImg from './images/flight.svg'
 import homeImg from './images/home.svg'

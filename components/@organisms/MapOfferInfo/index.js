@@ -4,7 +4,7 @@ import SerpOfferBtn from '@atoms/SerpOfferBtn'
 import HotelStars from '@molecules/HotelStars'
 import ConciseHotelInfo from '@organisms/ConciseHotelInfo'
 
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = compose(
 	connectLangWithoutDuck(),

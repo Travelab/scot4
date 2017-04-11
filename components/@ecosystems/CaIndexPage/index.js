@@ -1,7 +1,7 @@
 import { createEnhancer } from '@utils/decoract'
 
-import CaHeader from '../../@organisms/CaHeader'
-import SearchBar from '../../@organisms/SearchBar'
+import CaHeader from '../../@organisms/CaHeader/index'
+import SearchBar from '../../@organisms/SearchBar/index'
 
 import duck from './ducks/index.js'
 import style from './styles/index.js'

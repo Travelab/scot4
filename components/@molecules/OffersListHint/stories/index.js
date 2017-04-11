@@ -2,7 +2,7 @@ import { storiesOf, action } from '@kadira/storybook'
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'
 
 import OffersListHint from '../index.js'
-import duck from '../ducks'
+import duck from '../ducks/index'
 
 const decorator = (getStory) => {
 	return (

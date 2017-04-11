@@ -2,7 +2,7 @@ import { reduce } from 'lodash'
 import { compose, connectLangWithoutDuck, injectStyle } from '@utils/decoract'
 
 import OfferLinker from '@atoms/OfferLinker'
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = compose(
 	connectLangWithoutDuck(),

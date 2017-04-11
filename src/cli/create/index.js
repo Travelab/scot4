@@ -1,13 +1,13 @@
 import yo from '../../yo-yo'
 import Generator from './generator.js'
 
-export default (packageName) => {
+export default (componentName) => {
 
 	yo([
 		{
 			name: 'create',
 			generator: Generator,
-			options: { packageName }
+			options: { componentName }
 		}
 	])
 

@@ -3,7 +3,7 @@ import { storiesOf, action } from '@kadira/storybook'
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'
 
 import PaymentDetails from '../index.js'
-import duck from '../ducks'
+import duck from '../ducks/index'
 
 const offer = mock({ shaped: false })
 const props = {

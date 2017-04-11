@@ -5,7 +5,7 @@ import InputField from '@atoms/InputField'
 import HoverList from '@atoms/HoverList'
 import LoadingSpinner from '@atoms/LoadingSpinner'
 
-import duck, { suggestionsStatusValue } from './ducks'
+import duck, { suggestionsStatusValue } from './ducks/index'
 import style from './style'
 
 const { NONE, REQUEST_LOADING, LOADING, LOADING_SUCCESS } = suggestionsStatusValue

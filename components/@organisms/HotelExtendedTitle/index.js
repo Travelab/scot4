@@ -2,7 +2,7 @@ import { compose, injectStyle } from '@utils/decoract'
 
 import HotelTitle from '@atoms/HotelTitle'
 import HotelQuality from '@molecules/HotelQuality'
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = compose(
 	injectStyle(style),

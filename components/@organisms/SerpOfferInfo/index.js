@@ -4,7 +4,7 @@ import SerpOfferControls from '@molecules/SerpOfferControls'
 import ConciseHotelInfo from '@organisms/ConciseHotelInfo'
 import HotelTips from '@organisms/HotelTips'
 import OfferLinker from '@atoms/OfferLinker'
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	style: style(),

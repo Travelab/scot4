@@ -2,8 +2,8 @@ import { findIndex } from 'lodash'
 import { createEnhancer } from '@utils/decoract'
 
 import OffersSortOption from '@atoms/OffersSortOption'
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	duck,

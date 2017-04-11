@@ -3,8 +3,8 @@ import { decorateAction } from '@kadira/storybook-addon-actions'
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'
 
 import Component from '../index.js'
-import duck from '../ducks'
-import saga from '../sagas'
+import duck from '../ducks/index'
+import saga from '../sagas/index'
 
 const firstArgAction = decorateAction([
   args => args.slice(0, 1)

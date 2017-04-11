@@ -5,8 +5,8 @@ import { createEnhancer } from '@utils/decoract'
 import SearchBar from '@organisms/SearchBar'
 import CaSerpOffersViewer from '@ecosystems/CaSerpOffersViewer'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 const cq = {
 	t999: {

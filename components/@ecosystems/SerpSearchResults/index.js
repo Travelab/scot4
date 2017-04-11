@@ -1,7 +1,7 @@
 import { createEnhancer } from '@utils/decoract'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 import SerpMap from '@ecosystems/SerpMap'
 import SerpOffersViewer from '@ecosystems/SerpOffersViewer'

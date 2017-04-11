@@ -1,6 +1,6 @@
 import { createEnhancer } from '@utils/decoract'
 
-import duck from './ducks'
+import duck from './ducks/index'
 
 const enhancer = createEnhancer({ duck, withLang: false })
 

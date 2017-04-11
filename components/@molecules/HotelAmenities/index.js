@@ -1,7 +1,7 @@
 import { map, pick, isEmpty } from 'lodash'
 import { compose, connectLangWithoutDuck, injectStyle } from '@utils/decoract'
 
-import style from './styles'
+import style from './styles/index'
 
 import swimmingPool from './images/swimmingPool.svg'
 import sandyBeach from './images/sandyBeach.svg'

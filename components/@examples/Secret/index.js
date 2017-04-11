@@ -1,8 +1,8 @@
 import obc from '@libs/obc'
 import { createEnhancer } from '@utils/decoract'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 // Так лучше не делать, это для примера
 // Лучше делать так — саб-компоненты выносить в общие по Атомик-методологии

@@ -1,7 +1,7 @@
 import { createEnhancer } from '@utils/decoract'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 import CaSerpOffersList from '@organisms/CaSerpOffersList'
 import OffersPaginate from '@molecules/OffersPaginate'

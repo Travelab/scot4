@@ -1,7 +1,7 @@
 import { compose, injectStyle } from '@utils/decoract'
 import Isvg from 'react-inlinesvg'
 
-import style from './styles'
+import style from './styles/index'
 import pinImg from './images/pin.svg'
 
 const enhancer = compose(

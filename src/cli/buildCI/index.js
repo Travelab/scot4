@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import rimraf from 'rimraf'
 import webpack from 'webpack'
 import loadConfig from '../../config/webpack.config.js'
-import { buildPath, entryDirectPath, packagesPath } from '../../path'
+import { buildPath, packagesPath } from '../../path'
 import { setShared, normalizePath } from '../../utils'
 
 const logger = console.log

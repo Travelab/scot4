@@ -4,8 +4,8 @@ import { createEnhancer } from '@utils/decoract'
 
 import SerpOffer from '@organisms/SerpOffer'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	duck,

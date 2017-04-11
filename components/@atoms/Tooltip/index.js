@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { head } from 'lodash'
 
-import TooltipTemplate from './TooltipTemplate.jsx'
+import TooltipTemplate from './TooltipTemplate.jsx.js'
 
 
 const calculatePlacement = (offset) => {
