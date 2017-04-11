@@ -4,8 +4,8 @@ import { createEnhancer } from '@utils/decoract'
 import HotelGallery from '@molecules/HotelGallery'
 import SerpOfferInfo from '@organisms/SerpOfferInfo'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 const cq = {
 	t414: {

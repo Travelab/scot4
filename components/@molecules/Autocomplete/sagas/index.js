@@ -1,6 +1,6 @@
 import { saga, sagaEffects } from '@libs/lash'
 import api from '@libs/api'
-import duck, { suggestionsStatusValue } from '../ducks'
+import duck, { suggestionsStatusValue } from '../ducks/index'
 
 const { delay } = saga
 const { take, takeLatest, put, call, fork, cancel, cancelled, select, debounce } = sagaEffects

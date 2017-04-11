@@ -5,7 +5,7 @@ import HeaderCommonInfo from '@molecules/HeaderCommonInfo'
 import MobileMenuBtn from '@atoms/MobileMenuBtn'
 import SearchBar from '@organisms/SearchBar'
 
-import duck from './ducks'
+import duck from './ducks/index'
 import style from './style'
 
 const cq = {

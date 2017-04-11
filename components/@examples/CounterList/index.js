@@ -4,7 +4,7 @@ import { LocalProvider, connectDuck } from '@libs/lash'
 import Counter from '@examples/Counter'
 import counterDuck from '@examples/Counter/ducks'
 
-import duck from './ducks'
+import duck from './ducks/index'
 import style from './style'
 
 const enhancer = createEnhancer({ duck, style, withLang: false })

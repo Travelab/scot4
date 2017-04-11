@@ -8,7 +8,7 @@ import TravelersSelector from '@molecules/TravelersSelector'
 import DateRangePicker from '@molecules/DateRangePicker'
 import Autocomplete from '@molecules/Autocomplete'
 
-import duck from './ducks'
+import duck from './ducks/index'
 import style from './style'
 
 const cq = {

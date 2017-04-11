@@ -4,6 +4,8 @@
   "description": "Development environment of packages",
   "scripts": {
     "start": "babel-node src/cli/index.js",
+    "dev": "babel-node src/cli/index.js dev",
+    "build": " babel-node src/cli/index.js build",
     "clean": "rimraf lib/*",
     "precompile": "npm run clean",
     "compile": "babel src --out-dir lib --source-maps inline --copy-files --ignore cli/**/templates/*",

@@ -2,7 +2,7 @@ import { range } from 'lodash'
 import { storiesOf, action } from '@kadira/storybook'
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'
 
-import duck from '../ducks'
+import duck from '../ducks/index'
 import TravelabMap from '../index.js'
 
 const containerStyles = { width: 500, height: 400 }

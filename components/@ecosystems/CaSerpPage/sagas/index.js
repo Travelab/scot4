@@ -2,7 +2,7 @@ import obc from '@libs/obc'
 import searchBarSaga from '@organisms/SearchBar/sagas'
 import caSerpOffersViewerSaga from '@ecosystems/CaSerpOffersViewer/sagas'
 import { saga, sagaEffects } from '@libs/lash'
-import { getPath, parseUrlPath } from '../utils'
+import { getPath, parseUrlPath } from '../utils/index'
 
 const { fork, put, call, takeEvery, cancel } = sagaEffects
 const { eventChannel } = saga

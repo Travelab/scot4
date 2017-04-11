@@ -1,6 +1,6 @@
 import { storiesOf, action } from '@kadira/storybook'
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'
-import SerpTabulator from '../'
+import SerpTabulator from '../index'
 
 import SerpTabulator from '../index.js'
 import duck from '../ducks/index.js'

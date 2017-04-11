@@ -2,8 +2,8 @@ import { createEnhancer } from '@utils/decoract'
 import ProgressBar from 'react-progress-bar-plus'
 import 'react-progress-bar-plus/lib/progress-bar.css'
 
-import style from './styles'
-import duck from './ducks'
+import style from './styles/index'
+import duck from './ducks/index'
 
 const enhancer = createEnhancer({
 	duck,

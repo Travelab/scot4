@@ -2,7 +2,7 @@ import { createEnhancer } from '@utils/decoract'
 
 import HotelStars from '@molecules/HotelStars'
 import RoomMealType from '@atoms/RoomMealType'
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	style,

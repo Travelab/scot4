@@ -3,8 +3,8 @@ import { StickyContainer } from '@libs/velcro'
 import { storiesOf, action } from '@kadira/storybook'
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'
 
-import duck from '../ducks'
-import saga from '../sagas'
+import duck from '../ducks/index'
+import saga from '../sagas/index'
 import SerpMap from '../index.js'
 
 obc.setFilter({})

@@ -3,8 +3,8 @@ import { min, max } from 'lodash'
 import { Sticky } from '@libs/velcro'
 import { createEnhancer } from '@utils/decoract'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 import TravelabMap from '@organisms/TravelabMap'
 

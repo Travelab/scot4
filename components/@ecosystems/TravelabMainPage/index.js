@@ -2,8 +2,8 @@ import { StickyContainer } from '@libs/velcro'
 import { createEnhancer } from '@utils/decoract'
 import { makeCX } from '@utils/taffy'
 
-import SearchBar from '../../@organisms/SearchBar'
-import Header from '../Header'
+import SearchBar from '../../@organisms/SearchBar/index'
+import Header from '../Header/index'
 
 import duck from './ducks/index.js'
 import style from './styles/index.js'

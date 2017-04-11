@@ -3,8 +3,8 @@ import { createWrapperDecorator } from '@utils/taffy/storybull-decorators'
 import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator'
 
 import CaIndexPage from '../index.js'
-import duck from '../ducks'
-import saga from '../sagas'
+import duck from '../ducks/index'
+import saga from '../sagas/index'
 
 storiesOf('CaIndexPage', module)
 	.addDecorator(createReduxSagaDecorator(duck, saga))

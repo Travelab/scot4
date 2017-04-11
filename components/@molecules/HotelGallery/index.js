@@ -3,8 +3,8 @@ import ReactSwipe from 'react-swipe'
 import Swipeable from 'react-swipeable'
 import IIDetector from '@utils/ii-detector'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	duck,

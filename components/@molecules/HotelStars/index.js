@@ -2,7 +2,7 @@ import Isvg from 'react-inlinesvg'
 import { compose, injectStyle } from '@utils/decoract'
 import { range } from 'lodash'
 
-import style from './styles'
+import style from './styles/index'
 import starImg from './images/star.svg'
 
 const enhancer = compose(

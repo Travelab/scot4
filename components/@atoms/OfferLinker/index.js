@@ -2,7 +2,7 @@ import { createEnhancer } from '@utils/decoract'
 import { map, each, pick, zipObject } from 'lodash'
 import obc from '@libs/obc'
 
-import style from './styles'
+import style from './styles/index'
 
 
 const enhancer = createEnhancer({

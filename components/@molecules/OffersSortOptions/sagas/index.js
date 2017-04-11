@@ -1,6 +1,6 @@
 import { saga, sagaEffects } from '@libs/lash'
 import obc from '@libs/obc'
-import duck from '../ducks'
+import duck from '../ducks/index'
 
 let offersSortOptionsDitch
 

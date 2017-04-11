@@ -1,7 +1,7 @@
 import obc from '@libs/obc'
 import { saga, sagaEffects } from '@libs/lash'
 
-import duck from '../ducks'
+import duck from '../ducks/index'
 
 const { take, put, call, fork, cancel, cancelled } = sagaEffects
 const { eventChannel } = saga

@@ -4,7 +4,7 @@ import { LocalProvider } from '@libs/lash'
 import SimpleNestedStore from '@examples/SimpleNestedStore'
 import simpleNestedStoreDuck from '@examples/SimpleNestedStore/ducks'
 
-import duck from './ducks'
+import duck from './ducks/index'
 
 const enhancer = createEnhancer({ duck, withLang: false })
 

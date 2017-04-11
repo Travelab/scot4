@@ -2,7 +2,7 @@ import { compose, injectStyle } from '@utils/decoract'
 
 import SerpOfferPrice from '@atoms/SerpOfferPrice'
 import SerpOfferBtn from '@atoms/SerpOfferBtn'
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = compose(
 	injectStyle(style()),

@@ -4,7 +4,7 @@ import HotelRating from '@atoms/HotelRating'
 import HotelDistance from '@atoms/HotelDistance'
 import HotelCommentsCounter from '@atoms/HotelCommentsCounter'
 import HotelFares from '@molecules/HotelFares'
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = compose(
 	injectStyle(style()),

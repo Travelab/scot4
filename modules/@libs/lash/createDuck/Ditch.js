@@ -1,6 +1,6 @@
 import processTransformations from './process-transformations.js'
 import { OrdinaryDitches, ExtraordinaryDitches } from './Ditches.js'
-import { untouch } from '../utils'
+import { untouch } from '../utils/index'
 
 class PreDitch {
 	constructor (options) {

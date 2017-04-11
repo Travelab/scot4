@@ -7,7 +7,7 @@ import HotelRating from '@atoms/HotelRating'
 import HotelQuality from '@molecules/HotelQuality'
 import HotelTitle from '@atoms/HotelTitle'
 import SerpOfferPrice from '@atoms/SerpOfferPrice'
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	style: style(),

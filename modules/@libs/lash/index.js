@@ -4,7 +4,7 @@ import * as reactRedux from 'react-redux'
 import * as saga from 'redux-saga'
 import * as sagaEffects from 'redux-saga/effects'
 
-import { untouch } from './utils'
+import { untouch } from './utils/index'
 import createDuck from './createDuck/index.js'
 import connectDuck from './connectDuck/index.js'
 import configureStore from './configure-store.js'

@@ -4,8 +4,8 @@ import { createReduxSagaDecorator } from '@libs/lash/create-redux-saga-decorator
 import { createWrapperDecorator } from '@utils/taffy/storybull-decorators'
 
 import SerpOffersViewer from '../index.js'
-import duck from '../ducks'
-import saga from '../sagas'
+import duck from '../ducks/index'
+import saga from '../sagas/index'
 
 obc.paginator._limit = 9
 

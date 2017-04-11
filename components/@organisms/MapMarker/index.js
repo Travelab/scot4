@@ -4,7 +4,7 @@ import { compose, injectStyle } from '@utils/decoract'
 import MapPin from '@atoms/MapPin'
 import MapOfferInfo from '@organisms/MapOfferInfo'
 
-import style from './styles'
+import style from './styles/index'
 import crossImg from './images/cross.svg'
 
 const enhancer = compose(

@@ -4,7 +4,7 @@ import CaButton from '@atoms/CaButton'
 import LoadingSpinner from '@atoms/LoadingSpinner'
 
 import style from './styles/index.js'
-import duck from './ducks'
+import duck from './ducks/index'
 
 const cq = {
 	t414: {

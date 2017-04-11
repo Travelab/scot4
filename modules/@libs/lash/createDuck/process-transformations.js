@@ -1,6 +1,6 @@
 import { forEach, get, snakeCase } from 'lodash'
 
-import { untouch } from '../utils'
+import { untouch } from '../utils/index'
 
 import createAction from './create-action.js'
 

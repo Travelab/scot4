@@ -1,6 +1,6 @@
 import { createEnhancer } from '@utils/decoract'
 
-import style from './styles'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	style: style(),

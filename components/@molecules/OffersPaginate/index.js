@@ -3,8 +3,8 @@ import {default as ReactPaginate} from '@libs/react-pagination'
 import { isEmpty } from 'lodash'
 import { createEnhancer } from '@utils/decoract'
 
-import duck from './ducks'
-import style from './styles'
+import duck from './ducks/index'
+import style from './styles/index'
 
 const enhancer = createEnhancer({
 	duck,
