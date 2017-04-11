@@ -9,10 +9,13 @@ Promise.all([
   System.import('duck'),
   System.import('saga')
 ])
-  .then(([duck, saga]) => {
+  .then(([duckImport, sagaImport]) => {
+    // TODO: maybe refactor
+    const duck = duckImport.default
+    const saga = sagaImport.default
+
     const ditch = duck.makeDitch()
     const store = configureStore(ditch.reducer, ditch.initialState)
-
     if ( saga ) {
       store.runSaga(saga.bind(saga, ditch))
     }
