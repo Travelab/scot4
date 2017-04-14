@@ -1,17 +1,19 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import {ifProd} from './utils'
 
 export default (
-	{
-		title = 'React Workbench',
-		templatePath = ''
-	} = {}
-) => ifProd({
-	plugins: [
-		new HtmlWebpackPlugin({
-			title,
-			inject: true,
-			template: templatePath
-		})
-	]
-}, null)
+  {
+    title = 'React Workbench',
+    template = '',
+  } = {}
+) => {
+  console.log('Template: ', template)
+  return {
+    plugins: [
+      new HtmlWebpackPlugin({
+        title,
+        inject: true,
+        template: template
+      })
+    ]
+  }
+}

@@ -4,8 +4,6 @@ import {
 	entryDirectPath,
 	entryStorybullPath,
 } from '../../path'
-import {ifProd} from './utils'
-
 
 export default (
 	{ 
@@ -13,7 +11,17 @@ export default (
     checkoutStorybook
 	} = {}
 ) => {
-  if ( !checkoutStorybook ) {
+  if ( !checkoutStorybook || process.env.NODE_ENV === 'production' ) {
+    const entryIndex = path.join(rootComponent, 'entry', 'index.js')
+    if ( fs.existsSync(entryIndex) ) {
+      return {
+        entry: {
+          common: entryIndex
+        },
+        resolve: {}
+      }
+    }
+
     return {
       entry: {
         common: entryDirectPath
@@ -28,18 +36,9 @@ export default (
     }
   }
 
-  return ifProd({
-    entry: {
-      bundle: entryDirectPath
-    },
-    resolve: {
-      alias: {
-        'root-component': rootComponent
-      }
-    }
-  }, {
+  return {
     entry: {
       preview: [require.resolve(entryStorybullPath)],
     }
-  })
+  }
 }
