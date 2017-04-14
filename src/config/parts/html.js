@@ -6,13 +6,12 @@ export default (
     template = '',
   } = {}
 ) => {
-  console.log('Template: ', template)
   return {
     plugins: [
       new HtmlWebpackPlugin({
         title,
         inject: true,
-        template: template
+        template: template,
       })
     ]
   }
