@@ -58,7 +58,7 @@ export default (
 
 	const config = merge(
 		sourceMap(),
-		entry({ rootComponent, checkoutStorybook }),
+    entry({ rootComponent, checkoutStorybook }),
 
 		babel({ include: includePath, basePath: buildPath }),
 		style({ include: includePath }),
@@ -76,5 +76,5 @@ export default (
 		common
 	)
 
-	return config
+	return {config, templatePath}
 }
