@@ -93,7 +93,10 @@ export default class extends Base {
 	}
 
 	end () {
-    const config = loadConfig({
+    const {
+      config,
+      templatePath
+    } = loadConfig({
       componentPath: this.component,
       checkoutLinter: this.linter,
       checkoutStorybook: this.storybook
@@ -102,6 +105,7 @@ export default class extends Base {
 		startServer({
       port: this.port,
       webpackConfig: config,
+      templatePath, templatePath,
       checkoutStorybook: this.storybook
     }).then(open)
 	}

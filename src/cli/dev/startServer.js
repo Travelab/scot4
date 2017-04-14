@@ -78,6 +78,7 @@ const defaultHotMiddlewareConfig = {
 export default ({
   host,
   port,
+  templatePath,
   webpackConfig,
   checkoutStorybook
 }) => {
@@ -106,7 +107,13 @@ export default ({
       publicPath
     }))
     app.use(webpackHotMiddleware(compiler, defaultHotMiddlewareConfig))
-    app.get('/', (req, res) => res.send(createHtml(publicPath)))
+    app.get('/', (req, res) => {
+      if ( templatePath ) {
+        res.sendFile(templatePath)
+      } else {
+        res.send(createHtml(publicPath))
+      }
+    })
   }
 
   return Promise.promisify(app.listen, { context: app })(...listenAddr)
