@@ -11,10 +11,11 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import createHtml from './createHtml'
 
 const defaultDevMiddlewareConfig = {
-  noInfo: false,
   quite: true,
+  noInfo: false,
   compress: true,
   clientLogLevel: 'none',
+  historyApiFallback: true,
   watchOptions: {
     ignored: /node_modules/
   },
