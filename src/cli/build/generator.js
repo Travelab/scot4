@@ -83,12 +83,15 @@ export default class extends Base {
   }
 
   end () {
-    const config = loadConfig({
+    const {
+      config,
+      templatePath
+    } = loadConfig({
       componentPath: this.component,
       checkoutLinter: false
     })
-    const compiler = webpack(config)
 
+    const compiler = webpack(config)
     const remove = Promise.promisify(rimraf)
     const build = Promise.promisify(compiler.run, { context: compiler })
 
