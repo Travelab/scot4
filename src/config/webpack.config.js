@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
@@ -49,6 +50,12 @@ export default (
 ) => {
 	const rootComponent = path.join(packagesPath, componentPath)
 
+	const entryHTML = path.join(rootComponent, 'entry', 'index.html')
+	let templatePath = entryHtmlPath
+	if ( fs.existsSync(entryHTML) ) {
+	  templatePath = entryHTML
+	}
+
 	const config = merge(
 		sourceMap(),
 		entry({ rootComponent, checkoutStorybook }),
@@ -57,7 +64,7 @@ export default (
 		style({ include: includePath }),
 		image({ include: includePath }),
 		svg({ include: includePath }),
-		html({ templatePath: entryHtmlPath }),
+		html({ template: templatePath }),
 		
 		checkoutLinter && linter({ include: rootComponent }),
 		checkoutStorybook && component({ include: includePath, componentPath }),
