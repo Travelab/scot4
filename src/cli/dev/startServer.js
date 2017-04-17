@@ -1,5 +1,3 @@
-import { Router } from 'express';
-
 import chalk from 'chalk'
 import express from 'express'
 import coolTrim from 'cool-trim'
@@ -102,12 +100,13 @@ export default ({
   } else {
     const compiler = webpack(webpackConfig)
     const publicPath = webpackConfig.output.publicPath
+
     app.use(webpackDevMiddleware(compiler, {
       ...defaultDevMiddlewareConfig,
       publicPath
     }))
     app.use(webpackHotMiddleware(compiler, defaultHotMiddlewareConfig))
-    app.get('/', (req, res) => {
+    app.get('*', (req, res) => {
       if ( templatePath ) {
         res.sendFile(templatePath)
       } else {
