@@ -6,13 +6,17 @@ export default (
     template = '',
   } = {}
 ) => {
-  return {
-    plugins: [
-      new HtmlWebpackPlugin({
-        title,
-        inject: true,
-        template: template,
-      })
-    ]
+  if ( template ) {
+    return {
+      plugins: [
+        new HtmlWebpackPlugin({
+          title,
+          inject: true,
+          template: template,
+        })
+      ]
+    }
   }
+
+  return {}
 }

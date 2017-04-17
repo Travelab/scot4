@@ -51,7 +51,7 @@ export default (
 	const rootComponent = path.join(packagesPath, componentPath)
 
 	const entryHTML = path.join(rootComponent, 'entry', 'index.html')
-	let templatePath = entryHtmlPath
+	let templatePath = (process.env.NODE_ENV === 'production') ? entryHTML : ''
 	if ( fs.existsSync(entryHTML) ) {
 	  templatePath = entryHTML
 	}
