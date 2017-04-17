@@ -91,7 +91,7 @@
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0",
     "webpack-parallel-uglify-plugin": "^0.4.1",
-    "write-pkg": "^2.1.0",
+    "write-pkg": "^3.0.0",
     "yeoman-environment": "^1.6.6",
     "yeoman-generator": "^1.1.1"
   },
