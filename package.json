@@ -49,6 +49,7 @@
     "caporal": "^0.4.1",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
+    "connect-history-api-fallback": "^1.3.0",
     "cool-trim": "^1.1.1",
     "css-loader": "^0.28.0",
     "email-validator": "^1.0.7",
