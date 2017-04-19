@@ -48,7 +48,7 @@ commander
 	})
 
 commander
-	.command('build-ci <componentName>')
+	.command('build-ci [componentName]')
 	.description('Build a for ci environment')
 	.action((componentName) => {
 		process.env.NODE_ENV = 'production'

@@ -1,23 +1,42 @@
+import fs from 'fs'
 import path from 'path'
 import glob from 'glob'
 import chalk from 'chalk'
 import rimraf from 'rimraf'
 import webpack from 'webpack'
 import loadConfig from '../../config/webpack.config.js'
-import { buildPath, packagesPath } from '../../path'
+import { buildPath, packagesPath, defaultCIConfig } from '../../path'
 import { setShared, normalizePath } from '../../utils'
 
 const logger = console.log
 export default (componentName) => {
 	const availableComponents = glob.sync('@*/*', { cwd: packagesPath })
 
-	const component = normalizePath(componentName, packagesPath)
-	if (!availableComponents.includes(component)) {
-		logger(chalk.red(`Component ${componentName} not found in ${packagesPath}`))
-		return
-	}
+  if ( componentName === undefined ) {
+    if ( fs.existsSync(defaultCIConfig) ) {
+      componentName = fs.readFileSync(defaultCIConfig, 'utf-8')
+      if ( componentName === '' ) {
+        logger(chalk.red(`Default file empty. Set default component path`))
+        return
+      }
+    } else {
+      logger(chalk.red(`Default file not found. Create .ci-cofig`))
+      return
+    }
+  }
 
-  const config = loadConfig({
+  const component = normalizePath(componentName, packagesPath)
+  if (!availableComponents.includes(component)) {
+    logger(chalk.red(`Component ${component} not found in ${packagesPath}`))
+    return
+  }
+
+  console.log(component)
+
+  const {
+    config,
+    templatePath
+  } = loadConfig({
     componentPath: component,
     checkoutLinter: false
   })
