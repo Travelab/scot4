@@ -8,6 +8,8 @@ export const modulesPath = path.join(cliBase, 'modules')
 export const packagesPath = path.join(cliBase, 'components')
 export const buildPath = path.join(cliBase, 'build')
 
+export const defaultCIConfig = path.join(cliBase, '.ci-config')
+
 export const entryPath = path.join(packagesPath, 'entry')
 export const entryHtmlPath = path.join(entryPath, 'index.html')
 export const entryDirectPath = path.join(entryPath, 'direct.js')
