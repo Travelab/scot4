@@ -1,7 +1,7 @@
 import path from 'path'
 
 export const normalizePath = (component, packagesPath) => {
-  let componentPath = component.toString()
+  let componentPath = component.toString().trim()
 
   // replace components path
   componentPath = componentPath.replace(`${path.basename(packagesPath)}${path.sep}`, '')

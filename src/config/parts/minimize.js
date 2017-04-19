@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import ArchivePlugin from 'webpack-archive-plugin'
 import {ifProd} from './utils'
 
 export default () => ifProd({
@@ -26,6 +27,11 @@ export default () => ifProd({
 			},
 			sourceMap: false
 		}),
+
+		new ArchivePlugin({
+			output: 'build/build',
+			format: 'tar',
+		})
 	]
 }, {
 	plugins: [
