@@ -79,7 +79,7 @@ export default class extends Base {
       const component = normalizePath(componentName, packagesPath)
 
       if (!availableComponents.includes(component)) {
-		    this.log(chalk.red(`Component ${component} not found in ${packagesPath}`))
+        this.log(chalk.red(`Component ${component} not found in ${packagesPath}`))
         return this._promptComponent(availableComponents)
       }
 
