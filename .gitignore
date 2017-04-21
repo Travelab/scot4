@@ -3,6 +3,8 @@
 /build
 .idea
 __vendor
+components/
+modules/
 
 # Yeoman configuration
 /.yo-rc.json
