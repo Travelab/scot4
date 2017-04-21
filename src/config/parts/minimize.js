@@ -26,11 +26,6 @@ export default () => ifProd({
 				screw_ie8: true,
 			},
 			sourceMap: false
-		}),
-
-		new ArchivePlugin({
-			output: 'build/build',
-			format: 'tar',
 		})
 	]
 }, {
