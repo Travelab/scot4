@@ -27,9 +27,6 @@ export default () => ifProd(
             loader: 'style-loader',
           }, {
             loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
           }]
         }
       ]
