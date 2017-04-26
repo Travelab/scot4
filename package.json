@@ -128,7 +128,7 @@
     "react-day-picker": "^5.2.3",
     "react-inlinesvg": "^0.5.5",
     "react-jss": "^6.1.1",
-    "react-motion": "^0.4.8",
+    "react-motion": "^0.5.0",
     "react-progress-bar-plus": "^1.2.0",
     "react-redux": "^5.0.4",
     "react-sticky": "^5.0.8",
