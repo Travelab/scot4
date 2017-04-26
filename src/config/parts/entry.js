@@ -22,8 +22,6 @@ export default (
       }
     }
 
-    console.log('Root: ', rootComponent)
-
     return {
       entry: {
         common: entryDirectPath

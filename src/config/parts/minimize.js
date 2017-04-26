@@ -1,5 +1,5 @@
 import webpack from 'webpack'
-import ArchivePlugin from 'webpack-archive-plugin'
+import TarGzPlugin from 'webpack-tar-gz-plugin'
 import {ifProd} from './utils'
 
 export default () => ifProd({
@@ -26,7 +26,7 @@ export default () => ifProd({
 				screw_ie8: true,
 			},
 			sourceMap: false
-		})
+		}),
 	]
 }, {
 	plugins: [

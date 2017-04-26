@@ -46,8 +46,8 @@ export default (
 						}],
 						require.resolve('babel-plugin-react-require'),
 						[require.resolve('babel-plugin-transform-runtime'), {
-							helpers: false,
-							polyfill: false,
+							helpers: true,
+							polyfill: true,
 							regenerator: true,
 							moduleName: path.dirname(require.resolve('babel-runtime/package'))
 						}]
