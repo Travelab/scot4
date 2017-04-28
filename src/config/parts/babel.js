@@ -29,7 +29,8 @@ export default (
 								ie: 9,
 								uglify: true,
 							},
-							useBuiltIns: false,
+							loose: true,
+							useBuiltIns: true,
 							modules: false
 						}],
 						require.resolve('babel-preset-react'),
