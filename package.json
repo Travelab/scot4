@@ -131,7 +131,7 @@
     "react-motion": "^0.4.8",
     "react-progress-bar-plus": "^1.2.0",
     "react-redux": "^5.0.4",
-    "react-sticky": "^5.0.8",
+    "react-sticky": "^6.0.0",
     "react-swipe": "^5.0.7",
     "react-swipeable": "^3.9.2",
     "react-tooltip": "^3.3.0",
