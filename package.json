@@ -119,7 +119,7 @@
     "lodash": "^4.17.4",
     "mousetrap": "^1.6.1",
     "navigo": "^4.6.2",
-    "normalize.css": "^6.0.0",
+    "normalize.css": "^7.0.0",
     "popper.js": "^1.8.2",
     "qs": "^6.4.0",
     "react-addons-create-fragment": "^15.5.3",
