@@ -15,4 +15,7 @@ export const entryHtmlPath = path.join(entryPath, 'index.html')
 export const entryDirectPath = path.join(entryPath, 'direct.js')
 export const entryStorybullPath = path.join(entryPath, 'storybull.js')
 
+export const buildFavicon = 'favicons'
+export const entryFaviconPath = path.join(entryPath, 'favicons')
+
 export default path

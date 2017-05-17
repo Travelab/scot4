@@ -1,19 +1,19 @@
 import path from 'path'
 import fs from 'fs'
 import {
-	entryDirectPath,
-	entryStorybullPath,
+  entryDirectPath,
+  entryStorybullPath,
 } from '../../path'
 
 export default (
-	{ 
+  {
     rootComponent,
     checkoutStorybook
 	} = {}
 ) => {
-  if ( !checkoutStorybook || process.env.NODE_ENV === 'production' ) {
+  if (!checkoutStorybook || process.env.NODE_ENV === 'production') {
     const entryIndex = path.join(rootComponent, 'entry', 'index.js')
-    if ( fs.existsSync(entryIndex) ) {
+    if (fs.existsSync(entryIndex)) {
       return {
         entry: {
           common: entryIndex

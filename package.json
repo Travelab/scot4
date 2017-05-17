@@ -34,7 +34,6 @@
     "babel-core": "^6.24.1",
     "babel-loader": "v7.0.0",
     "babel-plugin-lodash": "^3.2.11",
-    "babel-plugin-prejss": "^0.0.5",
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -51,6 +50,7 @@
     "commander": "^2.9.0",
     "connect-history-api-fallback": "^1.3.0",
     "cool-trim": "^1.1.1",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "email-validator": "^1.0.7",
     "eslint": "^3.19.0",
@@ -149,13 +149,6 @@
       "paths": {
         "modulesStub": "components"
       }
-    }
-  },
-  "postcss": {
-    "parser": "sugarss",
-    "map": false,
-    "plugins": {
-      "precss": {}
     }
   },
   "eslintConfig": {

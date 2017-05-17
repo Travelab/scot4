@@ -6,7 +6,7 @@ export default (
     template = '',
   } = {}
 ) => {
-  if ( template ) {
+  if (template) {
     return {
       plugins: [
         new HtmlWebpackPlugin({

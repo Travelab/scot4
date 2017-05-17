@@ -1,9 +1,9 @@
 export default (
-	{ 
+  {
 		include
 	} = {}
 ) => ({
-	module: {
+  module: {
     rules: [{
       test: /\.(gif|ico|jpe?g|png)$/,
       include, exclude: /node_modules/,

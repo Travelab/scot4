@@ -27,17 +27,16 @@ export default (
 						[require.resolve('babel-preset-env'), {
 							targets: {
 								ie: 9,
-								uglify: true,
+								uglify: true
 							},
 							loose: true,
-							useBuiltIns: true,
+							useBuiltIns: false,
 							modules: false
 						}],
 						require.resolve('babel-preset-react'),
 						require.resolve('babel-preset-bluebird')
 					],
 					plugins: [
-						require.resolve('babel-plugin-prejss'),
 						require.resolve('babel-plugin-transform-class-properties'),
 						[require.resolve('babel-plugin-transform-object-rest-spread'), {
 							useBuiltIns: true
@@ -47,8 +46,8 @@ export default (
 						}],
 						require.resolve('babel-plugin-react-require'),
 						[require.resolve('babel-plugin-transform-runtime'), {
-							helpers: true,
-							polyfill: true,
+							helpers: false,
+							polyfill: false,
 							regenerator: true,
 							moduleName: path.dirname(require.resolve('babel-runtime/package'))
 						}]

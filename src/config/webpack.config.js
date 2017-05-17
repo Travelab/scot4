@@ -6,10 +6,10 @@ import {
 	buildPath,
 	modulesPath,
 	packagesPath,
+	buildFavicon,
 	entryHtmlPath,
 	nodeModulesPath,
-	entryDirectPath,
-	entryStorybullPath,
+	entryFaviconPath,
 } from '../path'
 
 import svg from './parts/svg'
@@ -19,6 +19,7 @@ import entry from './parts/entry'
 import babel from './parts/babel'
 import style from './parts/style'
 import image from './parts/image'
+import favicon from './parts/favicon'
 import linter from './parts/linter'
 import error from './parts/error'
 import minimize from './parts/minimize'
@@ -69,6 +70,7 @@ export default (
 		checkoutLinter && linter({ include: rootComponent }),
 		checkoutStorybook && component({ include: includePath, componentPath }),
 
+		favicon({ from: `${entryFaviconPath}/*`, to: buildFavicon }),
 		minimize(),
 		progress(),
 		hmr(),
