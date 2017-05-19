@@ -6,7 +6,7 @@ export default class extends Base {
 	copy (src, dest) {
 		this.fs.copyTpl(
 			this.templatePath(src),
-			this.destinationPath(dest|| src),
+			this.destinationPath(dest || src),
 			this.context
 		)
 	}

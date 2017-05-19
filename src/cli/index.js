@@ -7,7 +7,6 @@ import dev from './dev'
 import build from './build'
 import buildCI from './buildCI'
 import linter from './linter'
-import update from './update'
 
 // Some basic process setup
 bootstrap('scot4', 'SCOT4')
@@ -59,11 +58,6 @@ commander
 	.command('lint [componentName]')
 	.description('Build a specific environment')
 	.action(linter)
-
-commander
-	.command('update')
-	.description('Update dependencies for component\'s')
-	.action(update)
 
 commander.parse(process.argv)
 

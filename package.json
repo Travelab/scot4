@@ -29,7 +29,6 @@
   "homepage": "https://github.com/Travelab/scot4",
   "dependencies": {
     "@kadira/storybook": "https://github.com/Travelab/react-storybook.git",
-    "@knit/knit": "^0.4.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "v7.0.0",
@@ -143,13 +142,6 @@
     "store": "^2.0.4",
     "superagent": "^3.5.2",
     "timezone": "^1.0.6"
-  },
-  "knit": {
-    "needle": {
-      "paths": {
-        "modulesStub": "components"
-      }
-    }
   },
   "eslintConfig": {
     "extends": "tl3"

@@ -34,7 +34,7 @@ export default (
 							modules: false
 						}],
 						require.resolve('babel-preset-react'),
-						require.resolve('babel-preset-bluebird')
+						require.resolve('babel-preset-bluebird'),
 					],
 					plugins: [
 						require.resolve('babel-plugin-transform-class-properties'),
