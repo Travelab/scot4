@@ -2,7 +2,6 @@ import yo from '../../yo-yo'
 import Generator from './generator.js'
 
 export default (componentName) => {
-
 	yo([
 		{
 			name: 'create',
@@ -10,5 +9,4 @@ export default (componentName) => {
 			options: { componentName }
 		}
 	])
-
 }

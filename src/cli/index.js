@@ -25,13 +25,13 @@ commander
   .action((componentName, lint, story) => {
 		process.env.NODE_ENV = 'development'
 
-	  if ( lint === 'lint' || lint === 'l' ) {
+	  if (lint === 'lint' || lint === 'l') {
 		  lint = 'lint'
-	  } else if ( lint === 'story' || lint === 's' ) {
+	  } else if (lint === 'story' || lint === 's') {
 		  lint = 'story'
 	  }
 
-	  if (story === 'story' || story === 's' ) {
+	  if (story === 'story' || story === 's') {
 		  story = 'story'
 	  }
 

@@ -2,7 +2,6 @@ import yo from '../../yo-yo'
 import Generator from './generator.js'
 
 export default (componentName, needTestServer) => {
-
 	yo([
 		{
 			name: 'build',
@@ -10,5 +9,4 @@ export default (componentName, needTestServer) => {
 			options: { componentName, needTestServer }
 		}
 	])
-
 }

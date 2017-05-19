@@ -1,16 +1,12 @@
-/**
- * Created by menscrem on 01.04.17.
- */
 import path from 'path'
 import glob from 'glob'
 import chalk from 'chalk'
 import autocomplete from 'inquirer-autocomplete-prompt'
 
-import { nodeModulesPath, packagesPath } from '../../path'
+import { packagesPath } from '../../path'
 import { Base } from '../../yo-yo'
 import { normalizePath } from '../../utils'
-import {exec} from 'shelljs'
-import {execute} from 'eslint-nibble'
+import { execute } from 'eslint-nibble'
 
 export default class extends Base {
 

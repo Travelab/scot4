@@ -2,7 +2,6 @@ import Base from 'yeoman-generator'
 import { cliBase } from '../path'
 
 export default class extends Base {
-
 	copy (src, dest) {
 		this.fs.copyTpl(
 			this.templatePath(src),
@@ -12,7 +11,6 @@ export default class extends Base {
 	}
 
 	getConfig (key) {
-
 		const prev = this.destinationRoot()
 
 		this.destinationRoot(cliBase)
@@ -23,7 +21,6 @@ export default class extends Base {
 	}
 
 	setConfig (key, val) {
-
 		const prev = this.destinationRoot()
 
 		this.destinationRoot(cliBase)

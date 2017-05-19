@@ -5,37 +5,37 @@ import Base from './base.js'
 import Pre from './pre.js'
 import Post from './post.js'
 
-const gn = (name) => (`${baseName}:${name}`)
-
-const baseName = 'scot4'
-const preName = gn('pre')
-const postName = gn('post')
+const BASE_NAME = 'scot4'
+const postfix = (name) => (`${BASE_NAME}:${name}`)
+const PRE_NAME = postfix('pre')
+const POST_NAME = postfix('post')
 
 const yo = (generators = []) => {
-
-	if (!Array.isArray(generators))
-		return console.log(chalk.red('Generators should be Array type'))
+	if (!Array.isArray(generators)) {
+		const errorMessage = 'Generators should be Array type'
+		throw new Error(chalk.red(errorMessage))
+	}
 
 	const env = yeoman.createEnv()
-	env.registerStub(Pre, preName)
-	env.registerStub(Post, postName)
+	env.registerStub(Pre, PRE_NAME)
+	env.registerStub(Post, POST_NAME)
 
 	class Entry extends Base {
 		initializing () {
-			this.composeWith(preName)
+			this.composeWith(PRE_NAME)
 			generators.forEach((gen) => {
-        const { name, generator, options } = gen
-        const namespace = gn(name)
+				const { name, generator, options } = gen
+				const namespace = postfix(name)
 
-        env.registerStub(generator, namespace)
-        this.composeWith(namespace, options)
+				env.registerStub(generator, namespace)
+				this.composeWith(namespace, options)
 			})
-			this.composeWith(postName)
+			this.composeWith(POST_NAME)
 		}
 	}
 
-  env.registerStub(Entry, baseName)
-	env.run(baseName)
+	env.registerStub(Entry, BASE_NAME)
+	env.run(BASE_NAME)
 }
 
 export {

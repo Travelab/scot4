@@ -1,4 +1,3 @@
-import path from 'path'
 import glob from 'glob'
 import open from 'open'
 import chalk from 'chalk'
@@ -9,7 +8,7 @@ import webpack from 'webpack'
 import loadConfig from '../../config/webpack.config.js'
 import selectPort from './selectPort'
 import startServer from './startServer'
-import { buildPath, entryDirectPath, packagesPath } from '../../path'
+import { buildPath, packagesPath } from '../../path'
 import { Base } from '../../yo-yo'
 import { normalizePath } from '../../utils'
 

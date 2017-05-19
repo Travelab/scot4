@@ -3,7 +3,7 @@ import glob from 'glob'
 import { Base } from '../../yo-yo'
 import { upperFirst, camelCase, kebabCase } from 'lodash'
 
-import path, { cliBase, packagesPath } from '../../path'
+import path, { packagesPath } from '../../path'
 const templatesPath = path.join(__dirname, 'templates')
 
 const params = {
@@ -167,4 +167,3 @@ export default class extends Base {
 	}
 
 }
-

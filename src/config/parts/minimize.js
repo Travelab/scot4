@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import TarGzPlugin from 'webpack-tar-gz-plugin'
-import {ifProd} from './utils'
+import { ifProd } from './utils'
 
 export default () => ifProd({
 	plugins: [

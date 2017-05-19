@@ -1,12 +1,11 @@
 import fs from 'fs'
-import path from 'path'
 import glob from 'glob'
 import chalk from 'chalk'
 import rimraf from 'rimraf'
 import webpack from 'webpack'
 import loadConfig from '../../config/webpack.config.js'
 import { buildPath, packagesPath, defaultCIConfig } from '../../path'
-import { setShared, normalizePath } from '../../utils'
+import { normalizePath } from '../../utils'
 
 const logger = console.log
 export default (componentName) => {
@@ -30,8 +29,6 @@ export default (componentName) => {
     logger(chalk.red(`Component ${component} not found in ${packagesPath}`))
     return
   }
-
-  console.log(component)
 
   const {
     config,
