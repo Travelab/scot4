@@ -16,7 +16,7 @@ export default (
     if (fs.existsSync(entryIndex)) {
       return {
         entry: {
-          common: entryIndex
+          common: entryIndex,
         },
         resolve: {}
       }
@@ -24,7 +24,7 @@ export default (
 
     return {
       entry: {
-        common: entryDirectPath
+        common: entryDirectPath,
       },
       resolve: {
         alias: {
@@ -38,7 +38,7 @@ export default (
 
   return {
     entry: {
-      preview: [require.resolve(entryStorybullPath)],
-    }
+      preview: require.resolve(entryStorybullPath),
+   }
   }
 }

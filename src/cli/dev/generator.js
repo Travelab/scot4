@@ -6,67 +6,66 @@ import autocomplete from 'inquirer-autocomplete-prompt'
 import loadConfig from '../../config/webpack.config.js'
 import selectPort from './selectPort'
 import startServer from './startServer'
-import path, { packagesPath } from '../../path'
+import { packagesPath } from '../../path'
 import { Base } from '../../yo-yo'
 import { normalizePath } from '../../utils'
 
 export default class extends Base {
+	constructor (args, opts) {
+		super(args, opts)
 
-  constructor (args, opts) {
-    super(args, opts)
+		this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
+	}
 
-    this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
-  }
+	_promptComponent (availableComponents) {
+		const choicesComponents = availableComponents.map((component) => {
+			const [ folder, name ] = component.split('/')
 
-  _promptComponent(availableComponents) {
-    const choicesComponents = availableComponents.map((component) => {
-      const [ folder, name ] = component.split('/')
+			return {
+				name: `${name} ${chalk.gray(folder)}`,
+				short: name,
+				value: component
+			}
+		})
 
-      return {
-        name: `${name} ${chalk.gray(folder)}`,
-        short: name,
-        value: component
-      }
-    })
-
-    const chooser = (answers, input) => Promise.resolve(
+		const chooser = (answers, input) => Promise.resolve(
       input
         ? choicesComponents.filter((c) => ~c.value.indexOf(input))
         : choicesComponents
     )
 
-    const prompts = [
-      {
-        type: 'autocomplete',
-        name: 'component',
-        message: `Which ${chalk.yellow('component')} do you want to dev?`,
-        source: chooser,
-      },
-      {
-        type: 'confirm',
-        name: 'needStorybook',
-        message: `Do you need use storybook?`,
-        default: true
-      },
-      {
-        type: 'confirm',
-        name: 'needLinter',
-        message: `Do you need use eslint for find errors?`,
-        default: false
-      }
-    ]
+		const prompts = [
+			{
+				type: 'autocomplete',
+				name: 'component',
+				message: `Which ${chalk.yellow('component')} do you want to dev?`,
+				source: chooser,
+			},
+			{
+				type: 'confirm',
+				name: 'needStorybook',
+				message: 'Do you need use storybook?',
+				default: true
+			},
+			{
+				type: 'confirm',
+				name: 'needLinter',
+				message: 'Do you need use eslint for find errors?',
+				default: false
+			}
+		]
 
-    return Promise
+		return Promise
       .all([
-        selectPort(),
-        this.prompt(prompts)
+	      selectPort(),
+	      this.prompt(prompts)
       ])
       .then(([ port, answers ]) => {
-        this.port = port
-        this.component = answers.component
-        this.linter = answers.needLinter
-        this.storybook = answers.needStorybook
-      })
+	      this.port = port
+	      this.component = answers.component
+	      this.linter = answers.needLinter
+	      this.storybook = answers.needStorybook
+    })
   }
 
 	prompting () {
@@ -105,7 +104,7 @@ export default class extends Base {
 		startServer({
       port: this.port,
       webpackConfig: config,
-      templatePath, templatePath,
+      templatePath: templatePath,
       checkoutStorybook: this.storybook
     }).then(open)
 	}

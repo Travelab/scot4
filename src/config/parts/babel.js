@@ -24,39 +24,41 @@ export default (
 					babelrc: false,
 					cacheDirectory: true,
 					presets: [
-						[require.resolve('babel-preset-env'), {
-							targets: {
-								ie: 9,
-								uglify: true
-							},
-							loose: true,
-							useBuiltIns: false,
-							modules: false
-						}],
+						[
+							require.resolve('babel-preset-env'), {
+								targets: {
+									ie: 9,
+								},
+								modules: false
+							}
+						],
 						require.resolve('babel-preset-react'),
-						require.resolve('babel-preset-bluebird'),
 					],
 					plugins: [
 						require.resolve('babel-plugin-transform-class-properties'),
-						[require.resolve('babel-plugin-transform-object-rest-spread'), {
-							useBuiltIns: true
-						}],
-						[require.resolve('babel-plugin-lodash'), {
-							id: ['lodash', 'recompose']
-						}],
+						require.resolve('babel-plugin-transform-object-rest-spread'),
+						require.resolve('babel-plugin-transform-async-to-bluebird'),
+						require.resolve('babel-plugin-transform-promise-to-bluebird'),
+						[
+							require.resolve('babel-plugin-lodash'), {
+								id: [ 'lodash', 'recompose' ]
+							}
+						],
 						require.resolve('babel-plugin-react-require'),
-						[require.resolve('babel-plugin-transform-runtime'), {
-							helpers: false,
-							polyfill: false,
-							regenerator: true,
-							moduleName: path.dirname(require.resolve('babel-runtime/package'))
-						}]
+						[
+							require.resolve('babel-plugin-transform-runtime'), {
+								helpers: false,
+								polyfill: false,
+								regenerator: true,
+								moduleName: path.dirname(require.resolve('babel-runtime/package'))
+							}
+						],
 					]
 				}
 			}]
 		}]
 	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: [ '.js', '.jsx' ]
 	}
 })

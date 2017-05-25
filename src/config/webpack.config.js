@@ -27,14 +27,14 @@ import progress from './parts/progress'
 import component from './parts/component'
 import sourceMap from './parts/sourceMaps'
 
-const includePath = [packagesPath, modulesPath]
+const includePath = [ packagesPath, modulesPath ]
 
 const common = {
 	plugins: [
 		new webpack.NamedModulesPlugin(),
 	],
 	resolve: {
-		modules: [nodeModulesPath, packagesPath, modulesPath],
+		modules: [ nodeModulesPath, packagesPath, modulesPath ],
 		unsafeCache: true
 	},
 	performance: {
@@ -62,7 +62,7 @@ export default (
     entry({ rootComponent, checkoutStorybook }),
 
 		babel({ include: includePath, basePath: buildPath }),
-		style({ include: includePath }),
+		style({ include: [ nodeModulesPath, ...includePath ] }),
 		image({ include: includePath }),
 		svg({ include: includePath }),
 		html({ template: templatePath }),
