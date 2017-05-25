@@ -1,4 +1,6 @@
 # scot4
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Travelab/scot4.svg)](https://greenkeeper.io/)
 Тулза помогающая разрабатывать пакеты: компоненты, утилиты и модули разного рода.
 
 ## Установка
