@@ -8,18 +8,18 @@ import { buildPath, packagesPath, defaultCIConfig } from '../../path'
 import { normalizePath } from '../../utils'
 
 const logger = console.log
-export default (componentName) => {
-	const availableComponents = glob.sync('@*/*', { cwd: packagesPath })
+export default componentName => {
+  const availableComponents = glob.sync('@*/*', { cwd: packagesPath })
 
-  if ( componentName === undefined ) {
-    if ( fs.existsSync(defaultCIConfig) ) {
+  if (componentName === undefined) {
+    if (fs.existsSync(defaultCIConfig)) {
       componentName = fs.readFileSync(defaultCIConfig, 'utf-8')
-      if ( componentName === '' ) {
-        logger(chalk.red(`Default file empty. Set default component path`))
+      if (componentName === '') {
+        logger(chalk.red('Default file empty. Set default component path'))
         return
       }
     } else {
-      logger(chalk.red(`Default file not found. Create .ci-cofig`))
+      logger(chalk.red('Default file not found. Create .ci-config'))
       return
     }
   }
@@ -30,10 +30,7 @@ export default (componentName) => {
     return
   }
 
-  const {
-    config,
-    templatePath
-  } = loadConfig({
+  const { config } = loadConfig({
     componentPath: component,
     checkoutLinter: false
   })
@@ -44,7 +41,6 @@ export default (componentName) => {
 
   return remove(buildPath)
     .then(() => build())
-   	// TODO: add more info
-    .then(() => logger(chalk.yellow.bold(`All done. Build create! ;)\n`)))
-    .catch((err) => logger(chalk.red(err)))
+    .then(() => logger(chalk.yellow.bold('All done. Build create! ;)\n')))
+    .catch(err => logger(chalk.red(err)))
 }

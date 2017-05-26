@@ -80,14 +80,13 @@ export default ({
   webpackConfig,
   checkoutStorybook
 }) => {
+  const listenAddr = [port]
 
-	const listenAddr = [ port ]
+  if (host) {
+    listenAddr.push(host)
+  }
 
-	if (host) {
-		listenAddr.push(host)
-	}
-
-	const app = express()
+  const app = express()
 
   if (checkoutStorybook) {
     const storybookMiddleware = storybook({
@@ -101,13 +100,15 @@ export default ({
     const compiler = webpack(webpackConfig)
     const publicPath = webpackConfig.output.publicPath
 
-    app.use(webpackDevMiddleware(compiler, {
-      ...defaultDevMiddlewareConfig,
-      publicPath
-    }))
+    app.use(
+      webpackDevMiddleware(compiler, {
+        ...defaultDevMiddlewareConfig,
+        publicPath
+      })
+    )
     app.use(webpackHotMiddleware(compiler, defaultHotMiddlewareConfig))
     app.get('*', (req, res) => {
-      if ( templatePath ) {
+      if (templatePath) {
         res.sendFile(templatePath)
       } else {
         res.send(createHtml(publicPath))
@@ -115,16 +116,15 @@ export default ({
     })
   }
 
-  return Promise.promisify(app.listen, { context: app })(...listenAddr)
-    .then(() => {
+  return Promise.promisify(app.listen, { context: app })(
+    ...listenAddr
+  ).then(() => {
+    const address = `http://${host || 'localhost'}:${port}/`
 
-      const address = `http://${host || 'localhost'}:${port}/`
+    console.log(
+      coolTrim`${chalk.green('React Storybook started on:')} ${chalk.yellow(address)}`
+    )
 
-      console.log(coolTrim`
-				${chalk.green('React Storybook started on:')}
-				  ${chalk.yellow(address)}
-			`)
-
-      return Promise.resolve(address)
-    })
+    return Promise.resolve(address)
+  })
 }

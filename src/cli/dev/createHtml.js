@@ -1,9 +1,6 @@
-/**
- * Created by menscrem on 10.04.17.
- */
-import url from 'url';
+import url from 'url'
 
-export default (publicPath) => (
+export default publicPath =>
   `
     <!DOCTYPE html>
     <html>
@@ -24,5 +21,3 @@ export default (publicPath) => (
       </body>
     </html>
   `
-)
-

@@ -3,13 +3,13 @@ import path from 'path'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
 import {
-	buildPath,
-	modulesPath,
-	packagesPath,
-	buildFavicon,
-	entryHtmlPath,
-	nodeModulesPath,
-	entryFaviconPath,
+  buildPath,
+  modulesPath,
+  packagesPath,
+  buildFavicon,
+  entryHtmlPath,
+  nodeModulesPath,
+  entryFaviconPath
 } from '../path'
 
 import svg from './parts/svg'
@@ -27,56 +27,45 @@ import progress from './parts/progress'
 import component from './parts/component'
 import sourceMap from './parts/sourceMaps'
 
-const includePath = [ packagesPath, modulesPath ]
+const includePath = [packagesPath, modulesPath]
 
 const common = {
-	plugins: [
-		new webpack.NamedModulesPlugin(),
-	],
-	resolve: {
-		modules: [ nodeModulesPath, packagesPath, modulesPath ],
-		unsafeCache: true
-	},
-	performance: {
-		hints: false
-	}
+  plugins: [new webpack.NamedModulesPlugin()],
+  resolve: {
+    modules: [nodeModulesPath, packagesPath, modulesPath],
+    unsafeCache: true
+  },
+  performance: {
+    hints: false
+  }
 }
 
-export default (
-	{
-		componentPath,
-		checkoutLinter,
-		checkoutStorybook
-	} = {}
-) => {
-	const rootComponent = path.join(packagesPath, componentPath)
+export default ({ componentPath, checkoutLinter, checkoutStorybook } = {}) => {
+  const rootComponent = path.join(packagesPath, componentPath)
 
-	let templatePath = (process.env.NODE_ENV === 'production') ? entryHtmlPath : ''
-	const entryHTML = path.join(rootComponent, 'entry', 'index.html')
-	if ( fs.existsSync(entryHTML) ) {
-	  templatePath = entryHTML
-	}
+  let templatePath = process.env.NODE_ENV === 'production' ? entryHtmlPath : ''
+  const entryHTML = path.join(rootComponent, 'entry', 'index.html')
+  if (fs.existsSync(entryHTML)) {
+    templatePath = entryHTML
+  }
 
-	const config = merge(
-		sourceMap(),
+  const config = merge(
+    sourceMap(),
     entry({ rootComponent, checkoutStorybook }),
+    babel({ include: includePath, basePath: buildPath }),
+    style({ include: [nodeModulesPath, ...includePath] }),
+    image({ include: includePath }),
+    svg({ include: includePath }),
+    html({ template: templatePath }),
+    checkoutLinter && linter({ include: rootComponent }),
+    checkoutStorybook && component({ include: includePath, componentPath }),
+    favicon({ from: `${entryFaviconPath}/*`, to: buildFavicon }),
+    minimize(),
+    progress(),
+    hmr(),
+    error(),
+    common
+  )
 
-		babel({ include: includePath, basePath: buildPath }),
-		style({ include: [ nodeModulesPath, ...includePath ] }),
-		image({ include: includePath }),
-		svg({ include: includePath }),
-		html({ template: templatePath }),
-		
-		checkoutLinter && linter({ include: rootComponent }),
-		checkoutStorybook && component({ include: includePath, componentPath }),
-
-		favicon({ from: `${entryFaviconPath}/*`, to: buildFavicon }),
-		minimize(),
-		progress(),
-		hmr(),
-		error(),
-		common
-	)
-
-	return {config, templatePath}
+  return { config, templatePath }
 }

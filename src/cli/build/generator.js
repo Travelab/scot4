@@ -13,16 +13,15 @@ import { Base } from '../../yo-yo'
 import { normalizePath } from '../../utils'
 
 export default class extends Base {
-
   constructor (args, opts) {
     super(args, opts)
 
     this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
   }
 
-  _promptComponent(availableComponents) {
-    const choicesComponents = availableComponents.map((component) => {
-      const [ folder, name ] = component.split('/')
+  _promptComponent (availableComponents) {
+    const choicesComponents = availableComponents.map(component => {
+      const [folder, name] = component.split('/')
 
       return {
         name: `${name} ${chalk.gray(folder)}`,
@@ -31,46 +30,46 @@ export default class extends Base {
       }
     })
 
-    const chooser = (answers, input) => Promise.resolve(
-      input
-        ? choicesComponents.filter((c) => ~c.value.indexOf(input))
-        : choicesComponents
-    )
+    const chooser = (answers, input) =>
+      Promise.resolve(
+        input
+          ? choicesComponents.filter(c => ~c.value.indexOf(input))
+          : choicesComponents
+      )
 
     const prompts = [
       {
         type: 'autocomplete',
         name: 'component',
         message: `Which ${chalk.yellow('component')} do you want to dev?`,
-        source: chooser,
+        source: chooser
       },
       {
         type: 'confirm',
         name: 'needTestServer',
         message: 'Do you need to run server for manual testing?',
-        default: true,
+        default: true
       }
     ]
 
-    return this
-      .prompt(prompts)
-      .then((answers) => {
-        this.component = answers.component
-        this.needTestServer = answers.needTestServer
-      })
+    return this.prompt(prompts).then(answers => {
+      this.component = answers.component
+      this.needTestServer = answers.needTestServer
+    })
   }
 
   prompting () {
-
     const availableComponents = glob.sync('@*/*', { cwd: packagesPath })
 
-		let { componentName } = this.options
-    if ( componentName ) {
-		  const { needTestServer } = this.options
+    let { componentName } = this.options
+    if (componentName) {
+      const { needTestServer } = this.options
 
       const component = normalizePath(componentName, packagesPath)
       if (!availableComponents.includes(component)) {
-        this.log(chalk.red(`Component ${componentName} not found in ${packagesPath}`))
+        this.log(
+          chalk.red(`Component ${componentName} not found in ${packagesPath}`)
+        )
         return this._promptComponent(availableComponents)
       }
 
@@ -82,10 +81,7 @@ export default class extends Base {
   }
 
   end () {
-    const {
-      config,
-      templatePath
-    } = loadConfig({
+    const { config } = loadConfig({
       componentPath: this.component,
       checkoutLinter: false
     })
@@ -97,15 +93,13 @@ export default class extends Base {
     return remove(buildPath)
       .then(() => build())
       .then(() => {
-
         if (this.needTestServer) {
-
           return selectPort()
-            .then((port) => startServer(null, port))
-            .then((address) => open(address))
+            .then(port => startServer(null, port))
+            .then(address => open(address))
         }
       })
-      .catch((err) => {
+      .catch(err => {
         this.log(chalk.red(err))
       })
   }

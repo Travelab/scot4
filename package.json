@@ -41,12 +41,10 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-bluebird": "^1.0.1",
     "babel-preset-env": "^1.4.0",
-    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "base64-inline-loader": "^1.1.0",
     "bluebird": "^3.5.0",
-    "caporal": "^0.5.0",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "connect-history-api-fallback": "^1.3.0",
@@ -55,10 +53,14 @@
     "css-loader": "^0.28.1",
     "email-validator": "^1.0.7",
     "eslint": "^3.19.0",
-    "eslint-config-tl3": "https://github.com/Travelab/eslint-plugin-tl3",
+    "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-nibble": "https://github.com/Travelab/eslint-nibble.git",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
@@ -94,7 +96,6 @@
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0",
     "webpack-parallel-uglify-plugin": "^0.4.1",
-    "webpack-tar-gz-plugin": "^0.0.4",
     "write-pkg": "^3.0.1",
     "yeoman-environment": "^1.6.6",
     "yeoman-generator": "^1.1.1"
@@ -147,6 +148,6 @@
     "timezone": "^1.0.6"
   },
   "eslintConfig": {
-    "extends": "tl3"
+    "extends": "standard"
   }
 }

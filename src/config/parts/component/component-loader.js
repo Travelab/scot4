@@ -5,27 +5,23 @@ const storyPath = 'stories/index.js'
 const placeholder = '/* Place of required stories from CLI */'
 
 module.exports = function (source) {
+  let loader = this
 
-	let loader = this
+  loader.cacheable && loader.cacheable()
 
-	loader.cacheable && loader.cacheable()
+  let { component } = getOptions(loader)
 
-	let { component } = getOptions(loader)
+  if (!component) component = null
 
-	if (!component) component = null
+  let requiredStories = () => {
+    let componentPath = path.join(packagesPath, component, storyPath)
 
-	let requiredStories = () => {
+    componentPath = stringifyRequest(loader, componentPath)
 
-		let componentPath = path.join(packagesPath, component, storyPath)
+    return `require(${componentPath})`
+  }
 
-		componentPath = stringifyRequest(loader, componentPath)
+  source = source.replace(placeholder, requiredStories)
 
-		return `require(${componentPath})`
-
-	}
-
-	source = source
-		.replace(placeholder, requiredStories)
-
-	return source
+  return source
 }
