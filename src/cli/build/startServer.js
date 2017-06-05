@@ -4,7 +4,6 @@ import { createServer } from 'spa-http-server'
 import { buildPath } from '../../path'
 
 export default function (host, port) {
-  // Used with `app.listen` below
   const listenAddr = [port]
 
   if (host) {
