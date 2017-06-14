@@ -125,7 +125,7 @@
     "mousetrap": "^1.6.1",
     "navigo": "^5.0.2",
     "normalize.css": "^7.0.0",
-    "popper.js": "^1.9.9",
+    "popper.js": "^1.10.1",
     "qs": "^6.4.0",
     "react-addons-create-fragment": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
