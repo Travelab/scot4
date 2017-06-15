@@ -41,7 +41,7 @@ export default class extends Base {
       {
         type: 'autocomplete',
         name: 'component',
-        message: `Which ${chalk.yellow('component')} do you want to dev?`,
+        message: `Which ${chalk.yellow('component')} do you want to build?`,
         source: chooser
       },
       {
