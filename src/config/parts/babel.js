@@ -25,9 +25,10 @@ export default ({ include, basePath = '' }) => ({
                   require.resolve('babel-preset-env'),
                   {
                     targets: {
-                      ie: 9
+                      ie: 11
                     },
-                    modules: false
+                    modules: false,
+                    useBuiltIns: true
                   }
                 ],
                 require.resolve('babel-preset-react')
