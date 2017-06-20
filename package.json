@@ -122,7 +122,7 @@
     "jss-global": "^1.0.1",
     "jss-nested": "^4.0.1",
     "jss-props-sort": "^4.0.0",
-    "jss-vendor-prefixer": "^5.1.0",
+    "jss-vendor-prefixer": "^6.0.0",
     "lodash": "^4.17.4",
     "mousetrap": "^1.6.1",
     "navigo": "^5.0.2",
