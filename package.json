@@ -119,7 +119,7 @@
     "jss-default-unit": "^6.1.2",
     "jss-expand": "^3.0.1",
     "jss-extend": "^4.0.1",
-    "jss-global": "^1.0.1",
+    "jss-global": "^2.0.0",
     "jss-nested": "^4.0.1",
     "jss-props-sort": "^4.0.0",
     "jss-vendor-prefixer": "^5.1.0",
