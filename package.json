@@ -115,7 +115,7 @@
     "intl": "^1.2.5",
     "intl-messageformat": "^1.3.0",
     "jss": "^7.1.5",
-    "jss-camel-case": "^4.0.0",
+    "jss-camel-case": "^5.0.0",
     "jss-default-unit": "^6.1.2",
     "jss-expand": "^3.0.1",
     "jss-extend": "^4.0.1",
