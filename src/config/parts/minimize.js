@@ -20,7 +20,7 @@ export default () =>
             dead_code: true,
             drop_console: true
           },
-          sourceMap: false
+          sourceMap: true
         }),
         new ArchivePlugin({
           output: `${buildPath}/build`,
