@@ -54,7 +54,7 @@
     "core-js": "^2.4.1",
     "css-loader": "^0.28.4",
     "email-validator": "^1.0.7",
-    "eslint": "^3.19.0",
+    "eslint": "^4.1.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-tl3": "https://github.com/Travelab/eslint-plugin-tl3.git",
     "eslint-friendly-formatter": "^3.0.0",
