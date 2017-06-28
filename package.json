@@ -31,7 +31,7 @@
     "@kadira/storybook": "https://github.com/Travelab/react-storybook.git",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
-    "babel-loader": "v7.0.0",
+    "babel-loader": "7.1.1",
     "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-transform-async-to-bluebird": "^1.1.0",
