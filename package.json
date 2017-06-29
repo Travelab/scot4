@@ -80,7 +80,7 @@
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "portfinder": "^1.0.13",
-    "precss": "^1.4.0",
+    "precss": "^2.0.0",
     "process-bootstrap": "^1.0.0",
     "progress-bar-webpack-plugin": "^1.9.3",
     "react": "^15.5.4",
