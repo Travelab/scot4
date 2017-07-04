@@ -17,7 +17,7 @@ import hmr from './parts/hotModuleReloading'
 import html from './parts/html'
 import entry from './parts/entry'
 import babel from './parts/babel'
-import style from './parts/style'
+import css from './parts/css'
 import image from './parts/image'
 import favicon from './parts/favicon'
 import linter from './parts/linter'
@@ -52,8 +52,12 @@ export default ({ componentPath, checkoutLinter, checkoutStorybook } = {}) => {
   const config = merge(
     sourceMap(),
     entry({ rootComponent, checkoutStorybook }),
+
+    // Порядок имеет значение (начало)
     babel({ include: includePath, basePath: buildPath }),
-    style({ include: [nodeModulesPath, ...includePath] }),
+    css({ include: [ nodeModulesPath, ...includePath ] }),
+    // Порядок имеет значение (конец)
+
     image({ include: includePath }),
     svg({ include: includePath }),
     html({ template: templatePath }),

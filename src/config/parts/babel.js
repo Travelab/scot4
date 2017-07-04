@@ -13,7 +13,7 @@ export default ({ include, basePath = '' }) => ({
       {
         include,
         exclude: /node_modules/,
-        test: /\.jsx?/,
+        test: /\.js$/,
         use: [
           {
             loader: 'babel-loader',

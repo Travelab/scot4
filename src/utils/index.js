@@ -19,5 +19,7 @@ export const normalizePath = (component, packagesPath) => {
     componentPath = componentPath.slice(0, -1)
   }
 
-  return path.normalize(componentPath)
+  return path
+     .normalize(componentPath)
+     .replace('\\', '/')
 }
