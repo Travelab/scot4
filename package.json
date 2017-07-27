@@ -29,6 +29,7 @@
   "homepage": "https://github.com/Travelab/scot4",
   "dependencies": {
     "@kadira/storybook": "https://github.com/Travelab/react-storybook.git",
+    "autodll-webpack-plugin": "^0.2.1",
     "autoprefixer": "^7.1.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
@@ -47,6 +48,7 @@
     "babel-runtime": "^6.23.0",
     "base64-inline-loader": "^1.1.0",
     "bluebird": "^3.5.0",
+    "cache-loader": "^1.0.3",
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "connect-history-api-fallback": "^1.3.0",
@@ -112,6 +114,9 @@
     "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
+    "redux-devtools-extension": "^2.13.2",
+    "logrocket": "^0.5.2",
+    "react-jss": "^6.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "blueimp-md5": "^2.7.0",

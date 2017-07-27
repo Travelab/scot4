@@ -16,6 +16,9 @@ export default ({ include, basePath = '' }) => ({
         test: /\.js$/,
         use: [
           {
+            loader: require.resolve('cache-loader')
+          },
+          {
             loader: 'babel-loader',
             options: {
               babelrc: false,

@@ -5,6 +5,7 @@
 __vendor
 components/
 modules/
+.cache-loader
 
 # Yeoman configuration
 /.yo-rc.json
