@@ -135,7 +135,7 @@
     "react-addons-create-fragment": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
     "react-container-query": "^0.9.1",
-    "react-day-picker": "^5.5.3",
+    "react-day-picker": "^6.0.0",
     "react-inlinesvg": "^0.6.0",
     "react-motion": "^0.5.0",
     "react-progress-bar-plus": "^1.2.0",
