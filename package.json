@@ -148,7 +148,7 @@
     "redux": "^3.6.0",
     "redux-saga": "^0.15.3",
     "scroll-into-view": "^1.8.0",
-    "semantic-release": "^6.3.6",
+    "semantic-release": "^8.0.1",
     "store": "^2.0.4",
     "superagent": "^3.5.2"
   },
