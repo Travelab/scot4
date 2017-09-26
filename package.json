@@ -91,7 +91,7 @@
     "process-bootstrap": "^1.0.0",
     "progress-bar-webpack-plugin": "^1.9.3",
     "raw-loader": "^0.5.1",
-    "react": "^15.5.4",
+    "react": "^16.0.0",
     "react-dom": "^15.5.4",
     "react-hot-loader": "next",
     "rimraf": "^2.6.1",
